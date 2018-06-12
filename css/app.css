@@ -36,21 +36,9 @@ a:hover {
     color: var(--main-primary);
 }
 /** APP **/
-#app:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    max-width: 100pt;
-    max-height: 100pt;
+#app {
     background: url(../bg-images/app-sample-lists.svg) no-repeat center bottom;
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    transform: rotate(30deg);
+    background-size: 800px 600px;
 }
 
 /** HEADER **/
