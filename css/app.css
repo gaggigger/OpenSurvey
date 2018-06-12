@@ -1,0 +1,73 @@
+.primary {
+    background-color: var(--main-primary);
+    color : var(--on-primary);
+}
+.primary-inversed {
+    color: var(--main-primary);
+    background-color: var(--on-primary);
+}
+.primary-variant {
+    background-color: var(--main-primary-variant);
+}
+.secondary {
+    background-color: var(--main-secondary);
+    color : var(--on-secondary);
+}
+.secondary-variant {
+    background-color: var(--main-secondary-variant);
+}
+.pointer {
+    cursor: pointer;
+}
+.surface {
+    background-color: var(--surface);
+    color : var(--on-surface);
+    border: 1px solid var(--surface-border);
+}
+.background {
+    background-color: var(--surface);
+    color : var(--on-surface);
+}
+.error {
+    background-color: var(--error);
+    color : var(--on-error);
+}
+a:hover {
+    color: var(--main-primary);
+}
+/** APP **/
+#app:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-width: 100pt;
+    max-height: 100pt;
+    background: url(../bg-images/app-sample-lists.svg) no-repeat center bottom;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+/** HEADER **/
+.app-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 3em;
+}
+.app-header > *:first-child {
+    flex-grow: 1;
+    padding-left: 2em;
+}
+.app-header > *:last-child {
+    padding-right: 2em;
+}
+.app-header .text-logo {
+    font-weight: bolder;
+    font-size: 1.5em;
+}
