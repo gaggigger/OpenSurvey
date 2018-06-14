@@ -1,38 +1,47 @@
-// Vue.use(VueAxios, axios);
-//  Vue.use(axios);
-/*
-Vue.use(VueAuthenticate, {
-    baseUrl: 'http://localhost:3000', // Your API domain
-
-    providers: {
-        github: {
-            clientId: '',
-            redirectUri: 'https://labs.openschedule.org/github-deployment/' // Your client app URL
-        }
-    }
-});
-*/
-
-Vue.component('app-login', {
+const R_LOGIN = Vue.component('app-login', {
     template: `
-        <section class="app-login background flex_v-center flex_h-center">
-            <button @click="authenticate('github')">auth Github</button>
-            <button @click="authenticate('facebook')">auth Facebook</button>
-            <button @click="authenticate('google')">auth Google</button>
-            <button @click="authenticate('twitter')">auth Twitter</button>
+        <section class="app-login bg-norepeat flex_h-center flex_v-center">
+            <div class="item-container sw50 sw100-resp padding_0_1">
+                <div>
+                    <input type="username" 
+                        v-model="username"
+                        class="sw100"
+                        name="text" 
+                        placeholder="Your username" 
+                        required=""
+                        autofocus />
+                </div>
+                <div>
+                    <input type="password"
+                        v-model="password"
+                        class="sw100" 
+                        name="password" 
+                        placeholder="Your password" 
+                        required="" />
+                </div>
+                <div>
+                    <a href="#" 
+                        @click="login"
+                        class="primary padding_05_1 join-button v-align-center h-align-center">
+                        Login
+                    </a>
+                </div>
+                <div class="h-align-center">
+                    Join an event
+                    <router-link to="/">here</router-link>
+                </div>
+            </div>
         </section>
     `,
     data: function () {
         return {
-
+            username: '',
+            password: ''
         }
     },
     methods: {
-        authenticate: function (provider) {
-            this.$auth.authenticate(provider).then(function (response) {
-                // Execute application logic after successful social authentication
-                console.log(response);
-            })
+        login: function () {
+            console.log(this.username, this.password);
         }
     }
 });

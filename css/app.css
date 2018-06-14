@@ -1,13 +1,12 @@
 /** APP **/
-#app {
-    background: url(../bg-images/app-sample-lists.svg) no-repeat center bottom;
-    background-size: 800px 600px;
-}
+#app {}
 #app input {
-    border-width: 0;
-    border-bottom: 2px solid var(--main-primary);
-    margin: 0.2em;
-    padding: 0 0.5em;
+    border: 0;
+    padding: 1rem 0.2rem;
+    font-weight: 500;
+    color: rgba(0,0,0,.75);
+    background-color: transparent;
+    border-bottom: 1px solid var(--border);
 }
 /** RIBBON **/
 .app-ribbon {
@@ -55,7 +54,13 @@
 .app-join .join-button {
     min-width: 8em;
 }
+/** HOME **/
+.app-home {}
 /** LOGIN **/
 .app-login {
-    min-height: 3em;
+    min-height: 100%;
+    background-image: url(../bg-images/app-feedback.svg);
+}
+.app-login .item-container > * {
+    margin: 1em 0;
 }

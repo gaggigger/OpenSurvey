@@ -38,10 +38,14 @@
     text-decoration: underline;
 }
 /** Link **/
-a:hover {
+.a-like {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.a-like:hover, a:hover {
     color: var(--main-primary);
 }
-a.primary:hover {
+.a-like.primary:hover, a.primary:hover {
     color: var(--main-secondary);
 }
 /** Positionement **/
@@ -53,9 +57,21 @@ a.primary:hover {
 .h-align-center {
     text-align: center;
 }
+/** Width **/
+.sw100 {
+    width: 100%
+}
+.sw50 {
+    width: 50%;
+}
+@media screen and (max-width: 640px) {
+    .sw100-resp {
+        width: 100%;
+    }
+}
 /** Font **/
 .font15 {
-    font-size: 1.5em;
+    font-size: 1.4rem;
 }
 .bold {
     font-weight: bolder;
@@ -66,6 +82,9 @@ a.primary:hover {
 }
 .padding_05_1 {
     padding: 0.5em 1em;
+}
+.padding_1_0 {
+    padding: 1em 0;
 }
 /** Flex **/
 .flex {
@@ -80,4 +99,28 @@ a.primary:hover {
     display: flex;
     align-content: center;
     align-items: center;
+}
+/** Background **/
+.bg-norepeat {
+    background: no-repeat center bottom;
+}
+/** Vue animation **/
+    /** fade **/
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+    /** slide **/
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
 }
