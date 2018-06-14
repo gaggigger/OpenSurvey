@@ -9,6 +9,9 @@
 .primary-variant {
     background-color: var(--main-primary-variant);
 }
+.primary-font {
+    color: var(--main-primary);
+}
 .secondary {
     background-color: var(--main-secondary);
     color : var(--on-secondary);
@@ -76,7 +79,7 @@
 .bold {
     font-weight: bolder;
 }
-/** Padding**/
+/** Padding **/
 .padding_0_1 {
     padding: 0 1em;
 }
@@ -85,6 +88,22 @@
 }
 .padding_1_0 {
     padding: 1em 0;
+}
+.padding_1 {
+    padding: 1em;
+}
+/** Margin **/
+.margin_0_1 {
+    margin: 0 1em;
+}
+.margin_05_1 {
+    margin: 0.5em 1em;
+}
+.margin_1_0 {
+    margin: 1em 0;
+}
+.margin_1 {
+    margin: 1em;
 }
 /** Flex **/
 .flex {
@@ -99,6 +118,9 @@
     display: flex;
     align-content: center;
     align-items: center;
+}
+.flex-column {
+    flex-direction: column;
 }
 /** Background **/
 .bg-norepeat {
