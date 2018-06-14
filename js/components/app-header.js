@@ -1,11 +1,8 @@
 Vue.component('app-header', {
     template: `
-        <header class="app-header primary-inversed">
+        <header class="app-header flex_v-center primary-inversed">
             <div class="text-logo">
                 OpenSurvey
-            </div>
-            <div>
-                <a href="#">Log in</a>
             </div>
         </header>
     `,

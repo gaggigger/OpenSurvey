@@ -1,0 +1,83 @@
+.primary {
+    background-color: var(--main-primary);
+    color : var(--on-primary);
+}
+.primary-inversed {
+    color: var(--main-primary);
+    background-color: var(--on-primary);
+}
+.primary-variant {
+    background-color: var(--main-primary-variant);
+}
+.secondary {
+    background-color: var(--main-secondary);
+    color : var(--on-secondary);
+}
+.secondary-variant {
+    background-color: var(--main-secondary-variant);
+}
+.surface {
+    background-color: var(--surface);
+    color : var(--on-surface);
+    border: 1px solid var(--surface-border);
+}
+.background {
+    background-color: var(--surface);
+    color : var(--on-surface);
+}
+/** Specific message **/
+.error {
+    background-color: var(--error);
+    color : var(--on-error);
+}
+/** Test transform **/
+.pointer {
+    cursor: pointer;
+}
+.underline {
+    text-decoration: underline;
+}
+/** Link **/
+a:hover {
+    color: var(--main-primary);
+}
+a.primary:hover {
+    color: var(--main-secondary);
+}
+/** Positionement **/
+.v-align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h-align-center {
+    text-align: center;
+}
+/** Font **/
+.font15 {
+    font-size: 1.5em;
+}
+.bold {
+    font-weight: bolder;
+}
+/** Padding**/
+.padding_0_1 {
+    padding: 0 1em;
+}
+.padding_05_1 {
+    padding: 0.5em 1em;
+}
+/** Flex **/
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex_h-center {
+    display: flex;
+    justify-content: center;
+}
+.flex_v-center {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}

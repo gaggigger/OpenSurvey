@@ -1,51 +1,38 @@
-.primary {
-    background-color: var(--main-primary);
-    color : var(--on-primary);
-}
-.primary-inversed {
-    color: var(--main-primary);
-    background-color: var(--on-primary);
-}
-.primary-variant {
-    background-color: var(--main-primary-variant);
-}
-.secondary {
-    background-color: var(--main-secondary);
-    color : var(--on-secondary);
-}
-.secondary-variant {
-    background-color: var(--main-secondary-variant);
-}
-.pointer {
-    cursor: pointer;
-}
-.surface {
-    background-color: var(--surface);
-    color : var(--on-surface);
-    border: 1px solid var(--surface-border);
-}
-.background {
-    background-color: var(--surface);
-    color : var(--on-surface);
-}
-.error {
-    background-color: var(--error);
-    color : var(--on-error);
-}
-a:hover {
-    color: var(--main-primary);
-}
 /** APP **/
 #app {
     background: url(../bg-images/app-sample-lists.svg) no-repeat center bottom;
     background-size: 800px 600px;
 }
-
+#app input {
+    border-width: 0;
+    border-bottom: 2px solid var(--main-primary);
+    margin: 0.2em;
+    padding: 0 0.5em;
+}
+/** RIBBON **/
+.app-ribbon {
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 300px;
+    height: 300px;
+    z-index: 9999;
+}
+.app-ribbon > a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    line-height: 3rem;
+    transform: rotate(45deg);
+    box-shadow: rgba(0, 0, 0, 0.8) 4px 4px 10px;
+    width: 300px;
+    transition: 0.5s;
+}
 /** HEADER **/
 .app-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     height: 3em;
 }
 .app-header > *:first-child {
@@ -58,4 +45,17 @@ a:hover {
 .app-header .text-logo {
     font-weight: bolder;
     font-size: 1.5em;
+}
+/** JOIN **/
+.app-join {
+    padding: 0.5em 1em;
+    margin: auto;
+    height: 3em;
+}
+.app-join .join-button {
+    min-width: 8em;
+}
+/** LOGIN **/
+.app-login {
+    min-height: 3em;
 }
