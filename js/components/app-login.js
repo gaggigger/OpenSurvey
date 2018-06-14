@@ -26,10 +26,10 @@ const R_LOGIN = Vue.component('app-login', {
                         Login
                     </a>
                 </div>
-                <div class="h-align-center">
+                <footer class="h-align-center">
                     Join an event
                     <router-link to="/">here</router-link>
-                </div>
+                </footer>
             </div>
         </section>
     `,

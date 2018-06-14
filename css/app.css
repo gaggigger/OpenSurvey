@@ -24,14 +24,31 @@
     text-align: center;
     font-weight: bold;
     overflow: hidden;
-    line-height: 3rem;
+    line-height: 2rem;
     transform: rotate(45deg);
     box-shadow: rgba(0, 0, 0, 0.8) 4px 4px 10px;
     width: 300px;
-    transition: 0.5s;
+}
+@media screen and (max-width: 600px) {
+    .app-ribbon {
+        bottom: 0;
+        top: inherit;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+    }
+    .app-ribbon > a {
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+    }
 }
 /** HEADER **/
 .app-header {
+    position: absolute;
+    left: 0;
+    right: 0;
     height: 3em;
 }
 .app-header > *:first-child {
@@ -55,7 +72,10 @@
     min-width: 8em;
 }
 /** HOME **/
-.app-home {}
+.app-home {
+    min-height: 100%;
+    background-image: url(../bg-images/app-customer-tracker.svg);
+}
 /** LOGIN **/
 .app-login {
     min-height: 100%;
