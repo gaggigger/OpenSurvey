@@ -27,7 +27,7 @@ const R_LOGIN = Vue.component('app-login', {
                     </a>
                 </div>
                 <div class="flex_h-center flex_v-center flex-column">
-                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    <div class="signin-google"></div>
                     <div>
                         <span 
                             @click="logout"
