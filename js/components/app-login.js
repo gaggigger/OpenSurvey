@@ -50,17 +50,20 @@ const R_LOGIN = Vue.component('app-login', {
         }
     },
     created: function() {
-        window.setTimeout(function() {
+        window.setTimeout(() => {
             gapi.signin2.render('signin-google', {
                 'scope': 'profile email',
                 'width': 240,
                 'height': 50,
                 'longtitle': true,
                 'theme': 'dark',
-                'onsuccess': function(res) {
-                    console.log(res);
+                'onsuccess': (googleUser) => {
+                    let profile = googleUser.getBasicProfile();
+                    console.log(profile);
+                    let idToken = googleUser.getAuthResponse().id_token;
+                    console.log("ID Token: " + idToken);
                 },
-                'onfailure': function() {
+                'onfailure': () => {
 
                 }
             });
