@@ -1,6 +1,6 @@
 const R_LOGIN = Vue.component('app-login', {
     template: `
-        <section class="app-login bg-norepeat flex_h-center flex_v-center">
+        <section class="app-login bg-norepeat bg-center flex_h-center flex_v-center">
             <div class="item-container sw50 sw100-resp padding_0_1">
                 <div>
                     <input type="username" 
