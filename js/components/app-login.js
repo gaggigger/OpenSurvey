@@ -26,6 +26,16 @@ const R_LOGIN = Vue.component('app-login', {
                         Login
                     </a>
                 </div>
+                <div class="flex_h-center flex_v-center flex-column">
+                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    <div>
+                        <span 
+                            @click="logout"
+                            class="a-like h-align-center">
+                            Logout
+                        </span>
+                    </div>
+                </div>
                 <footer class="h-align-center">
                     Join an event
                     <router-link to="/">here</router-link>
@@ -39,9 +49,40 @@ const R_LOGIN = Vue.component('app-login', {
             password: ''
         }
     },
+    created: function() {
+        window.setTimeout(function() {
+            gapi.signin2.render('signin-google', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': function(res) {
+                    console.log(res);
+                },
+                'onfailure': function() {
+
+                }
+            });
+        }, 100);
+    },
     methods: {
         login: function () {
             console.log(this.username, this.password);
+        },
+        logout: function () {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
         }
     }
 });
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
