@@ -18,6 +18,6 @@ Vue.component('app-join', {
     data: function () {
         return {
 
-        }
+        };
     }
 });

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="keywords" content="OpenSurvey, audience, interaction, questions, voting, polls, polling, conferences, meetings">
     <meta name="robots" content="index, follow">
-    <meta name="google-signin-client_id" content="288925975530-utb8d799vt06ft93j03anb6a35t4003h.apps.googleusercontent.com">
     <title>Open Survey</title>
     <link rel="icon" href="favicon.ico" />
     <style type="text/css">
@@ -87,7 +86,13 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
     <script type="text/javascript" src="js/components/app-home.js"></script>
+
     <script type="text/javascript" src="js/components/app-login.js"></script>
+    <script type="text/javascript" src="js/components/app-login-custom.js"></script>
+    <script type="text/javascript" src="js/components/app-login-google.js"></script>
+    <script type="text/javascript" src="js/components/app-login-github.js"></script>
+    <script type="text/javascript" src="js/components/app-login-facebook.js"></script>
+
     <script type="text/javascript" src="js/components/app-ribbon.js"></script>
     <script type="text/javascript" src="js/components/app-header.js"></script>
     <script type="text/javascript" src="js/components/app-join.js"></script>
@@ -95,5 +100,19 @@
 
     <!--link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css"-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!--script src="https://connect.facebook.net/en_US/sdk.js" id="facebook-jssdk"></script-->
+
+    <link href="https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/social.css" rel="stylesheet" type="text/css">
+
 </body>
 </html>

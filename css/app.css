@@ -81,6 +81,3 @@
     min-height: 100%;
     background-image: url(../bg-images/app-feedback.svg);
 }
-.app-login .item-container > * {
-    margin: 1em 0;
-}

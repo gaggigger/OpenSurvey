@@ -9,6 +9,6 @@ Vue.component('app-header', {
     data: function () {
         return {
 
-        }
+        };
     }
 });

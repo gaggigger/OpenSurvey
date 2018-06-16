@@ -13,6 +13,6 @@ Vue.component('app-ribbon', {
     data: function () {
         return {
 
-        }
+        };
     }
 });

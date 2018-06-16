@@ -129,6 +129,10 @@
 .bg-center {
     background-position: center center;
 }
+/** Display **/
+.display-inline-block {
+    display: inline-block;
+}
 /** Vue animation **/
     /** fade **/
 .fade-enter-active, .fade-leave-active {
