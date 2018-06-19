@@ -14,6 +14,9 @@ const R_LOGIN = Vue.component('app-login', {
                 <div>
                     <app-login-facebook></app-login-facebook>
                 </div>
+                <div>
+                    <app-login-linkedin></app-login-linkedin>
+                </div>
                 
                 <footer class="h-align-center padding_1_0">
                     Join an event
