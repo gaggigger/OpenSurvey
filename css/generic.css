@@ -67,6 +67,9 @@
 .sw50 {
     width: 50%;
 }
+.sw100-2 {
+    width: calc(100% - 2em);
+}
 @media screen and (max-width: 640px) {
     .sw100-resp {
         width: 100%;

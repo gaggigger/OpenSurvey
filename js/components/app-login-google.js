@@ -1,10 +1,10 @@
 Vue.component('app-login-google', {
     template: `
-        <section class="sw100">
+        <section class="sw100-2">
             <!--div id="signin-google"></div-->
             <a href="#"
                 id="btn-google-login"
-                class="display-inline-block sw100 btn-social btn-google">
+                class="display-inline-block sw100-2 btn-social btn-google">
                 <span class="fa fa-google"></span>
                 Sign in with Google
             </a>
@@ -36,15 +36,18 @@ Vue.component('app-login-google', {
                     (googleUser) => {
                         this.login(googleUser);
                     }, (error) => {
-                        console.error(JSON.stringify(error, undefined, 2));
+                        // console.error(JSON.stringify(error, undefined, 2));
                     });
             });
         },
         login: function (googleUser) {
-            let profile = googleUser.getBasicProfile();
-            console.log(profile);
-            let idToken = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + idToken);
+            const http = new Http();
+            http.send('/login', 'POST', {
+                token: googleUser.getAuthResponse().id_token,
+                provider: 'google'
+            }).then((response) => {
+                // console.log(response);
+            });
         }
     }
 });

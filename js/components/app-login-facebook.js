@@ -1,8 +1,8 @@
 Vue.component('app-login-facebook', {
     template: `
-        <section class="sw100">
+        <section class="sw100-2">
             <a href="#"
-                class="display-inline-block sw100 btn-social btn-facebook"
+                class="display-inline-block sw100-2 btn-social btn-facebook"
                 @click="login">
                 <span class="fa fa-facebook"></span>
                 Sign in with Facebook

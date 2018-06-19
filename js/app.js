@@ -13,9 +13,14 @@ new Vue({
             isLoading : true
         };
     },
+    created : function() {
+
+    },
     mounted : function() {
         this.$nextTick(function () {
             this.isLoading = false;
         });
     }
 });
+
+// Vue.use(Vuex);

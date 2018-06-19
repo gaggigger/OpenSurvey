@@ -4,8 +4,16 @@ Vue.component('app-header', {
             <div class="text-logo">
                 <router-link to="/">OpenSurvey</router-link>
             </div>
-        </header>
+            {{ user.name }}
+       </header>
     `,
+    computed: {
+        user () {
+            return AuthStore.getters.authUser
+            // Or return basket.getters.fruitsCount
+            // (depends on your design decisions).
+        }
+    },
     data: function () {
         return {
 
