@@ -21,8 +21,8 @@ const Http = function () {
             method: method
         }, headers);
         // Add token header
-        if (AuthStore.getters.isLogged) {
-            h.headers.Authorization = AuthStore.state.authToken;
+        if (Auth.getters.isLogged) {
+            h.headers.Authorization = Auth.state.authToken;
         }
         if (method === 'GET') {
             url += _formatGetParameters(parameters);
@@ -34,7 +34,7 @@ const Http = function () {
             .then(response => response.json())
             .then(response => {
                 if (response.error) throw response.error;
-                if (response.token) AuthStore.commit('authToken', response.token);
+                if (response.token) Auth.commit('authToken', response.token);
                 return response
             })
             .catch(err => {

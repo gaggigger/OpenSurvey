@@ -72,7 +72,7 @@
 <body>
     <div id="app">
         <div id="mainloading" v-if="isLoading"></div>
-        <app-ribbon></app-ribbon>
+        <app-ribbon v-if="!isLogged"></app-ribbon>
         <app-header></app-header>
         <transition>
             <router-view />
@@ -101,7 +101,7 @@
     <script type="text/javascript" src="js/components/app-header.js"></script>
     <script type="text/javascript" src="js/components/app-join.js"></script>
 
-    <script type="text/javascript" src="js/services/auth-store.js"></script>
+    <script type="text/javascript" src="js/services/auth.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
     <!--link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css"-->

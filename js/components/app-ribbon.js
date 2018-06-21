@@ -8,7 +8,6 @@ Vue.component('app-ribbon', {
                 target="_blank" 
                 style="">Code on Github</a>
         </div>
-
     `,
     data: function () {
         return {

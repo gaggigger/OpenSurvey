@@ -9,9 +9,7 @@ Vue.component('app-header', {
     `,
     computed: {
         user () {
-            return AuthStore.getters.authUser
-            // Or return basket.getters.fruitsCount
-            // (depends on your design decisions).
+            return Auth.getters.authUser
         }
     },
     data: function () {

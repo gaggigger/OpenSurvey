@@ -1,4 +1,4 @@
-const AuthStore = new Vuex.Store({
+const Auth = new Vuex.Store({
     state: {
         authToken: null
     },
@@ -9,20 +9,27 @@ const AuthStore = new Vuex.Store({
             return !!token
         },
         authUser: state => {
-            if (state.authToken === null) {
+            if (!state.authToken) {
                 return {
                     name: ''
                 }
             }
-            return JSON.parse(atob(state.authToken.split('.')[1]));
+            try {
+                return JSON.parse(atob(state.authToken.split('.')[1]));
+            } catch (e) {
+                return {
+                    name: ''
+                }
+            }
         }
     },
     mutations: {
         authToken (state, token) {
+            if(token === 'null') token = null;
             state.authToken = token;
             Storage.set('osu-token', token);
         }
     }
 });
 // Update state
-AuthStore.commit('authToken', Storage.get('osu-token'));
+Auth.commit('authToken', Storage.get('osu-token'));
