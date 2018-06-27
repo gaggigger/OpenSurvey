@@ -40,7 +40,7 @@
         }).then((response) => {
             if (response.token) {
                 Storage.set('osu-token', response.token);
-                window.location.href = '../';
+                window.location.href = './';
             } else {
                 throw new Error('Invalide token');
             }
