@@ -23,10 +23,16 @@
     <script>
         const url = new URL(window.location.href);
         const token = url.searchParams.get('code');
+        let provider = null;
+        if (url.searchParams.get('state')) {
+            provider = 'linkedin';
+        } else if (token.length < 30) {
+            provider = 'github';
+        }
         const http = new Http();
         http.send('/login', 'POST', {
             token: token,
-            provider: 'github'
+            provider: provider
         }).then((response) => {
             if (response.token) {
                 Storage.set('osu-token', response.token);

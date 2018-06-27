@@ -17,7 +17,7 @@ Vue.component('app-login-linkedin', {
             return Math.random();
         },
         redirectUri: function() {
-            return window.location.href;
+            return window.location.origin + window.location.pathname + 'login.html';
         }
     },
     methods: {
