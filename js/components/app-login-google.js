@@ -41,6 +41,13 @@ Vue.component('app-login-google', {
             });
         },
         login: function (googleUser) {
+            window.location.href = window.location.origin
+                + window.location.pathname
+                + 'login.html?'
+                + 'code=' + encodeURIComponent(googleUser.getAuthResponse().id_token)
+                + '&provider=google'
+            ;
+            /*
             const http = new Http();
             http.send('/login', 'POST', {
                 token: googleUser.getAuthResponse().id_token,
@@ -48,6 +55,7 @@ Vue.component('app-login-google', {
             }).then((response) => {
                 // console.log(response);
             });
+            */
         }
     }
 });

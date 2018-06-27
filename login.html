@@ -23,16 +23,20 @@
     <script>
         const url = new URL(window.location.href);
         const token = url.searchParams.get('code');
-        let provider = null;
+        let provider = url.searchParams.get('provider');
+        let redirectUri = url.searchParams.get('redirect_uri');
         if (url.searchParams.get('state')) {
             provider = 'linkedin';
-        } else if (token.length < 30) {
+            redirectUri = window.location.origin + window.location.pathname.replace(/\/login.html/, '/');
+        } else if (token && token.length < 30) {
             provider = 'github';
         }
         const http = new Http();
         http.send('/login', 'POST', {
             token: token,
-            provider: provider
+            provider: provider,
+            user_id: url.searchParams.get('user_id'),
+            redirect_uri: redirectUri
         }).then((response) => {
             if (response.token) {
                 Storage.set('osu-token', response.token);

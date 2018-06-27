@@ -24,8 +24,13 @@ Vue.component('app-login-facebook', {
         login: function () {
             this.init();
             FB.login((response) => {
-                console.log(response);
-                //statusChangeCallback(response);
+                window.location.href = window.location.origin
+                    + window.location.pathname
+                    + 'login.html?'
+                    + 'code=' + encodeURIComponent(response.accessToken)
+                    + '&user_id=' + encodeURIComponent(response.userID)
+                    + '&provider=facebook'
+                ;
             });
         }
     }
