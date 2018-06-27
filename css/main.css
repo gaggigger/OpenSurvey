@@ -1,0 +1,57 @@
+:root {
+    --main-primary: #6200EE;
+    --main-primary-variant: #3700B3;
+    --main-secondary: #03DAC6;
+    --main-secondary-variant: #018786;
+    --background: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-border: #C0C0C0;
+    --error: #B00020;
+    --on-primary: #FFFFFF;
+    --on-secondary: #000000;
+    --on-background: #000000;
+    --on-surface: #000000;
+    --on-error: #FFFFFF;
+    --border: #ccc;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+#app {
+    position: relative;
+    height: 100%;
+}
+#mainloading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+}
+@-webkit-keyframes spin {
+    from {-webkit-transform:rotate(0deg);}
+    to {-webkit-transform:rotate(360deg);}
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+#mainloading::after {
+    content:'';
+    display:block;
+    position:absolute;
+    left:48%;
+    top:40%;
+    width:40px;
+    height:40px;
+    border: 4px solid var(--main-secondary);
+    border-top-color: transparent;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}

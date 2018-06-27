@@ -21,7 +21,7 @@ const Http = function () {
             method: method
         }, headers);
         // Add token header
-        if (Auth.getters.isLogged) {
+        if (typeof Auth !== 'undefined' && Auth.getters.isLogged) {
             h.headers.Authorization = Auth.state.authToken;
         }
         if (method === 'GET') {
@@ -34,11 +34,12 @@ const Http = function () {
             .then(response => response.json())
             .then(response => {
                 if (response.error) throw response.error;
-                if (response.token) Auth.commit('authToken', response.token);
+                if (response.token && typeof Auth !== 'undefined') Auth.commit('authToken', response.token);
                 return response
             })
             .catch(err => {
                 console.error(err);
+                throw err;
             });
     };
 
