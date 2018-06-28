@@ -1,7 +1,8 @@
 const router = new VueRouter({
     routes: [
         { path: '/', component: R_HOME },
-        { path: '/login', component: R_LOGIN }
+        { path: '/login', component: R_LOGIN },
+        { path: '/dashboard', component: R_DASHBOARD }
     ]
 });
 

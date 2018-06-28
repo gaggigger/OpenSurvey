@@ -22,6 +22,11 @@ const R_HOME = Vue.component('app-home', {
 
         };
     },
+    created: function() {
+        if (Auth.getters.isLogged) {
+            this.$router.push('/dashboard')
+        }
+    },
     methods: {
         authenticate: function () {
             this.$router.push('/login')
