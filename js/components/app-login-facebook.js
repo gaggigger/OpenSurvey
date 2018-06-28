@@ -24,6 +24,8 @@ Vue.component('app-login-facebook', {
         login: function () {
             this.init();
             FB.login((response) => {
+                console.log(response);
+                return false;
                 window.location.href = window.location.origin
                     + window.location.pathname
                     + 'login.html?'
