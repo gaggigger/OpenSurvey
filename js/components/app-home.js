@@ -9,10 +9,12 @@ const R_HOME = Vue.component('app-home', {
             <div class="surface padding_1_0">
                 <app-join></app-join>
                 <footer class="background flex_v-center flex_h-center">
-                    <span class="a-like" 
-                        @click="authenticate()">
-                        Login
-                    </span>
+                    <router-link v-if="!isLogged" to="/login">
+                        <a>Login</a>
+                    </router-link>
+                    <router-link v-if="isLogged" to="/dashboard">
+                        <a>Dashboard</a>
+                    </router-link>
                 </footer>
             </div>
         </section>
@@ -22,9 +24,9 @@ const R_HOME = Vue.component('app-home', {
 
         };
     },
-    created: function() {
-        if (Auth.getters.isLogged) {
-            this.$router.push('/dashboard')
+    computed: {
+        isLogged: function () {
+            return Auth.getters.isLogged;
         }
     },
     methods: {

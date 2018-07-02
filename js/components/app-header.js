@@ -4,7 +4,7 @@ Vue.component('app-header', {
             <div class="text-logo">
                 <router-link to="/">OpenSurvey</router-link>
             </div>
-            {{ user.name }}
+            <app-user-logged></app-user-logged>
        </header>
     `,
     computed: {

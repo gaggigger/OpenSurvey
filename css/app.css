@@ -81,3 +81,14 @@
     min-height: 100%;
     background-image: url(../bg-images/app-feedback.svg);
 }
+/** User logged **/
+.user-logged-menu {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    min-width: 50%;
+    border-radius: 3px;
+}
+.user-logged-menu li {
+    list-style: none;
+}

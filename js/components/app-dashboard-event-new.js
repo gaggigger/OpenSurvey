@@ -14,7 +14,7 @@ Vue.component('app-dashboard-event-new', {
             <a href="#" 
                 class="primary join-button v-align-center h-align-center padding_0_1"
                 @click="add">
-                Create new Event
+                Create Event
             </a>
         </section>
     `,

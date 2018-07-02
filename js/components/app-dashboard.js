@@ -5,11 +5,17 @@ const R_DASHBOARD = Vue.component('app-dashboard', {
                 <h3>DASHBOARD</h3>
             </header>
             <app-dashboard-event-new></app-dashboard-event-new>
+            <app-dashboard-event-list></app-dashboard-event-list>
         </section>
     `,
     data: function () {
         return {
 
         };
-    }
+    },
+    created: function() {
+        if (!Auth.getters.isLogged) {
+            this.$router.push('/');
+        }
+    },
 });
