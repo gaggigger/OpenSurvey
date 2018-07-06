@@ -16,7 +16,6 @@ Vue.component('app-user-logged', {
             return Auth.getters.authUser;
         },
         logged () {
-            console.log(Auth.getters.isLogged);
             return Auth.getters.isLogged;
         }
     },

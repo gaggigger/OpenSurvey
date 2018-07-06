@@ -1,7 +1,28 @@
 const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
     template: `
         <section class="padding_top_3">
-            ITEM
+            <header>
+                <h3>
+                    #{{ item.name }},
+                    <span class="nowrap">
+                        from 
+                        <input
+                            type="datetime-local" 
+                            v-model="datestart" 
+                            name="datestart" />
+                    </span>
+                    <span class="nowrap">
+                        to
+                        <input 
+                            type="datetime-local" 
+                            v-model="dateend" 
+                            name="dateend" />
+                    </span>
+                </h3>
+            </header>
+            <div>
+                
+            </div>
         </section>
     `,
     props: {
@@ -12,7 +33,9 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
     },
     data: function() {
         return {
-            items: []
+            item: {},
+            datestart: '',
+            dateend: ''
         };
     },
     created: function() {
@@ -20,7 +43,12 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
     },
     methods: {
         get: function() {
-
+            const http = new Http();
+            http.send('/event/' + this.event, 'GET').then((response) => {
+                this.item = response;
+            }).catch(function(err) {
+                // raf
+            });
         }
     }
 });

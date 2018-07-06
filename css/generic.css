@@ -28,6 +28,9 @@
     background-color: var(--surface);
     color : var(--on-surface);
 }
+.nowrap {
+    white-space: nowrap;
+}
 /** Specific message **/
 .error {
     background-color: var(--error);

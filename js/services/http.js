@@ -33,8 +33,8 @@ const Http = function () {
         return fetch(url, h)
             .then(response => response.json())
             .then(response => {
-                if (response.error) throw response.error;
-                if (response.token && typeof Auth !== 'undefined') Auth.commit('authToken', response.token);
+                if (response && response.error) throw response.error;
+                if (response && response.token && typeof Auth !== 'undefined') Auth.commit('authToken', response.token);
                 return response
             })
             .catch(err => {
