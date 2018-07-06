@@ -30,7 +30,8 @@ Vue.component('app-dashboard-event-new', {
             http.send('/event', 'POST', {
                 name: this.eventname
             }).then((response) => {
-                console.log(response);
+                this.eventname = '';
+                this.$emit('itemAdded', response);
             }).catch(function(err) {
 
             });

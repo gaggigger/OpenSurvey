@@ -1,8 +1,9 @@
 Vue.component('app-dashboard-event-list', {
     template: `
         <div>
-            <ul>
-                <li v-for="item in items">
+            <ul class="list-1">
+                <li v-for="item in items" 
+                    class="surface margin_1_0 padding_05_1">
                     <router-link :to="{ path: '/event/' + item._id }">
                         <a>{{ item.name }}</a>
                     </router-link>
@@ -10,6 +11,7 @@ Vue.component('app-dashboard-event-list', {
             </ul>
         </div>
     `,
+    props: ['reload'],
     data: function() {
         return {
             items: []
@@ -17,6 +19,11 @@ Vue.component('app-dashboard-event-list', {
     },
     created: function() {
         this.get();
+    },
+    watch: {
+        reload: function() {
+            this.get();
+        }
     },
     methods: {
         get: function() {

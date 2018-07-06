@@ -4,13 +4,13 @@ const R_DASHBOARD = Vue.component('app-dashboard', {
             <header class="flex_h-center">
                 <h3>DASHBOARD</h3>
             </header>
-            <app-dashboard-event-new></app-dashboard-event-new>
-            <app-dashboard-event-list></app-dashboard-event-list>
+            <app-dashboard-event-new v-on:itemAdded="reloadList"></app-dashboard-event-new>
+            <app-dashboard-event-list :reload="itemAdded"></app-dashboard-event-list>
         </section>
     `,
     data: function () {
         return {
-
+            itemAdded: null
         };
     },
     created: function() {
@@ -18,4 +18,9 @@ const R_DASHBOARD = Vue.component('app-dashboard', {
             this.$router.push('/');
         }
     },
+    methods: {
+        reloadList: function(item) {
+            this.itemAdded = item;
+        }
+    }
 });
