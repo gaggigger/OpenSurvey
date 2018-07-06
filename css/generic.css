@@ -24,7 +24,7 @@
     color : var(--on-surface);
     border: 1px solid var(--surface-border);
 }
-.background {
+.background, .background-hover:hover {
     background-color: var(--surface);
     color : var(--on-surface);
 }
@@ -44,8 +44,11 @@
     text-decoration: underline;
 }
 /** Link **/
+a {
+    text-decoration: none;
+}
 .a-like {
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
 }
 .a-like:hover, a:hover {
@@ -79,6 +82,9 @@
     }
 }
 /** Font **/
+.font08 {
+    font-size: 0.8rem;
+}
 .font15 {
     font-size: 1.4rem;
 }
@@ -118,6 +124,12 @@
 .flex {
     display: flex;
     flex-wrap: wrap;
+}
+.flex_wrap {
+    flex-wrap: wrap;
+}
+.flex_nowrap {
+    flex-wrap: nowrap;
 }
 .flex_h-center {
     display: flex;
@@ -169,4 +181,17 @@
 }
 .list-1 li {
     list-style-type: none;
+}
+/** Border **/
+.border-width_4 {
+    border: 4px solid var(--surface-border);
+}
+.border-radius_50 {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+/** Width/Height **/
+.square_120 {
+    width: 120px;
+    height: 120px;
 }

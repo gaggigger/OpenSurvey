@@ -92,3 +92,19 @@
 .user-logged-menu li {
     list-style: none;
 }
+/** Dashboard **/
+.dash-item-container > * {
+    width: 25%;
+}
+.dash-quiz {
+    background-image: url(../bg-images/app-application-standards-tracker.svg);
+}
+.dash-qa {
+    background-image: url(../bg-images/app-community-requests.svg);
+}
+.dash-polling {
+    background-image: url(../bg-images/app-sample-charts.svg);
+}
+.dash-whiteboard {
+    background-image: url(../bg-images/app-group-calendar.svg);
+}

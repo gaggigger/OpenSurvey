@@ -3,7 +3,7 @@ const R_HOME = Vue.component('app-home', {
         <section class="app-home bg-norepeat bg-center flex_h-center flex_v-center flex-column">
             <article class="h-align-center font15 padding_1 margin_1 primary-font">
                 Audience interaction,
-                realtime polling and question 
+                realtime polling, quizz and Q&A 
                 platform from conferences
             </article>            
             <div class="surface padding_1_0">

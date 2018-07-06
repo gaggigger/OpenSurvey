@@ -14,7 +14,7 @@ Vue.component('app-dashboard-event-list', {
     props: ['reload'],
     data: function() {
         return {
-
+            items: []
         };
     },
     created: function() {
