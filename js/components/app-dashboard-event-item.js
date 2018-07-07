@@ -2,31 +2,7 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
     template: `
         <section class="padding_top_3">
             <header class="surface">
-                <h2 class="flex_h-center">
-                    #{{ item.name }}
-                </h2>
-                <div>
-                    <div class="font08 flex_h-center">
-                        <i>Event will be available between these dates</i>
-                    </div>
-                    <div class="flex_wrap flex_h-center">
-                        <span class="nowrap">
-                            <b>from</b>
-                            <input
-                                type="datetime-local" 
-                                v-model="datestart" 
-                                name="datestart" />
-                        </span>
-                        <span class="nowrap">
-                            <b>to</b>
-                            <input 
-                                type="datetime-local" 
-                                v-model="dateend" 
-                                name="dateend" />
-                        </span>
-                    </div>
-                    <div>&nbsp;</div>
-                </div>
+                <app-dashboard-event-information :event="event"></app-dashboard-event-information>
             </header>
             <div class="flex_h-center flex_wrap margin_1_0 dash-item-container">
                 
@@ -73,7 +49,7 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
                     <div class="h-align-center"> 
                         <h4>White board</h4>
                         <div class="font08">
-                            Share your code in real-time
+                            Share your text, code in real-time
                         </div>
                     </div>
                 </div>
@@ -87,24 +63,15 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
             required: true
         }
     },
-    data: function() {
+    data() {
         return {
-            item: {},
-            datestart: '',
-            dateend: ''
+            item: {}
         };
     },
-    created: function() {
-        this.get();
+    created() {
+
     },
     methods: {
-        get: function() {
-            const http = new Http();
-            http.send('/event/' + this.event, 'GET').then((response) => {
-                this.item = response;
-            }).catch(function(err) {
-                // raf
-            });
-        }
+
     }
 });

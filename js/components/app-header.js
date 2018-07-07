@@ -1,6 +1,6 @@
 Vue.component('app-header', {
     template: `
-        <header class="app-header flex_v-center primary-inversed">
+        <header class="app-header flex_v-center background-inversed">
             <div class="text-logo">
                 <router-link to="/">OpenSurvey</router-link>
             </div>
