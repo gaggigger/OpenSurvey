@@ -6,7 +6,7 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
             </header>
             <div class="flex_h-center flex_wrap margin_1_0 dash-item-container">
                 
-                <div role="button" tabindex="0" class="margin_1 pointer">
+                <div role="button" tabindex="0" class="margin_1 pointer" @click="goto('eventquiz')">
                     <div class="flex_h-center">
                         <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-quiz"></div>
                     </div>
@@ -72,6 +72,11 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
 
     },
     methods: {
-
+        goto (name) {
+            this.$router.push({
+                name: name,
+                params: { event: this.event }
+            });
+        }
     }
 });

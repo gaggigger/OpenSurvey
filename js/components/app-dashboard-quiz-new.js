@@ -1,37 +1,43 @@
-Vue.component('app-dashboard-event-new', {
+Vue.component('app-dashboard-quiz-new', {
     template: `
         <section class="padding_05_1 flex_h-center">
             <div class="bold font15 padding_0_1 v-align-center">#</div>
             <input autocorrect="off" 
                     autocapitalize="off" 
-                    name="event" 
+                    name="quiz" 
                     type="text" 
-                    aria-label="Enter event code" 
-                    placeholder="Enter event code" 
+                    aria-label="Enter quiz name" 
+                    placeholder="Enter quiz name" 
                     autocomplete="off"
-                    v-model="eventname"
+                    v-model="quizname"
                     autofocus />
             <a href="#" 
                 class="primary join-button v-align-center h-align-center padding_0_1"
                 @click="add">
-                Create Event
+                Create Quiz
             </a>
         </section>
     `,
+    props: {
+        event: {
+            type: String,
+            required: true
+        }
+    },
     data: function() {
         return {
-            eventname: ''
+            quizname: ''
         };
     },
     methods: {
         add: function() {
-            if (!this.eventname) return false;
+            if (!this.quizname) return false;
             const http = new Http();
-            http.send('/event', 'POST', {
-                name: this.eventname
+            http.send('/quiz', 'POST', {
+                event: this.event,
+                name: this.quizname
             }).then((response) => {
-                this.eventname = '';
-                this.$emit('itemAdded', response);
+
             }).catch(function(err) {
 
             });

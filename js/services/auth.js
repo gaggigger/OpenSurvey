@@ -5,7 +5,6 @@ const Auth = new Vuex.Store({
     getters: {
         isLogged: function(state) {
             let token = Storage.get('osu-token');
-            if (token === 'null') token = null;
             state.authToken = token;
             return !!token
         },

@@ -1,9 +1,7 @@
 Vue.component('app-header', {
     template: `
         <header class="app-header flex_v-center background-inversed">
-            <div class="text-logo">
-                <router-link to="/">OpenSurvey</router-link>
-            </div>
+            <app-breadcrumb></app-breadcrumb>
             <app-user-logged></app-user-logged>
        </header>
     `,

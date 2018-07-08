@@ -1,13 +1,13 @@
 Vue.component('app-dashboard-event-information', {
     template: `
         <div>
-            <h3 class="margin_05_1">
+            <!--h3 class="margin_05_1">
                 <router-link to="/dashboard">
                     dashboard
                 </router-link>
                 /
                 <span>#{{ item.name }}</span>
-            </h3>
+            </h3-->
             <div>
                 <input 
                     type="text" 

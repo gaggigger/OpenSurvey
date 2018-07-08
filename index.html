@@ -24,51 +24,81 @@
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
 
-    <script src="https://unpkg.com/vuex"></script>
+    <!--script src="https://unpkg.com/vuex"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script-->
+    <script type="text/javascript" src="js/libs/vuex.js"></script>
+    <script type="text/javascript" src="js/libs/vue.js"></script>
+    <script type="text/javascript" src="js/libs/vue-router.js"></script>
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/storage.js"></script>
     <script type="text/javascript" src="js/services/http.js"></script>
-    <script type="text/javascript" src="js/services/date.js"></script>
+    <script type="text/javascript" src="js/services/auth.js"></script>
+
+    <script>
+        const loadScript = function (safe, src, id) {
+            if (document.getElementById(id)) return;
+            if(safe) {
+                let js, fjs = document.getElementsByTagName('script')[0];
+                js = document.createElement('script');
+                js.id = id;
+                js.src = src;
+                js.async = true;
+                js.defer = true;
+                fjs.parentNode.insertBefore(js, fjs);
+            } else {
+                const js = document.createElement('script');
+                js.src = src;
+                js.id = id;
+                document.write(js.outerHTML);
+            }
+        };
+        const loadLink = function (src, id) {
+            let lnk, flnk = document.getElementsByTagName('link')[0];
+            if (document.getElementById(id)) return;
+            lnk = document.createElement('link');
+            lnk.id = id;
+            lnk.href = src;
+            lnk.rel = 'stylesheet';
+            lnk.type = 'text/css';
+            flnk.parentNode.insertBefore(lnk, flnk);
+        };
+    </script>
 
     <script type="text/javascript" src="js/components/app-home.js"></script>
-    <script type="text/javascript" src="js/components/app-login.js"></script>
-    <script type="text/javascript" src="js/components/app-login-custom.js"></script>
-    <script type="text/javascript" src="js/components/app-login-google.js"></script>
-    <script type="text/javascript" src="js/components/app-login-github.js"></script>
-    <script type="text/javascript" src="js/components/app-login-facebook.js"></script>
-    <script type="text/javascript" src="js/components/app-login-linkedin.js"></script>
-    <script type="text/javascript" src="js/components/app-ribbon.js"></script>
     <script type="text/javascript" src="js/components/app-header.js"></script>
-    <script type="text/javascript" src="js/components/app-join.js"></script>
-    <script type="text/javascript" src="js/components/app-dashboard.js"></script>
-    <script type="text/javascript" src="js/components/app-dashboard-event-new.js"></script>
-    <script type="text/javascript" src="js/components/app-dashboard-event-list.js"></script>
-    <script type="text/javascript" src="js/components/app-dashboard-event-item.js"></script>
-    <script type="text/javascript" src="js/components/app-dashboard-event-information.js"></script>
+    <script type="text/javascript" src="js/components/app-breadcrumb.js"></script>
     <script type="text/javascript" src="js/components/app-user-logged.js"></script>
+    <script type="text/javascript" src="js/components/app-join.js"></script>
 
-    <script type="text/javascript" src="js/services/auth.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-
-    <!--link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css"-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!--script src="https://connect.facebook.net/en_US/sdk.js" id="facebook-jssdk"></script-->
+        if (Storage.get('osu-token')) {
+            loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
 
-    <link href="https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="css/social.css" rel="stylesheet" type="text/css">
+            loadScript(false, 'js/components/app-dashboard.js', 'app-dashboard');
+            loadScript(false, 'js/components/app-dashboard-event-new.js', 'app-dashboard-event-new');
+            loadScript(false, 'js/components/app-dashboard-event-list.js', 'app-dashboard-event-list');
+            loadScript(false, 'js/components/app-dashboard-event-item.js', 'app-dashboard-event-item');
+            loadScript(false, 'js/components/app-dashboard-event-information.js', 'app-dashboard-event-information');
+            loadScript(false, 'js/components/app-dashboard-quiz.js', 'app-dashboard-quiz');
+            loadScript(false, 'js/components/app-dashboard-quiz-new.js', 'app-dashboard-event-quiz-new');
+        } else {
+            loadScript(false, 'js/components/app-login.js', 'app-login');
+            loadScript(false, 'js/components/app-login-custom.js', 'app-login-custom');
+            loadScript(false, 'js/components/app-login-google.js', 'app-login-google');
+            loadScript(false, 'js/components/app-login-github.js', 'app-login-github');
+            loadScript(false, 'js/components/app-login-facebook.js', 'app-login-facebook');
+            loadScript(false, 'js/components/app-login-linkedin.js', 'app-login-linkedin');
+
+            loadScript(true, 'https://apis.google.com/js/platform.js', 'gg-platform');
+            loadScript(true, 'https://connect.facebook.net/en_US/sdk.js', 'facebook-jssdk');
+
+            loadLink('https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css', 'social-font-awesome');
+            loadLink('css/social.css', 'social');
+        }
+    </script>
+    <script type="text/javascript" src="js/app.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </body>
 </html>

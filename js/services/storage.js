@@ -1,7 +1,9 @@
 const Storage = (function () {
     const get = function(key) {
         const v = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-        return v ? v[2] : null;
+        const val = v ? v[2] : null;
+        if(val === 'null') return null;
+        return val;
     };
     const set = function(key, value, day) {
         if (day === undefined) day = 86400000; // 1 day
