@@ -4,7 +4,7 @@ Vue.component('app-dashboard-event-list', {
             <ul class="list-1 flex flex_h-center flex_v-center">
                 <li v-for="item in items" 
                     class="surface margin_1 padding_05_1">
-                    <router-link :to="{ path: '/event/' + item._id }">
+                    <router-link :to="{ name: 'event', params:{ event: item._id }}">
                         <a>#{{ item.name }}</a>
                     </router-link>
                 </li>
@@ -12,23 +12,22 @@ Vue.component('app-dashboard-event-list', {
         </div>
     `,
     props: ['reload'],
-    data: function() {
+    data() {
         return {
             items: []
         };
     },
-    created: function() {
+    created() {
         this.get();
     },
     watch: {
-        reload: function() {
+        reload() {
             this.get();
         }
     },
     methods: {
-        get: function() {
-            const http = new Http();
-            http.send('/event', 'GET').then((response) => {
+        get() {
+            EventService.getAll().then((response) => {
                 this.items = response;
             }).catch(function(err) {
                 // raf

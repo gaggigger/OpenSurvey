@@ -1,6 +1,7 @@
 const R_HOME = Vue.component('app-home', {
     template: `
         <section class="app-home bg-norepeat bg-center flex_h-center flex_v-center flex-column">
+            <h1>OpenSurvey</h1>
             <article class="h-align-center font15 padding_1 margin_1 primary-font">
                 Audience interaction,
                 realtime polling, quizz and Q&A 
@@ -19,19 +20,19 @@ const R_HOME = Vue.component('app-home', {
             </div>
         </section>
     `,
-    data: function() {
+    data() {
         return {
 
         };
     },
     computed: {
-        isLogged: function () {
+        isLogged() {
             return Auth.getters.isLogged;
         }
     },
     methods: {
-        authenticate: function () {
-            this.$router.push('/login')
+        authenticate() {
+            this.$router.push({ path: 'login' })
         }
     }
 });

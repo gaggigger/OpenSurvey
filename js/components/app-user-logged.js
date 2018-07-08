@@ -12,20 +12,20 @@ Vue.component('app-user-logged', {
        </div>
     `,
     computed: {
-        user () {
+        user() {
             return Auth.getters.authUser;
         },
         logged () {
             return Auth.getters.isLogged;
         }
     },
-    data: function () {
+    data() {
         return {
             showMenu: false
         };
     },
     methods: {
-        logout: function() {
+        logout() {
             Auth.commit('authToken', null);
             window.location.reload();
         }

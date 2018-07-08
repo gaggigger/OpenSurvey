@@ -8,18 +8,18 @@ const R_DASHBOARD = Vue.component('app-dashboard', {
             <app-dashboard-event-list :reload="itemAdded"></app-dashboard-event-list>
         </section>
     `,
-    data: function () {
+    data() {
         return {
             itemAdded: null
         };
     },
-    created: function() {
+    created() {
         if (!Auth.getters.isLogged) {
-            this.$router.push('/');
+            this.$router.push({ path: 'home' });
         }
     },
     methods: {
-        reloadList: function(item) {
+        reloadList(item) {
             this.itemAdded = item;
         }
     }

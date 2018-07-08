@@ -1,7 +1,6 @@
 Vue.component('app-dashboard-quiz-new', {
     template: `
         <section class="padding_05_1 flex_h-center">
-            <div class="bold font15 padding_0_1 v-align-center">#</div>
             <input autocorrect="off" 
                     autocapitalize="off" 
                     name="quiz" 
@@ -10,12 +9,15 @@ Vue.component('app-dashboard-quiz-new', {
                     placeholder="Enter quiz name" 
                     autocomplete="off"
                     v-model="quizname"
+                    class="flex-1"
                     autofocus />
-            <a href="#" 
+            <span
+                role="button"
+                tabindex="0"
                 class="primary join-button v-align-center h-align-center padding_0_1"
                 @click="add">
                 Create Quiz
-            </a>
+            </span>
         </section>
     `,
     props: {
@@ -24,13 +26,13 @@ Vue.component('app-dashboard-quiz-new', {
             required: true
         }
     },
-    data: function() {
+    data() {
         return {
             quizname: ''
         };
     },
     methods: {
-        add: function() {
+        add() {
             if (!this.quizname) return false;
             const http = new Http();
             http.send('/quiz', 'POST', {

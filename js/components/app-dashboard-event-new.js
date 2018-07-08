@@ -9,29 +9,42 @@ Vue.component('app-dashboard-event-new', {
                     aria-label="Enter event code" 
                     placeholder="Enter event code" 
                     autocomplete="off"
-                    v-model="eventname"
+                    v-model.trim="eventname"
                     autofocus />
-            <a href="#" 
-                class="primary join-button v-align-center h-align-center padding_0_1"
+            <span
+                role="button"
+                tabindex="0"
+                class="pointer primary join-button v-align-center h-align-center padding_0_1"
                 @click="add">
                 Create Event
-            </a>
+            </span>
         </section>
     `,
-    data: function() {
+    data() {
         return {
             eventname: ''
         };
     },
     methods: {
-        add: function() {
+        add() {
             if (!this.eventname) return false;
+            this.eventname = this.eventname.replace(/^#/, '');
+            if(/[^0-9a-z_@&]/i.test(this.eventname)) {
+                return false;
+            }
             const http = new Http();
             http.send('/event', 'POST', {
                 name: this.eventname
             }).then((response) => {
-                this.eventname = '';
-                this.$emit('itemAdded', response);
+                if(response && response._id) {
+                    this.eventname = '';
+                    this.$router.push({
+                        name: 'event',
+                        params: { event: response._id }
+                    });
+                } else {
+                    this.$emit('itemAdded', response);
+                }
             }).catch(function(err) {
 
             });

@@ -25,8 +25,12 @@ const R_LOGIN = Vue.component('app-login', {
             </div>
         </section>
     `,
-    data: function () {
+    data() {
         return {};
+    },
+    mounted() {
+        loadLink('https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css', 'social-font-awesome');
+        loadLink('css/social.css', 'social');
     },
     methods: {
 

@@ -53,13 +53,10 @@
 }
 .app-header > *:first-child {
     flex-grow: 1;
-    padding-left: 2em;
+    padding-left: 1em;
 }
 .app-header > *:last-child {
-    padding-right: 2em;
-}
-.app-header nav {
-    font-size: 1.5em;
+    padding-right: 1em;
 }
 /** JOIN **/
 .app-join {

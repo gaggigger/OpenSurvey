@@ -1,13 +1,6 @@
 Vue.component('app-dashboard-event-information', {
     template: `
         <div>
-            <!--h3 class="margin_05_1">
-                <router-link to="/dashboard">
-                    dashboard
-                </router-link>
-                /
-                <span>#{{ item.name }}</span>
-            </h3-->
             <div>
                 <input 
                     type="text" 
@@ -68,17 +61,15 @@ Vue.component('app-dashboard-event-information', {
             return event;
         },
         get() {
-            (new Http()).send('/event/' + this.event, 'GET').then(response => {
+            EventService.get(this.event).then(response => {
                 this.item = this.formatEvent(response);
-            }).catch(function(err) {
-                // raf
             });
         },
         save() {
             if (this.tOut) window.clearTimeout(this.tOut);
             this.tOut = window.setTimeout(() => {
                 (new Http()).send('/event/' + this.event, 'POST', {
-                    description: this.item.description.trim(),
+                    description: this.item.description,
                     datestart: Date.parse(this.item.datestart),
                     dateend: Date.parse(this.item.dateend)
                 }).then(response => {

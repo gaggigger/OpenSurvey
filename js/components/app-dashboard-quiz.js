@@ -10,9 +10,19 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
             required: true
         }
     },
-    data: function () {
+    created() {
+        this.getEvent();
+    },
+    data() {
         return {
             items: []
         };
+    },
+    methods: {
+        getEvent() {
+            EventService.get(this.event).then(response => {
+                // raf?
+            });
+        }
     }
 });

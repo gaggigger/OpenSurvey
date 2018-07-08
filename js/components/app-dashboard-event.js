@@ -1,4 +1,4 @@
-const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
+const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
     template: `
         <section class="padding_top_3">
             <header class="surface">
@@ -69,10 +69,15 @@ const R_DASHBOARD_EVENT_LIST = Vue.component('app-dashboard-event-item', {
         };
     },
     created() {
-
+        this.get();
     },
     methods: {
-        goto (name) {
+        get() {
+            EventService.get(this.event).then(response => {
+                // raf?
+            });
+        },
+        goto(name) {
             this.$router.push({
                 name: name,
                 params: { event: this.event }

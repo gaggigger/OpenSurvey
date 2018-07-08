@@ -21,17 +21,15 @@
         </transition>
     </div>
 
-    <link href="css/generic.css" rel="stylesheet" type="text/css">
-    <link href="css/app.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/config.js"></script>
 
     <!--script src="https://unpkg.com/vuex"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/libs/vue.min.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script-->
     <script type="text/javascript" src="js/libs/vuex.js"></script>
     <script type="text/javascript" src="js/libs/vue.js"></script>
     <script type="text/javascript" src="js/libs/vue-router.js"></script>
 
-    <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/storage.js"></script>
     <script type="text/javascript" src="js/services/http.js"></script>
     <script type="text/javascript" src="js/services/auth.js"></script>
@@ -76,10 +74,12 @@
         if (Storage.get('osu-token')) {
             loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
 
+            loadScript(false, 'js/services/event.js', 'app-dashboard');
+
             loadScript(false, 'js/components/app-dashboard.js', 'app-dashboard');
+            loadScript(false, 'js/components/app-dashboard-event.js', 'app-dashboard-event-item');
             loadScript(false, 'js/components/app-dashboard-event-new.js', 'app-dashboard-event-new');
             loadScript(false, 'js/components/app-dashboard-event-list.js', 'app-dashboard-event-list');
-            loadScript(false, 'js/components/app-dashboard-event-item.js', 'app-dashboard-event-item');
             loadScript(false, 'js/components/app-dashboard-event-information.js', 'app-dashboard-event-information');
             loadScript(false, 'js/components/app-dashboard-quiz.js', 'app-dashboard-quiz');
             loadScript(false, 'js/components/app-dashboard-quiz-new.js', 'app-dashboard-event-quiz-new');
@@ -90,15 +90,12 @@
             loadScript(false, 'js/components/app-login-github.js', 'app-login-github');
             loadScript(false, 'js/components/app-login-facebook.js', 'app-login-facebook');
             loadScript(false, 'js/components/app-login-linkedin.js', 'app-login-linkedin');
-
-            loadScript(true, 'https://apis.google.com/js/platform.js', 'gg-platform');
-            loadScript(true, 'https://connect.facebook.net/en_US/sdk.js', 'facebook-jssdk');
-
-            loadLink('https://lipis.github.io/bootstrap-social/assets/css/font-awesome.css', 'social-font-awesome');
-            loadLink('css/social.css', 'social');
         }
     </script>
     <script type="text/javascript" src="js/app.js"></script>
+
+    <link href="css/generic.css" rel="stylesheet" type="text/css">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </body>
 </html>

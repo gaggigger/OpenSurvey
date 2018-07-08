@@ -129,6 +129,9 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
+.flex-1 {
+    flex: 1;
+}
 .flex_wrap {
     flex-wrap: wrap;
 }

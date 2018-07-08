@@ -3,12 +3,12 @@ const Auth = new Vuex.Store({
         authToken: null
     },
     getters: {
-        isLogged: function(state) {
+        isLogged(state) {
             let token = Storage.get('osu-token');
             state.authToken = token;
             return !!token
         },
-        authUser: function(state) {
+        authUser(state) {
             if (!state.authToken) {
                 return {
                     name: ''
@@ -24,7 +24,7 @@ const Auth = new Vuex.Store({
         }
     },
     mutations: {
-        authToken: function(state, token) {
+        authToken(state, token) {
             if(token === 'null') token = null;
             state.authToken = token;
             Storage.set('osu-token', token);

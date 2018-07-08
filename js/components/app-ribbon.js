@@ -9,7 +9,7 @@ Vue.component('app-ribbon', {
                 style="">Code on Github</a>
         </div>
     `,
-    data: function () {
+    data() {
         return {
 
         };

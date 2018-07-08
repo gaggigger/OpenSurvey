@@ -1,27 +1,37 @@
 Vue.component('app-login-facebook', {
     template: `
         <section class="sw100-2">
-            <a href="#"
-                class="display-inline-block sw100-2 btn-social btn-facebook"
+            <div role="button"
+                tabindex="0"
+                class="pointer display-inline-block sw100-2 btn-social btn-facebook"
                 @click="login">
                 <span class="fa fa-facebook"></span>
                 Sign in with Facebook
-            </a>
+            </div>
         </section>
     `,
-    data: function () {
+    data() {
         return {};
     },
+    mounted () {
+        loadScript(true, 'https://connect.facebook.net/en_US/sdk.js', 'facebook-jssdk');
+    },
     methods: {
-        init: function () {
+        init() {
+            if (typeof FB === 'undefined') {
+                window.setTimeout(() => {
+                    this.init();
+                }, 100);
+                return false;
+            }
             FB.init({
-                appId: '1849098195384170',
+                appId: Config.facebook.app_id,
                 cookie: true,  // enable cookies to allow the server to access the session
                 xfbml: true,  // parse social plugins on this page
                 version: 'v2.8' // use graph api version 2.8
             });
         },
-        login: function () {
+        login() {
             this.init();
             FB.login((response) => {
                 window.location.href = window.location.origin

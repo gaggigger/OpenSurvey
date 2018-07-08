@@ -19,22 +19,23 @@ Vue.component('app-login-custom', {
                     required="" />
             </div>
             <div class="padding_1_0">
-                <a href="#" 
+                <span role="button"
+                    tabindex="0"
                     @click="login"
-                    class="primary padding_05_1 join-button v-align-center h-align-center">
+                    class="pointer primary padding_05_1 join-button v-align-center h-align-center">
                     Login
-                </a>
-            </div>
+                </span>
+            </span>
         </div>
     `,
-    data: function () {
+    data() {
         return {
             username: '',
             password: ''
         };
     },
     methods: {
-        login: function () {
+        login() {
 
         }
     }

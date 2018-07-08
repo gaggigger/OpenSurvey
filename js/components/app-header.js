@@ -10,7 +10,7 @@ Vue.component('app-header', {
             return Auth.getters.authUser
         }
     },
-    data: function () {
+    data() {
         return {
 
         };

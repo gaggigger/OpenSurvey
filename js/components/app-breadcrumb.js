@@ -3,7 +3,7 @@ Vue.component('app-breadcrumb', {
         <nav>
             <ul class="list-1 flex">
                 <li>
-                    <router-link to="/">OpenSurvey</router-link>
+                    <router-link to="/">Home</router-link>
                     <span v-if="items.length > 0">
                         &nbsp;&gt;&nbsp;
                     </span>
@@ -12,9 +12,9 @@ Vue.component('app-breadcrumb', {
                     :key="idx">
                     <router-link :to="goto(menu.link)"
                         v-if="menu.link"
-                    >{{ menu.name }}</router-link>
+                    >{{ getName(menu.name) }}</router-link>
                     <span v-if="!menu.link">
-                        {{ menu.name }}
+                        {{ getName(menu.name) }}
                     </span>
                     <span v-if="idx < items.length-1">
                         &nbsp;&gt;&nbsp;
@@ -28,25 +28,47 @@ Vue.component('app-breadcrumb', {
             this.updateItems();
         }
     },
-    mounted () {
+    mounted() {
         this.updateItems();
     },
-    data: function () {
+    data() {
         return {
             items: [],
             params: {}
         };
     },
     methods: {
-        updateItems () {
-            this.params = {...this.$route.params};
-            this.items = [...this.$route.meta.breadcrumb];
+        getName(name) {
+            return BreadCrumbsStore.getters.text(name);
         },
-        goto (link) {
+        updateItems() {
+            this.params = Object.assign({}, this.$route.params);
+            this.items = this.$route.meta.breadcrumb.slice(0);
+        },
+        goto(link) {
             for (param in this.params) {
                 link = link.replace(`:${param}`, this.params[param]);
             }
             return link;
+        }
+    }
+});
+
+const BreadCrumbsStore = new Vuex.Store({
+    state: {
+        items: {
+            ':Event': 'Event'
+        }
+    },
+    getters: {
+        text: (state) => (key) => {
+            if(state.items[key]) return state.items[key];
+            return key;
+        }
+    },
+    mutations: {
+        text(state, data) {
+            Object.assign(state.items, data);
         }
     }
 });

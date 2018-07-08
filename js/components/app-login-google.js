@@ -1,23 +1,26 @@
 Vue.component('app-login-google', {
     template: `
         <section class="sw100-2">
-            <!--div id="signin-google"></div-->
-            <a href="#"
+            <div role="button"
+                tabindex="0"
                 id="btn-google-login"
-                class="display-inline-block sw100-2 btn-social btn-google">
+                class="pointer display-inline-block sw100-2 btn-social btn-google">
                 <span class="fa fa-google"></span>
                 Sign in with Google
-            </a>
+            </div>
         </section>
     `,
-    data: function () {
+    data() {
         return {};
     },
-    created: function() {
+    mounted() {
+        loadScript(true, 'https://apis.google.com/js/platform.js', 'gg-platform');
+    },
+    created() {
         this.init();
     },
     methods: {
-        init: function() {
+        init() {
             if (typeof gapi === 'undefined') {
                 window.setTimeout(() => {
                     this.init();
@@ -27,7 +30,7 @@ Vue.component('app-login-google', {
             gapi.load('auth2', () => {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 const auth2 = gapi.auth2.init({
-                    client_id: '288925975530-utb8d799vt06ft93j03anb6a35t4003h.apps.googleusercontent.com',
+                    client_id: Config.google.client_id,
                     cookiepolicy: 'single_host_origin',
                     // Request scopes in addition to 'profile' and 'email'
                     //scope: 'additional_scope'
@@ -40,22 +43,13 @@ Vue.component('app-login-google', {
                     });
             });
         },
-        login: function (googleUser) {
+        login(googleUser) {
             window.location.href = window.location.origin
                 + window.location.pathname
                 + 'login.html?'
                 + 'code=' + encodeURIComponent(googleUser.getAuthResponse().id_token)
                 + '&provider=google'
             ;
-            /*
-            const http = new Http();
-            http.send('/login', 'POST', {
-                token: googleUser.getAuthResponse().id_token,
-                provider: 'google'
-            }).then((response) => {
-                // console.log(response);
-            });
-            */
         }
     }
 });

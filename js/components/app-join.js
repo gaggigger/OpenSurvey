@@ -10,12 +10,15 @@ Vue.component('app-join', {
                     placeholder="Enter event code" 
                     autocomplete="off" 
                     autofocus />
-            <a href="#" class="primary join-button v-align-center h-align-center">
+            <span
+                role="button"
+                tabindex="0" 
+                class="pointer primary join-button v-align-center h-align-center">
                 Join
-            </a>
+            </span>
         </section>
     `,
-    data: function () {
+    data() {
         return {
 
         };
