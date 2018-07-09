@@ -5,7 +5,7 @@ const R_HOME = Vue.component('app-home', {
             <article class="h-align-center font15 padding_1 margin_1 primary-font">
                 Audience interaction,
                 realtime polling, quizz and Q&A 
-                platform from conferences
+                platform for conferences
             </article>            
             <div class="surface padding_1_0">
                 <app-join></app-join>

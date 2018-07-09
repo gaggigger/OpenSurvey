@@ -8,7 +8,7 @@ Vue.component('app-dashboard-quiz-new', {
                     aria-label="Enter quiz name" 
                     placeholder="Enter quiz name" 
                     autocomplete="off"
-                    v-model="quizname"
+                    v-model.trim="quizname"
                     class="flex-1"
                     autofocus />
             <span

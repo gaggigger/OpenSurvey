@@ -23,6 +23,13 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
             EventService.get(this.event).then(response => {
                 // raf?
             });
+        },
+        get() {
+            QuizService.getAll().then((response) => {
+                this.items = response;
+            }).catch(function(err) {
+                // raf
+            });
         }
     }
 });
