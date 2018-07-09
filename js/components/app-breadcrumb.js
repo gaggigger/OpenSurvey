@@ -57,7 +57,8 @@ Vue.component('app-breadcrumb', {
 const BreadCrumbsStore = new Vuex.Store({
     state: {
         items: {
-            ':Event': 'Event'
+            ':Event': 'Event',
+            ':Quiz': 'Quiz'
         }
     },
     getters: {

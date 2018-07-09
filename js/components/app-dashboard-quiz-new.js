@@ -14,7 +14,7 @@ Vue.component('app-dashboard-quiz-new', {
             <span
                 role="button"
                 tabindex="0"
-                class="primary join-button v-align-center h-align-center padding_0_1"
+                class="pointer primary join-button v-align-center h-align-center padding_0_1"
                 @click="add">
                 Create Quiz
             </span>
@@ -39,7 +39,14 @@ Vue.component('app-dashboard-quiz-new', {
                 event: this.event,
                 name: this.quizname
             }).then((response) => {
-
+                this.quizname = '';
+                this.$router.push({
+                    name: 'eventquizitem',
+                    params: {
+                        event: this.event,
+                        quiz: response._id,
+                    }
+                });
             }).catch(function(err) {
 
             });

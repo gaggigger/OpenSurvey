@@ -196,6 +196,9 @@ a {
 .border-width_4 {
     border: 4px solid var(--surface-border);
 }
+.border-width_1 {
+    border: 1px solid var(--surface-border);
+}
 .border-radius_50 {
     -webkit-border-radius: 50%;
     border-radius: 50%;
