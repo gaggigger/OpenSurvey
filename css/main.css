@@ -7,18 +7,20 @@
     --surface: #dbedff;
     --surface-border: #C0C0C0;
     --error: #B00020;
+    --success: #00C853;
     --on-primary: #FFFFFF;
     --on-secondary: #000000;
     --on-background: #000000;
     --on-surface: #000000;
     --on-error: #FFFFFF;
+    --on-success: #FFFFFF;
     --border: #ccc;
 }
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
 #app {

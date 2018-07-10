@@ -1,3 +1,6 @@
+body {
+    counter-reset: counter-1;
+}
 .primary {
     background-color: var(--main-primary);
     color : var(--on-primary);
@@ -40,6 +43,17 @@
     background-color: var(--error);
     color : var(--on-error);
 }
+.error-color {
+    color : var(--error);
+}
+.error-color-hover:hover {
+    background-color: var(--error);
+    color : var(--on-error);
+}
+.success {
+    background-color: var(--success);
+    color : var(--on-success);
+}
 /** Test transform **/
 .pointer {
     cursor: pointer;
@@ -69,6 +83,14 @@ a {
 }
 .h-align-center {
     text-align: center;
+}
+.relative {
+    position: relative;
+}
+.position-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 /** Width **/
 .sw100 {
@@ -114,6 +136,9 @@ a {
 /** Margin **/
 .margin_0_1 {
     margin: 0 1em;
+}
+.margin_0_05 {
+    margin: 0 0.5em;
 }
 .margin_05_1 {
     margin: 0.5em 1em;
@@ -207,4 +232,14 @@ a {
 .square_120 {
     width: 120px;
     height: 120px;
+}
+/** pseudo **/
+.pseudo-dotted::before {
+    content: ".";
+}
+/** counter **/
+.counter-1::before {
+    counter-increment: counter-1;
+    content: counter(counter-1);
+    font-size: 0.7em;
 }

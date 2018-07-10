@@ -1,14 +1,7 @@
 Vue.component('app-user-logged', {
     template: `
         <div v-if="logged">
-            <a href="#" @click="showMenu = !showMenu">{{ user.name }}</a>
-            <nav class="user-logged-menu surface" v-show="showMenu">
-                <ul>
-                    <li>
-                        <a href="#" @click="logout">Logout</a>
-                    </li>
-                </ul>
-            </nav>
+            <a href="#" @click="logout">logout ({{ user.name }})</a>
        </div>
     `,
     computed: {
