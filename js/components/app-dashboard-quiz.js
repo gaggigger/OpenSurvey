@@ -22,16 +22,25 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
             </h3>
             <div>
                 <div v-for="(question, iq) in item.questions"
+                    :key="question"
                     class="border-width_1 margin_05_1 relative background">
                     <div class="position-top-right padding_05_1">
                         <span class="pointer a-like font08"
+                            title="Show responses"
+                            v-if="question.collapse === true"
+                            @click="showQuestion(question)">▶</span>
+                        <span class="pointer a-like font08"
+                            title="Hide responses"
+                            v-if="question.collapse !== true"
+                            @click="hideQuestion(question)">▼</span>
+                        <span class="pointer a-like font08"
                             v-if="iq > 0"
                             title="Move this question one step down"
-                            @click="moveQuestion('up', item.questions, iq);">Up</span>
+                            @click="moveQuestion('up', item.questions, iq);">🡅</span>
                         <span class="pointer a-like font08" 
                             v-if="iq < item.questions.length - 1"
                             title="Move this question one step up"
-                            @click="moveQuestion('down', item.questions, iq);">Down</span>
+                            @click="moveQuestion('down', item.questions, iq);">🡇</span>
                         <span class="pointer error-color error-color-hover font08 font08 bold" 
                                 title="Delete this question"
                                 @click="deleteQuestion(item.questions, iq)">X</span>
@@ -46,9 +55,9 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                             v-model.trim="question.name"
                             class="flex-1 bold border-no font15" />
                     </div>
-                    <ul class="padding_05_1 list-1">
+                    <ul class="padding_05_1 list-1" v-show="question.collapse === false">
                         <li v-for="(response, idx) in question.response" 
-                            :key="idx"
+                            :key="response"
                             class="flex_h-center flex_v-center padding_0_1 response-item"
                             v-bind:class="{ success: response.correct_answer === true }">
                             <span class="pointer error-color error-color-hover font08 bold margin_0_05" 
@@ -151,6 +160,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
         add() {
             this.item.questions.push({
                 name: this.newQuestionName,
+                collapse: false,
                 response: []
             });
             this.newQuestionName = '';
@@ -167,6 +177,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                 return item;
             });
             response.correct_answer = true;
+            this.$forceUpdate();
         },
         deleteQuestion(questions, idx) {
             questions = questions.splice(idx, 1);
@@ -181,6 +192,14 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                 });
                 question.questionToadd = '';
             }
+        },
+        showQuestion(question) {
+            question.collapse = false;
+            this.$forceUpdate();
+        },
+        hideQuestion(question) {
+            question.collapse = true;
+            this.$forceUpdate();
         },
         saveQuestion() {
             const data = Object.assign({}, this.item);

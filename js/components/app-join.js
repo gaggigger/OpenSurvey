@@ -6,6 +6,7 @@ Vue.component('app-join', {
                     autocapitalize="off" 
                     name="search" 
                     type="text" 
+                    v-model="event"
                     aria-label="Enter event code" 
                     placeholder="Enter event code" 
                     autocomplete="off" 
@@ -13,6 +14,7 @@ Vue.component('app-join', {
             <span
                 role="button"
                 tabindex="0" 
+                @click="join"
                 class="pointer primary join-button v-align-center h-align-center">
                 Join
             </span>
@@ -20,7 +22,15 @@ Vue.component('app-join', {
     `,
     data() {
         return {
-
+            event: ''
         };
+    },
+    methods: {
+        join() {
+            window.location.href = window.location.origin
+                + window.location.pathname
+                + 'event.html?'
+                + 'code=' + encodeURIComponent(this.event);
+        }
     }
 });

@@ -27,6 +27,7 @@
                        autocapitalize="off"
                        name="search"
                        type="text"
+                       id="eventcode"
                        aria-label="Enter event code"
                        placeholder="Enter event code"
                        autocomplete="off"
@@ -34,6 +35,7 @@
                 <span
                         role="button"
                         tabindex="0"
+                        onclick="goto()"
                         class="pointer primary join-button v-align-center h-align-center">
                     Join
                 </span>
@@ -43,7 +45,13 @@
 
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+    <script>
+        function goto() {
+            window.location.href = window.location.origin
+                + window.location.pathname.replace(/legacy\.html$/, '')
+                + 'event.html?'
+                + 'code=' + document.getElementById('eventcode').value;
+        }
+    </script>
 </body>
 </html>

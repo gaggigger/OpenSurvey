@@ -20,7 +20,25 @@ Vue.component('app-user-logged', {
     methods: {
         logout() {
             Auth.commit('authToken', null);
-            window.location.reload();
+            if(Auth.getters.authUser) {
+                switch (Auth.getters.authUser.provider) {
+                    case 'google':
+                        const auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            window.location.reload();
+                        });
+                        break;
+                    case 'facebook':
+                        FB.logout(function(response) {
+                            window.location.reload();
+                        });
+                        break;
+                    default:
+                        window.location.reload();
+                        break;
+                }
+            }
+
         }
     }
 });
