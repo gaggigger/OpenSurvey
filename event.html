@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Event</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="description" content="OpenSurvey is an audience interaction tool for conferences.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="OpenSurvey, audience, interaction, questions, voting, polls, polling, conferences, meetings">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="OpenSurvey" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://labs.openschedule.org/OpenSurvey/" />
+    <meta property="og:image" content="https://media.licdn.com/dms/image/C4D03AQF7W7k47lbEMg/profile-displayphoto-shrink_200_200/0?e=1524675600&v=alpha&t=cER7dpfBfz-dcmRQYLLy785CQBLx6QOpUAYf3FBK1p0" />
+
+    <title>OpenSurvey</title>
+    <link rel="icon" href="favicon.ico" />
+    <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+    <div id="app">
+        <div id="mainloading" v-if="isLoading"></div>
+        <app-header></app-header>
+        <transition>
+            <router-view />
+        </transition>
+    </div>
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/loader.js"></script>
@@ -25,8 +44,15 @@
     <script type="text/javascript" src="js/services/storage.js"></script>
     <script type="text/javascript" src="js/services/http.js"></script>
     <script type="text/javascript" src="js/services/auth.js"></script>
+    <script type="text/javascript" src="js/components/app-header.js"></script>
+    <script type="text/javascript" src="js/components/client/identification.js"></script>
+    <script type="text/javascript" src="js/components/app-breadcrumb.js"></script>
+    <script type="text/javascript" src="js/components/app-user-logged.js"></script>
+
+    <script type="text/javascript" src="js/event.js"></script>
 
     <link href="css/generic.css" rel="stylesheet" type="text/css">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
 
 </body>
 </html>

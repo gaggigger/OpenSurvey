@@ -43,7 +43,9 @@ Vue.component('app-breadcrumb', {
         },
         updateItems() {
             this.params = Object.assign({}, this.$route.params);
-            this.items = this.$route.meta.breadcrumb.slice(0);
+            if(this.$route.meta && this.$route.meta.breadcrumb) {
+                this.items = this.$route.meta.breadcrumb.slice(0);
+            }
         },
         goto(link) {
             for (param in this.params) {

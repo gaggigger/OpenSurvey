@@ -21,18 +21,21 @@
     <script type="text/javascript" src="js/services/http.js"></script>
 
     <script>
-        const url = new URL(window.location.href);
-        const token = url.searchParams.get('code');
-        let provider = url.searchParams.get('provider');
-        let redirectUri = url.searchParams.get('redirect_uri');
-        if (url.searchParams.get('state')) {
+        var url = new URL(window.location.href);
+        var token = url.searchParams.get('code');
+        var provider = url.searchParams.get('provider');
+        console.log(provider);
+        var redirectUri = url.searchParams.get('redirect_uri');
+        if (provider) {
+            // raf
+        }
+        else if (url.searchParams.get('state')) {
             provider = 'linkedin';
             redirectUri = window.location.origin + window.location.pathname.replace(/\/login.html/, '/');
         } else if (token && token.length < 30) {
             provider = 'github';
         }
-        const http = new Http();
-        http.send('/login', 'POST', {
+        (new Http()).send('/login', 'POST', {
             token: token,
             provider: provider,
             user_id: url.searchParams.get('user_id'),

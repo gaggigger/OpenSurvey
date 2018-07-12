@@ -4,7 +4,7 @@ const Auth = new Vuex.Store({
     },
     getters: {
         isLogged: function(state) {
-            let token = Storage.get('osu-token');
+            var token = Storage.get('osu-token');
             state.authToken = token;
             return !!token;
         },
@@ -21,6 +21,10 @@ const Auth = new Vuex.Store({
                     name: ''
                 }
             }
+        },
+        isGuest: function(state) {
+            var user = Auth.getters.isLogged;
+            return user.provider === 'guest';
         }
     },
     mutations: {

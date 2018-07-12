@@ -34,7 +34,6 @@
 <body>
     <div id="app">
         <div id="mainloading" v-if="isLoading"></div>
-        <app-ribbon v-if="!isLogged"></app-ribbon>
         <app-header></app-header>
         <transition>
             <router-view />

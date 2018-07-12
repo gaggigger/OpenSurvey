@@ -56,12 +56,6 @@ new Vue({
             isLoading : true
         };
     },
-    computed: {
-        isLogged () {
-            return true;
-            // return Auth.getters.isLogged
-        }
-    },
     created : function() {
 
     },
