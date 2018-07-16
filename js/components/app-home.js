@@ -30,9 +30,12 @@ const R_HOME = Vue.component('app-home', {
             return Auth.getters.isLogged;
         }
     },
+    created: function() {
+        if(Auth.getters.isGuest) window.location.href = './event.html';
+    },
     methods: {
         authenticate() {
-            this.$router.push({ path: 'login' })
+            this.$router.push({ name: 'login' })
         }
     }
 });

@@ -15,7 +15,7 @@ const Auth = new Vuex.Store({
                 }
             }
             try {
-                return JSON.parse(atob(state.authToken.split('.')[1]));
+                return TokenService.getPayload(state.authToken);
             } catch (e) {
                 return {
                     name: ''
@@ -23,7 +23,8 @@ const Auth = new Vuex.Store({
             }
         },
         isGuest: function(state) {
-            var user = Auth.getters.isLogged;
+            if(! Auth.getters.isLogged) return false;
+            var user = Auth.getters.authUser;
             return user.provider === 'guest';
         }
     },

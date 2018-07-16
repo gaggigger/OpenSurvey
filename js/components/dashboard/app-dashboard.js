@@ -15,7 +15,7 @@ const R_DASHBOARD = Vue.component('app-dashboard', {
     },
     created() {
         if (!Auth.getters.isLogged) {
-            this.$router.push({ path: 'home' });
+            this.$router.push({ name: 'home' });
         }
     },
     methods: {

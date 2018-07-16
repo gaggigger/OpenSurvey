@@ -19,13 +19,14 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/storage.js"></script>
     <script type="text/javascript" src="js/services/http.js"></script>
+    <script type="text/javascript" src="js/services/token.js"></script>
 
     <script>
         var url = new URL(window.location.href);
         var token = url.searchParams.get('code');
         var provider = url.searchParams.get('provider');
-        console.log(provider);
         var redirectUri = url.searchParams.get('redirect_uri');
+        var eventname = url.searchParams.get('event');
         if (provider) {
             // raf
         }
@@ -39,11 +40,16 @@
             token: token,
             provider: provider,
             user_id: url.searchParams.get('user_id'),
-            redirect_uri: redirectUri
+            redirect_uri: redirectUri,
+            event: eventname
         }).then((response) => {
             if (response.token) {
                 Storage.set('osu-token', response.token);
-                window.location.href = './';
+                var payload = TokenService.getPayload(Storage.get('osu-token'));
+                if(payload) {
+                    if(payload.provider === 'guest') window.location.href = './event.html';
+                    else window.location.href = './';
+                }
             } else {
                 throw new Error('Invalide token');
             }

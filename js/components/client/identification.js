@@ -1,4 +1,4 @@
-const R_IDENTIFICATION = Vue.component('client-identitication', {
+var R_IDENTIFICATION = Vue.component('client-identitication', {
     template:
         '<section class="surface padding_top_3">' +
         '   <h2 class="h-align-center">' +
@@ -26,6 +26,11 @@ const R_IDENTIFICATION = Vue.component('client-identitication', {
         return {
             username: ''
         };
+    },
+    created: function() {
+        if(Auth.getters.isLogged) {
+            this.$router.push({ name: 'home' })
+        }
     },
     methods: {
         join: function() {

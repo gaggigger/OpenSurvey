@@ -3,7 +3,7 @@ Vue.component('app-breadcrumb', {
         <nav>
             <ul class="list-1 flex">
                 <li>
-                    <router-link to="/">Home</router-link>
+                    <a href="./">Home</a>
                     <span v-if="items.length > 0">
                         &nbsp;&gt;&nbsp;
                     </span>
