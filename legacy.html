@@ -46,8 +46,12 @@
     </section>
 
     <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/services/http.js"></script>
-    <script type="text/javascript" src="js/services/event.js"></script>
+    <script type="text/javascript" src="js/services/loader.js"></script>
+
+    <script>
+        loadScript(false, 'js/services/http.js', 'services-http');
+        loadScript(false, 'js/services/event.js', 'services-event');
+    </script>
 
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">

@@ -28,9 +28,10 @@
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/loader.js"></script>
-    <script type="text/javascript" src="js/services/token.js"></script>
 
     <script>
+        loadScript(false, 'js/services/token.js', 'services-token');
+
         if (window.location.hostname === 'localhost') {
             loadScript(false, 'js/libs/vuex.js', 'vuex');
             loadScript(false, 'js/libs/vue.js', 'vue');
@@ -40,18 +41,19 @@
             loadScript(false, 'js/libs/vue.min.js', 'vue');
             loadScript(false, 'js/libs/vue-router.min.js', 'vue-router');
         }
+
+        loadScript(false, 'js/services/storage.js', 'services-storage');
+        loadScript(false, 'js/services/http.js', 'services-http');
+        loadScript(false, 'js/services/auth.js', 'services-auth');
+
+        loadScript(false, 'js/components/app-header.js', 'components-app-header');
+        loadScript(false, 'js/components/client/identification.js', 'components-client-identification');
+        loadScript(false, 'js/components/app-breadcrumb.js', 'components-app-breadcrum');
+        loadScript(false, 'js/components/app-user-logged.js', 'components-app-user-logged');
+        loadScript(false, 'js/components/client/client-home.js', 'components-client-client-home');
+
+        loadScript(false, 'js/event.js', 'event');
     </script>
-
-    <script type="text/javascript" src="js/services/storage.js"></script>
-    <script type="text/javascript" src="js/services/http.js"></script>
-    <script type="text/javascript" src="js/services/auth.js"></script>
-    <script type="text/javascript" src="js/components/app-header.js"></script>
-    <script type="text/javascript" src="js/components/client/identification.js"></script>
-    <script type="text/javascript" src="js/components/app-breadcrumb.js"></script>
-    <script type="text/javascript" src="js/components/app-user-logged.js"></script>
-    <script type="text/javascript" src="js/components/client/client-home.js"></script>
-
-    <script type="text/javascript" src="js/event.js"></script>
 
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
