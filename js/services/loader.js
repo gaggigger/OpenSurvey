@@ -1,4 +1,7 @@
 var loadScript = function (safe, src, id) {
+    if (window.location.hostname !== 'localhost') {
+        src = src.replace(/^js/, 'dist/');
+    }
     if (document.getElementById(id)) return;
     if(safe) {
         let js, fjs = document.getElementsByTagName('script')[0];

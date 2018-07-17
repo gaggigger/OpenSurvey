@@ -1,0 +1,21 @@
+{
+  "name": "Open Survey",
+  "short_name": "OpenSurvey",
+  "background_color": "#dbedf",
+  "description": "Audience interaction, realtime polling, quizz and Q&A platform for conferences",
+  "dir": "ltr",
+  "lang": "en",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "orientation": "portrait",
+  "prefer_related_applications": "false",
+  "scope": "./",
+  "start_url": "./index.html",
+  "theme_color": "#6200EE"
+}
