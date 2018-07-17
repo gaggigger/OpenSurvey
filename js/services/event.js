@@ -1,5 +1,5 @@
-var EventService = {
-    get: function(eventUid) {
+const EventService = {
+    get(eventUid) {
         return new Promise((resolv, reject) => {
             (new Http()).send('/event/' + eventUid, 'GET').then(response => {
                 // Update breadcrumbs
@@ -13,7 +13,7 @@ var EventService = {
             });
         });
     },
-    getAll: function() {
+    getAll() {
         return new Promise((resolv, reject) => {
             (new Http()).send('/event', 'GET').then(response => {
                 resolv(response);
@@ -23,7 +23,7 @@ var EventService = {
             });
         });
     },
-    findByName: function(eventname) {
+    findByName(eventname) {
         return new Promise((resolv, reject) => {
             (new Http()).send('/event/find/', 'GET', {
                 eventname: eventname

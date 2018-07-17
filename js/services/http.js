@@ -1,6 +1,6 @@
 const Http = function () {
-    var baseUrl = Config.api.url;
-    var headers = {
+    const baseUrl = Config.api.url;
+    const headers = {
         headers: {
             'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
             'Accept-Charset': 'utf-8'
@@ -8,16 +8,16 @@ const Http = function () {
         mode: 'cors',
         cache: 'default'
     };
-    var _formatGetParameters = function (parameters) {
+    const _formatGetParameters = function (parameters) {
         return '?' + Object.keys(parameters).reduce((acc, k) => {
             acc.push(`${k}=${encodeURIComponent(parameters[k])}`);
             return acc;
         }, []).join('&');
     };
-    var _send = function(url, method = 'GET', parameters = {}) {
+    const _send = function(url, method = 'GET', parameters = {}) {
         if (!/^http/.test(url)) url = baseUrl + url;
 
-        var h = Object.assign({
+        const h = Object.assign({
             method: method
         }, headers);
         // Add token header

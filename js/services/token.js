@@ -1,7 +1,7 @@
 const TokenService = {
-    getPayload: function(token) {
+    getPayload(token) {
         if(!token) return false;
-        var payload = token.split('.')[1];
+        const payload = token.split('.')[1];
         if(payload) {
             try {
                 return JSON.parse(atob(payload));

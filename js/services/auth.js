@@ -3,12 +3,12 @@ const Auth = new Vuex.Store({
         authToken: null
     },
     getters: {
-        isLogged: function(state) {
-            var token = Storage.get('osu-token');
+        isLogged(state) {
+            const token = Storage.get('osu-token');
             state.authToken = token;
             return !!token;
         },
-        authUser: function(state) {
+        authUser(state) {
             if (!state.authToken) {
                 return {
                     name: ''
@@ -22,14 +22,14 @@ const Auth = new Vuex.Store({
                 }
             }
         },
-        isGuest: function(state) {
+        isGuest(state) {
             if(! Auth.getters.isLogged) return false;
-            var user = Auth.getters.authUser;
+            const user = Auth.getters.authUser;
             return user.provider === 'guest';
         }
     },
     mutations: {
-        authToken: function(state, token) {
+        authToken(state, token) {
             if(token === 'null') token = null;
             state.authToken = token;
             Storage.set('osu-token', token);

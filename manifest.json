@@ -1,7 +1,7 @@
 {
   "name": "Open Survey",
   "short_name": "OpenSurvey",
-  "background_color": "#dbedf",
+  "background_color": "#dbedff",
   "description": "Audience interaction, realtime polling, quizz and Q&A platform for conferences",
   "dir": "ltr",
   "lang": "en",
