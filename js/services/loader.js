@@ -1,6 +1,6 @@
 var loadScript = function (safe, src, id) {
     if (window.location.hostname !== 'localhost' && ! /\.min\.js$/.test(src)) {
-        src = src.replace(/^js/, 'dist/');
+        src = src.replace(/^js\//, 'dist/');
     }
     if (document.getElementById(id)) return;
     if(safe) {
