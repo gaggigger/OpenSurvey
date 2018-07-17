@@ -25,16 +25,16 @@ Vue.component('app-user-logged', {
                     case 'google':
                         const auth2 = gapi.auth2.getAuthInstance();
                         auth2.signOut().then(function () {
-                            window.location.reload();
+                            window.location.href = './';
                         });
                         break;
                     case 'facebook':
                         FB.logout(function(response) {
-                            window.location.reload();
+                            window.location.href = './';
                         });
                         break;
                     default:
-                        window.location.reload();
+                        window.location.href = './';
                         break;
                 }
             }

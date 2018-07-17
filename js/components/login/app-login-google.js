@@ -44,9 +44,7 @@ Vue.component('app-login-google', {
             });
         },
         login(googleUser) {
-            window.location.href = window.location.origin
-                + window.location.pathname
-                + 'login.html?'
+            window.location.href = './login.html?'
                 + 'code=' + encodeURIComponent(googleUser.getAuthResponse().id_token)
                 + '&provider=google'
             ;

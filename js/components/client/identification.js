@@ -22,6 +22,12 @@ var R_IDENTIFICATION = Vue.component('client-identitication', {
         '       </div>' +
         '   </div>' +
         '</section>',
+    props: {
+        event: {
+            type: String,
+            required: false
+        }
+    },
     data: function() {
         return {
             username: ''
@@ -29,18 +35,18 @@ var R_IDENTIFICATION = Vue.component('client-identitication', {
     },
     created: function() {
         if(Auth.getters.isLogged) {
-            this.$router.push({ name: 'home' })
+            this.$router.push({ name: 'home', params: {
+                event: this.event
+            }});
         }
     },
     methods: {
         join: function() {
             var event = window.location.search.split('&').shift().replace('?code=', '');
-            window.location.href = window.location.origin
-                + window.location.pathname.replace(/event\.html$/, '')
-                + 'login.html?'
+            window.location.href = './login.html?'
                 + 'code=' + encodeURIComponent(this.username)
-                + '&event=' + encodeURIComponent(event)
                 + '&provider=guest'
+                + '#/' + encodeURIComponent(this.event)
             ;
         }
     }

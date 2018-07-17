@@ -59,6 +59,7 @@
     <script type="text/javascript" src="js/services/http.js"></script>
     <script type="text/javascript" src="js/services/auth.js"></script>
     <script type="text/javascript" src="js/services/token.js"></script>
+    <script type="text/javascript" src="js/services/event.js"></script>
 
     <script type="text/javascript" src="js/components/app-home.js"></script>
     <script type="text/javascript" src="js/components/app-header.js"></script>
@@ -73,7 +74,7 @@
         if (Storage.get('osu-token')) {
             loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
 
-            loadScript(false, 'js/services/event.js', 'event');
+            //loadScript(false, 'js/services/event.js', 'event');
             loadScript(false, 'js/services/quiz.js', 'quiz');
 
             loadScript(false, 'js/components/dashboard/app-dashboard.js', 'app-dashboard');

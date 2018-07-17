@@ -1,12 +1,12 @@
 var routesList = [];
 
 if(typeof R_IDENTIFICATION !== 'undefined') routesList.push({
-    path: '/identification', name:'identification', component: R_IDENTIFICATION, meta: {
+    path: '/identification/:event?', name:'identification', props: true, component: R_IDENTIFICATION, meta: {
         breadcrumb: []
     }
 });
 if(typeof R_CLIENT_HOME !== 'undefined') routesList.push({
-    path: '/', name:'home', component: R_CLIENT_HOME, meta: {
+    path: '/:event', name:'home', component: R_CLIENT_HOME, props: true, meta: {
         breadcrumb: []
     }
 });
@@ -22,9 +22,7 @@ new Vue({
     },
     created : function() {
         if(!Auth.getters.isLogged) {
-            this.$router.push({ name: 'identification' });
-        } else {
-            this.$router.push({ name: 'home' });
+            //this.$router.push({ name: 'identification' });
         }
     },
     mounted : function() {

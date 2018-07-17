@@ -40,14 +40,13 @@
             token: token,
             provider: provider,
             user_id: url.searchParams.get('user_id'),
-            redirect_uri: redirectUri,
-            event: eventname
+            redirect_uri: redirectUri
         }).then((response) => {
             if (response.token) {
                 Storage.set('osu-token', response.token);
                 var payload = TokenService.getPayload(Storage.get('osu-token'));
-                if(payload) {
-                    if(payload.provider === 'guest') window.location.href = './event.html';
+                if (payload) {
+                    if (payload.provider === 'guest') window.location.href = './event.html' + window.location.hash;
                     else window.location.href = './';
                 }
             } else {

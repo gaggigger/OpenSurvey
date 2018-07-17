@@ -43,14 +43,22 @@
         </div>
     </section>
 
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/services/http.js"></script>
+    <script type="text/javascript" src="js/services/event.js"></script>
+
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
     <script>
         function goto() {
-            window.location.href = window.location.origin
-                + window.location.pathname.replace(/legacy\.html$/, '')
-                + 'event.html?'
-                + 'code=' + document.getElementById('eventcode').value;
+            var eventcode = document.getElementById('eventcode').value;
+            EventService.findByName(eventcode).then((function(event) {
+                if(!event) {
+                    alert("Event "+ eventcode +" doesn't exist");
+                    return false;
+                }
+                window.location.href = './event.html#/' + event._id;
+            }).bind(this));
         }
     </script>
 </body>

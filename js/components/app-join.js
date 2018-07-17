@@ -27,10 +27,13 @@ Vue.component('app-join', {
     },
     methods: {
         join() {
-            window.location.href = window.location.origin
-                + window.location.pathname
-                + 'event.html?'
-                + 'code=' + encodeURIComponent(this.event);
+            EventService.findByName(this.event).then((function(event) {
+                if(!event) {
+                    alert("Event "+ this.event +" doesn't exist");
+                    return false;
+                }
+                window.location.href = './event.html#/' + event._id;
+            }).bind(this));
         }
     }
 });

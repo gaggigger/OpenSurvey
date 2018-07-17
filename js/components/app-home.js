@@ -13,7 +13,7 @@ const R_HOME = Vue.component('app-home', {
                     <router-link v-if="!isLogged" to="/login">
                         <a>Login</a>
                     </router-link>
-                    <router-link v-if="isLogged" to="/dashboard">
+                    <router-link v-if="isLogged && !isGuest" to="/dashboard">
                         <a>Dashboard</a>
                     </router-link>
                 </footer>
@@ -28,10 +28,13 @@ const R_HOME = Vue.component('app-home', {
     computed: {
         isLogged() {
             return Auth.getters.isLogged;
+        },
+        isGuest() {
+            return Auth.getters.isGuest;
         }
     },
     created: function() {
-        if(Auth.getters.isGuest) window.location.href = './event.html';
+        //if(Auth.getters.isGuest) window.location.href = './event.html';
     },
     methods: {
         authenticate() {

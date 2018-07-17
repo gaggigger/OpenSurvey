@@ -5,29 +5,27 @@ var R_CLIENT_HOME = Vue.component('client-home', {
     '       HELLO' +
     '   </h2>' +
     '   <div class="flex_h-center padding_1">' +
-    '       hhhhhh' +
+    '       {{ event }}' +
     '   </div>' +
     '</section>',
+    props: {
+        event: {
+            type: String,
+            required: true
+        }
+    },
     data: function() {
         return {
-            username: ''
         };
     },
     created: function() {
-        if(Auth.getters.isGuest) {
-
+        if(! Auth.getters.isLogged) {
+            this.$router.push({ name: 'identification', params: {
+                event: this.event
+            }});
         }
     },
     methods: {
-        join: function() {
-            var event = window.location.search.split('&').shift().replace('?code=', '');
-            window.location.href = window.location.origin
-                + window.location.pathname.replace(/event\.html$/, '')
-                + 'login.html?'
-                + 'code=' + encodeURIComponent(this.username)
-                + '&event=' + encodeURIComponent(event)
-                + '&provider=guest'
-            ;
-        }
+
     }
 });

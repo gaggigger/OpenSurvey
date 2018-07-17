@@ -34,9 +34,7 @@ Vue.component('app-login-facebook', {
         login() {
             this.init();
             FB.login((response) => {
-                window.location.href = window.location.origin
-                    + window.location.pathname
-                    + 'login.html?'
+                window.location.href = './login.html?'
                     + 'code=' + encodeURIComponent(response.authResponse.accessToken)
                     + '&user_id=' + encodeURIComponent(response.authResponse.userID)
                     + '&provider=facebook'
