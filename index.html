@@ -69,7 +69,7 @@
 
     <script>
         if (typeof fetch === 'undefined') {
-            loadScript(false, 'js/services/fetch.js', 'fetch');
+            loadScript(false, 'js/polyfill/fetch.js', 'fetch');
         }
         if (Storage.get('osu-token')) {
             loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
@@ -132,6 +132,14 @@
 
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
-
+    <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/sw.js')
+                .then(function() {
+                    // Do some stuf
+                });
+        }
+    </script>
 </body>
 </html>

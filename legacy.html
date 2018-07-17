@@ -49,6 +49,9 @@
     <script type="text/javascript" src="js/services/loader.js"></script>
 
     <script>
+        if (typeof fetch === 'undefined') {
+            loadScript(false, 'js/polyfill/fetch.js', 'fetch');
+        }
         loadScript(false, 'js/services/http.js', 'services-http');
         loadScript(false, 'js/services/event.js', 'services-event');
     </script>

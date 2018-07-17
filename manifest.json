@@ -14,7 +14,7 @@
     }
   ],
   "orientation": "portrait",
-  "prefer_related_applications": "false",
+  "prefer_related_applications": false,
   "scope": "./",
   "start_url": "./index.html",
   "theme_color": "#6200EE"
