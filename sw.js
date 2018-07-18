@@ -1,8 +1,10 @@
 importScripts('js/polyfill/cache-polyfill.js');
 
+var cacheKey = 'os-cache';
+
 self.addEventListener('install', function(e) {
     e.waitUntil(
-        caches.open('os-cache').then(function(cache) {
+        caches.open(cacheKey).then(function(cache) {
             return cache.addAll([
                 '/index.html',
                 '/js/config.js',
@@ -19,18 +21,43 @@ self.addEventListener('install', function(e) {
     );
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        // Dont cache no cors
-        if(/lipis/.test(event.request.url)) {
-            console.log(event.request.url);
-            return;
-        }
-        caches.match(event.request).then(function(response) {
-            if(response) return response;
-            return fetch(event.request).catch(function(err) {
-                console.error(event.request, err);
-            });
+var ignoreRequests = new RegExp('(' + [
+    'github\.io',
+    'connect\.facebook\.net',
+    'apis\.google\.com'
+].join('(\/?)|\\') + ')$');
+
+function onFetch(event) {
+    if (ignoreRequests.test(event.request.url)) {
+        console.log('ignored: ', event.request.url);
+        return
+    }
+    event.respondWith(fetchAndCache(event))
+}
+
+function fetchAndCache(event) {
+    return caches
+        .match(event.request)
+        .then(function(cached) {
+            var networked = fetch(event.request)
+                .then(fetchedFromNetwork(event));
+            return cached || networked
         })
-    );
-});
+}
+
+function fetchedFromNetwork(event) {
+    return function transform(response) {
+        var cacheCopy = response.clone();
+        caches
+            .open(cacheKey)
+            .then(function add(cache) {
+                cache.put(event.request, cacheCopy)
+            })
+            .then(function() {
+                // console.log('WORKER: fetch response stored in cache.', event.request.url)
+            });
+        return response
+    }
+}
+
+self.addEventListener('fetch', onFetch);
