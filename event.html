@@ -26,6 +26,15 @@
         </transition>
     </div>
 
+    <script>
+        if (typeof fetch === 'undefined') {
+            loadScript(false, 'js/polyfill/fetch.js', 'fetch');
+        }
+        if (typeof Cache === 'undefined') {
+            loadScript(false, 'js/polyfill/cache-polyfill.js', 'cache-polyfill');
+        }
+    </script>
+
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/services/loader.js"></script>
 

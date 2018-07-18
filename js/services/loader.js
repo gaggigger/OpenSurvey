@@ -1,3 +1,20 @@
+/*
+caches.open('os-cache').then(function(cache) {
+    cache.add(event.request.url);
+});
+*/
+var saveToCache = function(src) {
+    try {
+        if (/^http/.test(src)) {
+            return false;
+        }
+        caches.open('os-cache').then(function (cache) {
+            cache.add(src);
+        });
+    } catch(e) {
+        // raf
+    }
+};
 var loadScript = function (safe, src, id) {
     if (window.location.hostname !== 'localhost' && ! /\.min\.js$/.test(src)) {
         src = src.replace(/^js\//, 'dist/');
@@ -19,6 +36,7 @@ var loadScript = function (safe, src, id) {
         js.id = id;
         document.write(js.outerHTML);
     }
+    saveToCache(src);
 };
 var loadLink = function (src, id) {
     let lnk, flnk = document.getElementsByTagName('link')[0];
@@ -29,4 +47,5 @@ var loadLink = function (src, id) {
     lnk.rel = 'stylesheet';
     lnk.type = 'text/css';
     flnk.parentNode.insertBefore(lnk, flnk);
+    saveToCache(src);
 };
