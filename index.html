@@ -78,6 +78,7 @@
 
     <script>
         if (Storage.get('osu-token')) {
+            loadScript(false, 'js/libs/socket.io.min.js', 'socket.io');
             loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
 
             //loadScript(false, 'js/services/event.js', 'event');
@@ -144,7 +145,7 @@
     <link href="css/app.css" rel="stylesheet" type="text/css">
     <script>
         if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
+            //navigator.serviceWorker.register('/sw.js');
         }
     </script>
 </body>

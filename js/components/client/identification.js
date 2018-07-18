@@ -13,10 +13,11 @@ const R_IDENTIFICATION = Vue.component('client-identitication', {
                        aria-label="Enter your nickname"
                        placeholder="Enter your nickname"
                        autocomplete="off"
+                       @keydown="join($event)"
                        autofocus />
                <div role="button"
                        tabindex="0"
-                       @click="join"
+                       @click="join()"
                        class="padding_0_1 pointer primary v-align-center h-align-center">
                        Join
                </div>
@@ -42,7 +43,10 @@ const R_IDENTIFICATION = Vue.component('client-identitication', {
         }
     },
     methods: {
-        join() {
+        join(evt) {
+            if(evt && evt.keyCode !== 13) {
+                return;
+            }
             window.location.href = './login.html?'
                 + 'code=' + encodeURIComponent(this.username)
                 + '&provider=guest'

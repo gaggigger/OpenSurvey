@@ -10,11 +10,12 @@ Vue.component('app-join', {
                     aria-label="Enter event code" 
                     placeholder="Enter event code" 
                     autocomplete="off" 
+                    @keydown="join($event)"
                     autofocus />
             <span
                 role="button"
                 tabindex="0" 
-                @click="join"
+                @click="join()"
                 class="pointer primary join-button v-align-center h-align-center">
                 Join
             </span>
@@ -26,7 +27,10 @@ Vue.component('app-join', {
         };
     },
     methods: {
-        join() {
+        join(evt) {
+            if(evt && evt.keyCode !== 13) {
+                return;
+            }
             EventService.findByName(this.event).then((function(event) {
                 if(!event) {
                     alert("Event "+ this.event +" doesn't exist");
