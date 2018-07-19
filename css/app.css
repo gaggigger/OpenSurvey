@@ -7,6 +7,9 @@
     background-color: transparent;
     border-bottom: 1px solid var(--border);
 }
+#app textarea {
+    resize: none;
+}
 /** RIBBON **/
 .app-ribbon {
     position: absolute;

@@ -1,6 +1,7 @@
 const Auth = new Vuex.Store({
     state: {
-        authToken: null
+        authToken: null,
+        numberOfConnectedClient: 0
     },
     getters: {
         isLogged(state) {
@@ -26,6 +27,9 @@ const Auth = new Vuex.Store({
             if(! Auth.getters.isLogged) return false;
             const user = Auth.getters.authUser;
             return user.provider === 'guest';
+        },
+        numberOfConnectedUsers(state) {
+            return state.numberOfConnectedClient;
         }
     },
     mutations: {
@@ -33,6 +37,9 @@ const Auth = new Vuex.Store({
             if(token === 'null') token = null;
             state.authToken = token;
             Storage.set('osu-token', token);
+        },
+        connectedUsers(state, num) {
+            state.numberOfConnectedClient = num;
         }
     }
 });

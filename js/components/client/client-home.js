@@ -3,14 +3,14 @@ const R_CLIENT_HOME = Vue.component('client-home', {
         <section class="padding_top_3">
             <header class="surface padding_1 relative">
                 <h2 class="margin_0_1">
-                    #{{ item.name }}
+                    #{{ item.name }},
                     <span v-if="item.description">
-                        , {{ item.description }}
+                        {{ item.description }}
                     </span>
                 </h2>
-                <span class="position-top-right font08 margin_1">
-                    Connected {{ numberOfConnectedClient }}
-                </span>
+                <common-event-connected-client
+                    class="position-top-right font08 margin_1">
+                </common-event-connected-client>
             </header>
             <client-items :event="event"></client-items>
         </section>
@@ -23,8 +23,7 @@ const R_CLIENT_HOME = Vue.component('client-home', {
     },
     data() {
         return {
-            item: {},
-            numberOfConnectedClient: 0
+            item: {}
         };
     },
     computed: {
@@ -41,12 +40,7 @@ const R_CLIENT_HOME = Vue.component('client-home', {
             return;
         }
         this.getEvent();
-
-        const socket = io.connect(Config.api.url);
         socket.emit('event-room', this.event);
-        socket.on('event-numclient', (data) => {
-            this.numberOfConnectedClient = data;
-        });
     },
     methods: {
         getEvent() {

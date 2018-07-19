@@ -10,6 +10,15 @@ if(typeof R_CLIENT_HOME !== 'undefined') routesList.push({
         breadcrumb: []
     }
 });
+if(typeof R_CLIENT_QA !== 'undefined') routesList.push({
+    path: '/:event/qa', name:'client-qa', component: R_CLIENT_QA, props: true, meta: {
+        breadcrumb: [
+            { name: 'Event', link: '/:event' },
+            { name: 'Q&A' }
+        ]
+    }
+});
+
 var router = new VueRouter({ routes: routesList });
 
 new Vue({

@@ -228,6 +228,10 @@ a {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+.border-radius_5px {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
 /** Width/Height **/
 .square_120 {
     width: 120px;
