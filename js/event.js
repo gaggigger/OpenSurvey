@@ -21,9 +21,7 @@ new Vue({
         };
     },
     created : function() {
-        if(!Auth.getters.isLogged) {
-            //this.$router.push({ name: 'identification' });
-        }
+
     },
     mounted : function() {
         this.$nextTick(function () {
