@@ -18,7 +18,7 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
                     </div>
                 </div>
 
-                <div role="button" tabindex="0" class="margin_1 pointer">
+                <div role="button" tabindex="0" class="margin_1 pointer"@click="goto('eventqa')">
                     <div class="flex_h-center">
                         <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-qa"></div>
                     </div>

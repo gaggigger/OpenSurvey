@@ -114,6 +114,9 @@ a {
 .font15 {
     font-size: 1.4em;
 }
+.font18 {
+    font-size: 1.8em;
+}
 .bold {
     font-weight: bolder;
 }
@@ -148,6 +151,9 @@ a {
 }
 .margin_1 {
     margin: 1em;
+}
+.margin-bottom_05 {
+    margin-bottom: 0.5em;
 }
 /** Flex **/
 .flex {

@@ -28,5 +28,14 @@ const QuestionService = {
                 reject(err);
             });
         });
+    },
+    answered(question) {
+        return new Promise((resolv, reject) => {
+            (new Http()).send('/qa/' + question._id + '/answered', 'POST').then(response => {
+                resolv(response);
+            }).catch(err => {
+                reject(err);
+            });
+        });
     }
 };

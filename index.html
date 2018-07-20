@@ -82,8 +82,9 @@
             loadScript(false, 'js/libs/socket.io.min.js', 'socket.io');
             loadScript(false, 'js/services/datehelpers.js', 'datehelpers');
 
-            //loadScript(false, 'js/services/event.js', 'event');
-            loadScript(false, 'js/services/quiz.js', 'quiz');
+            //loadScript(false, 'js/services/event.js', 'services-event');
+            loadScript(false, 'js/services/quiz.js', 'services-quiz');
+            loadScript(false, 'js/services/question.js', 'services-question');
 
             loadScript(false, 'js/components/dashboard/app-dashboard.js', 'app-dashboard');
             loadScript(false, 'js/components/dashboard/app-dashboard-event.js', 'app-dashboard-event');
@@ -93,6 +94,7 @@
             loadScript(false, 'js/components/dashboard/app-dashboard-quiz-list.js', 'app-dashboard-quiz');
             loadScript(false, 'js/components/dashboard/app-dashboard-quiz-new.js', 'app-dashboard-event-quiz-new');
             loadScript(false, 'js/components/dashboard/app-dashboard-quiz.js', 'app-dashboard-event-quiz-item');
+            loadScript(false, 'js/components/dashboard/app-dashboard-qa.js', 'app-dashboard-qa');
         } else {
             loadScript(false, 'js/components/login/app-login.js', 'app-login');
             loadScript(false, 'js/components/login/app-login-custom.js', 'app-login-custom');

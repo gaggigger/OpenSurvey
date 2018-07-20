@@ -45,6 +45,15 @@ if(typeof R_DASHBOARD_QUIZ !== 'undefined') routesList.push({
         ]
     }
 });
+if(typeof R_DASHBOARD_QA !== 'undefined') routesList.push({
+    path: '/event/:event/qa', name: 'eventqa', component: R_DASHBOARD_QA, props: true, meta: {
+        breadcrumb: [
+            { name: 'Dashboard', link: '/dashboard' },
+            { name: ':Event', link: '/event/:event' },
+            { name: 'Q&A' }
+        ]
+    }
+});
 
 const router = new VueRouter({ routes: routesList });
 
