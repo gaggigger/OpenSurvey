@@ -1,6 +1,7 @@
 const Config = {
     'api': {
-        'url': 'http://localhost:3001'
+        'url': 'http://localhost:3001',
+        'socketPath': '/OpenSurvey'
     },
     'github': {
         'client_id': '572811babd84307d5b96'
