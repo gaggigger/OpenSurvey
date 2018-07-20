@@ -10,8 +10,8 @@ if(typeof R_CLIENT_HOME !== 'undefined') routesList.push({
         breadcrumb: []
     }
 });
-if(typeof R_CLIENT_QA !== 'undefined') routesList.push({
-    path: '/:event/qa', name:'client-qa', component: R_CLIENT_QA, props: true, meta: {
+if(typeof R_CLIENT_ASK_QUESTION !== 'undefined') routesList.push({
+    path: '/:event/qa', name:'client-ask-question', component: R_CLIENT_ASK_QUESTION, props: true, meta: {
         breadcrumb: [
             { name: 'Event', link: '/:event' },
             { name: 'Q&A' }

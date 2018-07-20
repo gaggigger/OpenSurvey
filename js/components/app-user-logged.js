@@ -1,7 +1,7 @@
 Vue.component('app-user-logged', {
     template: `
         <div v-if="logged">
-            <a href="#" @click="logout">logout ({{ user.name }})</a>
+            <a href="#" @click="logout">logout - {{ user.name }}</a>
        </div>
     `,
     computed: {

@@ -47,6 +47,7 @@ function fetchAndCache(event) {
 
 function fetchedFromNetwork(event) {
     return function transform(response) {
+        if(event.request.method !== 'GET') return response;
         var cacheCopy = response.clone();
         caches
             .open(cacheKey)

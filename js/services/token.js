@@ -4,9 +4,9 @@ const TokenService = {
         const payload = token.split('.')[1];
         if(payload) {
             try {
-                return JSON.parse(atob(payload));
+                return JSON.parse(Base64Decode(payload));
             } catch(e) {
-                return false;
+                return JSON.parse(atob(payload));
             }
         }
         return false;
