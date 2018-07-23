@@ -1,6 +1,6 @@
 const Config = {
     'api': {
-        'url': 'http://localhost:3001',
+        'url': 'https://labs.openschedule.org/OpenSurveyBack',
         'socketPath': '/OpenSurveyBack'
     },
     'github': {
