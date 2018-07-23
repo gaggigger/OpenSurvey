@@ -1,6 +1,13 @@
 const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
     template: `
         <section class="padding_1 padding_top_3">
+            <span
+                role="button"
+                tabindex="0"
+                @click="cancel"
+                class="pointer padding_1_0 display-inline-block">
+                <b>&lt;</b> Back
+            </span>
             <div class="margin_1_0">
                 <textarea 
                     autocomplete="off"
@@ -16,16 +23,16 @@ const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
             <span
                 role="button"
                 tabindex="0"
-                @click="cancel"
-                class="pointer primary join-button padding_1 margin_0_05">
-                Cancel
+                @click="send(false)"
+                class="pointer primary margin_1 join-button padding_1">
+                Send
             </span>
             <span
                 role="button"
                 tabindex="0"
-                @click="send"
-                class="pointer primary join-button padding_1 margin_0_05">
-                Send
+                @click="send(true)"
+                class="pointer primary margin_1 join-button padding_1">
+                Send anonymously
             </span>
         </section>
     `,
@@ -42,15 +49,13 @@ const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
     },
     methods: {
         cancel() {
-            this.$router.push({
-                name: 'home', params: { event: this.event }
-            });
+            this.$router.go(-1);
         },
-        send() {
+        send(anonymously = false) {
             if(this.question === '') {
                 return false;
             }
-            QuestionService.ask(this.event, this.question)
+            QuestionService.ask(this.event, this.question, anonymously)
                 .then(question => {
                     if(question._id) {
                         this.$router.push({

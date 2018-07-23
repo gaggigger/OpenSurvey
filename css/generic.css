@@ -54,6 +54,9 @@ body {
     background-color: var(--success);
     color : var(--on-success);
 }
+.disabled-color {
+    color: var(--disabled);
+}
 /** Test transform **/
 .pointer {
     cursor: pointer;

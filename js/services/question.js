@@ -1,9 +1,10 @@
 const QuestionService = {
-    ask(eventUid, question) {
+    ask(eventUid, question, anonymously) {
         return new Promise((resolv, reject) => {
             (new Http()).send('/qa', 'POST', {
                 event: eventUid,
-                question: question
+                question: question,
+                anonymously: anonymously
             }).then(response => {
                 resolv(response);
             }).catch(err => {
@@ -37,5 +38,19 @@ const QuestionService = {
                 reject(err);
             });
         });
+    },
+    updateList(questions, question) {
+        let qFound = false;
+        const res = questions.map(q => {
+            if(q._id === question._id) {
+                qFound = true;
+                q = question;
+            }
+            return q;
+        });
+        if(! qFound) {
+            res.push(question);
+        }
+        return res;
     }
 };

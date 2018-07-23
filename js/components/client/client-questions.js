@@ -3,11 +3,15 @@ Vue.component('client-questions', {
         <section class="padding_1">
             <div v-for="(question, iq) in questions"
                 :key="iq"
-                class="flex border-bottom-width_1">
+                class="flex border-bottom-width_1"
+                :class="{ 'disabled-color': question.answered === true }">
                 <div class="padding_0_1 flex_v-center"
                     :class="{ 'primary-font': questionliked(question) }">
                     <div>
-                        <b class="a-like pointer" @click="up(question)">👍</b>
+                        <b class="a-like pointer font15"
+                         @click="up(question)"
+                         v-if="question.answered !== true"
+                         >👍</b>
                         <div>{{ numlike(question) }}</div>
                     </div>
                 </div>
@@ -38,21 +42,22 @@ Vue.component('client-questions', {
     },
     created() {
         this.get();
-        socket.removeListener('event-question-like', this.updateQuestionLike);
-        socket.on('event-question-like', this.updateQuestionLike);
+        SocketService.on('event-question-modified', this.updateQuestion, 'client-question-event-question-modified');
     },
     methods: {
+        order(questions) {
+            return [...questions].sort((a,b) => {
+                return (new Date(a.inserted_at)).getTime() - (new Date(b.inserted_at)).getTime();
+            });
+        },
         questionliked(question) {
             if(!question.likes) return false;
+            if(question.answered) return false;
             return question.likes.indexOf(Auth.getters.authUser.login) !== -1;
         },
-        updateQuestionLike(data) {
-            this.questions.map(question => {
-                if(question._id === data._id) {
-                    question.likes = data.likes;
-                    this.$forceUpdate();
-                }
-            });
+        updateQuestion(data) {
+            this.questions = this.order(QuestionService.updateList(this.questions, data));
+            this.$forceUpdate();
         },
         numlike(question) {
             if(question.likes) {
@@ -64,14 +69,15 @@ Vue.component('client-questions', {
             return (new Date(dt)).toLocaleString();
         },
         get() {
-            QuestionService.getAll(this.event).then(response => {
-                this.questions = response;
-            });
+            console.log(Auth.getters.isLogged);
+            if(Auth.getters.isLogged) {
+                QuestionService.getAll(this.event).then(response => {
+                    this.questions = this.order(response);
+                });
+            }
         },
         up(question) {
-            QuestionService.like(question).then(response => {
-                // raf
-            });
+            QuestionService.like(question);
         }
     }
 });
