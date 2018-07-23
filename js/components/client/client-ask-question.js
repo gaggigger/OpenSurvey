@@ -5,7 +5,7 @@ const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
                 role="button"
                 tabindex="0"
                 @click="cancel"
-                class="pointer padding_1_0 display-inline-block">
+                class="pointer padding_1 display-inline-block a-like background-hover">
                 <b>&lt;</b> Back
             </span>
             <div class="margin_1_0">

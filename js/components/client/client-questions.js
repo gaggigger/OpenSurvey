@@ -69,7 +69,6 @@ Vue.component('client-questions', {
             return (new Date(dt)).toLocaleString();
         },
         get() {
-            console.log(Auth.getters.isLogged);
             if(Auth.getters.isLogged) {
                 QuestionService.getAll(this.event).then(response => {
                     this.questions = this.order(response);
