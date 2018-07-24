@@ -37,7 +37,7 @@ new Vue({
         };
     },
     created() {
-        SocketService.on('event-quiz-run', this.startQuiz, 'client-event-event-quiz-run');
+        SocketService.quizWatcher(this);
     },
     mounted() {
         this.$nextTick(function () {
@@ -45,14 +45,5 @@ new Vue({
         });
     },
     methods: {
-        startQuiz(quiz) {
-            // TODO timeout
-            window.setTimeout(() => {
-                this.$router.push({ name: 'client-quiz', params: {
-                    event: quiz.event,
-                    quiz: quiz._id
-                }});
-            }, 3000);
-        }
     }
 });

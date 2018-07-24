@@ -24,6 +24,8 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
             this.$router.push({ name: 'home', params: {
                 event: this.event
             }});
+        } else {
+            SocketService.quizWatcher(this);
         }
     },
     methods: {
