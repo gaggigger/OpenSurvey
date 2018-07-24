@@ -10,12 +10,14 @@ Vue.component('app-dashboard-event-new', {
                     placeholder="Enter event code" 
                     autocomplete="off"
                     v-model.trim="eventname"
+                    @input="change"
+                    @keydown="add($event)"
                     autofocus />
             <span
                 role="button"
                 tabindex="0"
                 class="pointer primary join-button v-align-center h-align-center padding_0_1"
-                @click="add">
+                @click="add()">
                 Create Event
             </span>
         </section>
@@ -26,7 +28,8 @@ Vue.component('app-dashboard-event-new', {
         };
     },
     methods: {
-        add() {
+        add(evt) {
+            if(evt && evt.keyCode !== 13) return;
             if (!this.eventname) return false;
             this.eventname = this.eventname.replace(/^#/, '');
             if(/[^0-9a-z_@&]/i.test(this.eventname)) {
@@ -48,6 +51,9 @@ Vue.component('app-dashboard-event-new', {
             }).catch(function(err) {
 
             });
+        },
+        change() {
+            this.$emit('change', this.eventname);
         }
     }
 });

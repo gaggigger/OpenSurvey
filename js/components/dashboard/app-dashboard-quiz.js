@@ -10,19 +10,20 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                     placeholder="Title" 
                     autocomplete="off"
                     v-model.trim="item.name"
+                    @keydown="saveQuestion($event)"
                     class="font15 flex-1 bold border-no" />
                 <span
                     role="button"
                     tabindex="0"
                     class="bold pointer primary join-button padding_05_1"
                     title="Save question"
-                    @click="saveQuestion">
+                    @click="saveQuestion()">
                     Save question
                 </span>    
             </h3>
             <div>
                 <div v-for="(question, iq) in item.questions"
-                    :key="question"
+                    :key="iq"
                     class="border-width_1 margin_05_1 relative background">
                     <div class="position-top-right padding_05_1">
                         <span class="pointer a-like font08"
@@ -57,7 +58,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                     </div>
                     <ul class="padding_05_1 list-1" v-show="question.collapse === false">
                         <li v-for="(response, idx) in question.response" 
-                            :key="response"
+                            :key="idx"
                             class="flex_h-center flex_v-center padding_0_1 response-item"
                             v-bind:class="{ success: response.correct_answer === true }">
                             <span class="pointer error-color error-color-hover font08 bold margin_0_05" 
@@ -83,13 +84,14 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                                 placeholder="Add new response..." 
                                 autocomplete="off"
                                 v-model.trim="question.questionToadd"
+                                @keydown="addQuestion($event, question)"
                                 class="flex-1" />
                             <span
                                 role="button"
                                 tabindex="0"
                                 class="bold pointer primary join-button v-align-center h-align-center padding_0_1"
                                 title="Add response"
-                                @click="addQuestion(question)">
+                                @click="addQuestion(null, question)">
                                 +
                             </span>
                         </li>
@@ -107,13 +109,14 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                             autocomplete="off"
                             v-model.trim="newQuestionName"
                             class="flex-1"
+                            @keydown="add($event)"
                             autofocus />
                     <span
                         role="button"
                         tabindex="0"
                         class="bold pointer primary join-button v-align-center h-align-center padding_0_1"
                         title="Add new question"
-                        @click="add">
+                        @click="add()">
                         +
                     </span>
                 </div>
@@ -157,7 +160,8 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
                 this.item = this.initResponse(response);
             });
         },
-        add() {
+        add(evt) {
+            if(evt && evt.keyCode !== 13) return;
             this.item.questions.push({
                 name: this.newQuestionName,
                 collapse: false,
@@ -185,7 +189,8 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
         deleteResponse(response, idx) {
             response = response.splice(idx, 1);
         },
-        addQuestion(question) {
+        addQuestion(evt, question) {
+            if(evt && evt.keyCode !== 13) return;
             if(question.questionToadd) {
                 question.response.push({
                     name: question.questionToadd.trim()
@@ -201,7 +206,8 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
             question.collapse = true;
             this.$forceUpdate();
         },
-        saveQuestion() {
+        saveQuestion(evt) {
+            if(evt && evt.keyCode !== 13) return;
             const data = Object.assign({}, this.item);
             delete data['_id'];
             delete data['inserted_at'];

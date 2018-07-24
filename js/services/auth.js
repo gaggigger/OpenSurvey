@@ -1,7 +1,8 @@
 const Auth = new Vuex.Store({
     state: {
         authToken: null,
-        numberOfConnectedClient: 0
+        numberOfConnectedClient: 0,
+        numberOfCurrentRequest: 0
     },
     getters: {
         isLogged(state) {
@@ -30,6 +31,9 @@ const Auth = new Vuex.Store({
         },
         numberOfConnectedUsers(state) {
             return state.numberOfConnectedClient;
+        },
+        numCurrentRequest(state) {
+            return state.numberOfCurrentRequest;
         }
     },
     mutations: {
@@ -40,6 +44,9 @@ const Auth = new Vuex.Store({
         },
         connectedUsers(state, num) {
             state.numberOfConnectedClient = num;
+        },
+        currentRequest(state, num) {
+            state.numberOfCurrentRequest = num;
         }
     }
 });

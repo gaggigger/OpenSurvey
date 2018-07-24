@@ -10,12 +10,14 @@ Vue.component('app-dashboard-quiz-new', {
                     autocomplete="off"
                     v-model.trim="quizname"
                     class="flex-1"
+                    @input="change"
+                    @keydown="add($event)"
                     autofocus />
             <span
                 role="button"
                 tabindex="0"
                 class="pointer primary join-button v-align-center h-align-center padding_0_1"
-                @click="add">
+                @click="add()">
                 Create Quiz
             </span>
         </section>
@@ -32,7 +34,8 @@ Vue.component('app-dashboard-quiz-new', {
         };
     },
     methods: {
-        add() {
+        add(evt) {
+            if(evt && evt.keyCode !== 13) return;
             if (!this.quizname) return false;
             const http = new Http();
             http.send('/quiz', 'POST', {
@@ -50,6 +53,9 @@ Vue.component('app-dashboard-quiz-new', {
             }).catch(function(err) {
 
             });
+        },
+        change() {
+            this.$emit('change', this.quizname);
         }
     }
 });

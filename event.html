@@ -24,6 +24,7 @@
         <transition>
             <router-view />
         </transition>
+        <common-http-loading></common-http-loading>
     </div>
 
     <script>
@@ -61,6 +62,7 @@
         loadScript(false, 'js/services/question.js', 'services-question');
 
         loadScript(false, 'js/components/common/common-event-connected-client.js', 'components-client-items');
+        loadScript(false, 'js/components/common/common-http-loading.js', 'common-http-loading');
 
         loadScript(false, 'js/components/app-header.js', 'components-app-header');
         loadScript(false, 'js/components/client/identification.js', 'components-client-identification');
@@ -70,6 +72,7 @@
         loadScript(false, 'js/components/client/client-items.js', 'components-client-items');
         loadScript(false, 'js/components/client/client-ask-question.js', 'components-client-ask-question');
         loadScript(false, 'js/components/client/client-questions.js', 'components-client-questions');
+        loadScript(false, 'js/components/client/client-quiz.js', 'components-client-quiz');
 
         loadScript(false, 'js/event.js', 'event');
     </script>

@@ -24,5 +24,17 @@ const QuizService = {
                 console.error(err);
             });
         });
+    },
+    run(event, quiz) {
+        return new Promise((resolv, reject) => {
+            (new Http()).send('/quiz/' + quiz + '/start', 'POST', {
+                event: event
+            }).then(response => {
+                resolv(response);
+            }).catch(function (err) {
+                // TODO log
+                console.error(err);
+            });
+        });
     }
 };

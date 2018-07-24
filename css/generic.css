@@ -95,6 +95,11 @@ a {
     top: 0;
     right: 0;
 }
+.position-fixed-bottom-right {
+    position: fixed;
+    bottom: 0;
+    right: 1em;
+}
 /** Width **/
 .sw100 {
     width: 100%

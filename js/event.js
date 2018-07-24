@@ -1,4 +1,4 @@
-var routesList = [];
+const routesList = [];
 
 if(typeof R_IDENTIFICATION !== 'undefined') routesList.push({
     path: '/identification/:event?', name:'identification', props: true, component: R_IDENTIFICATION, meta: {
@@ -18,23 +18,41 @@ if(typeof R_CLIENT_ASK_QUESTION !== 'undefined') routesList.push({
         ]
     }
 });
-
-var router = new VueRouter({ routes: routesList });
+if(typeof R_CLIENT_QUIZ !== 'undefined') routesList.push({
+    path: '/:event/quiz/:quiz', name:'client-quiz', component: R_CLIENT_QUIZ, props: true, meta: {
+        breadcrumb: [
+            { name: 'Event', link: '/:event' },
+            { name: 'Quiz' }
+        ]
+    }
+});
+const router = new VueRouter({ routes: routesList });
 
 new Vue({
     el: '#app',
     router: router,
-    data: function() {
+    data() {
         return {
             isLoading : true
         };
     },
-    created : function() {
-
+    created() {
+        SocketService.on('event-quiz-run', this.startQuiz, 'client-event-event-quiz-run');
     },
-    mounted : function() {
+    mounted() {
         this.$nextTick(function () {
             this.isLoading = false;
         });
+    },
+    methods: {
+        startQuiz(quiz) {
+            // TODO timeout
+            window.setTimeout(() => {
+                this.$router.push({ name: 'client-quiz', params: {
+                    event: quiz.event,
+                    quiz: quiz._id
+                }});
+            }, 3000);
+        }
     }
 });
