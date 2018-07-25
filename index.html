@@ -38,6 +38,7 @@
         <transition>
             <router-view />
         </transition>
+        <common-quiz-watcher></common-quiz-watcher>
         <common-http-loading></common-http-loading>
     </div>
 
@@ -72,6 +73,7 @@
         loadScript(false, 'js/services/event.js', 'services-event');
 
         loadScript(false, 'js/components/common/common-http-loading.js', 'common-http-loading');
+        loadScript(false, 'js/components/common/common-quiz-watcher.js', 'common-quiz-watcher');
 
         loadScript(false, 'js/components/app-home.js', 'components-app-home');
         loadScript(false, 'js/components/app-header.js', 'components-app-header');
@@ -87,6 +89,7 @@
             loadScript(false, 'js/services/socket.js', 'services-socket');
 
             loadScript(false, 'js/services/quiz.js', 'services-quiz');
+            loadScript(false, 'js/services/quiz-run.js', 'services-quiz-run');
             loadScript(false, 'js/services/question.js', 'services-question');
 
             loadScript(false, 'js/components/common/common-event-connected-client.js', 'common-event-connected-client');

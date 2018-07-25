@@ -48,7 +48,7 @@ const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
         };
     },
     created() {
-        SocketService.quizWatcher(this);
+
     },
     methods: {
         cancel() {

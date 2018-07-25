@@ -19,7 +19,7 @@ if(typeof R_CLIENT_ASK_QUESTION !== 'undefined') routesList.push({
     }
 });
 if(typeof R_CLIENT_QUIZ !== 'undefined') routesList.push({
-    path: '/:event/quiz/:quiz', name:'client-quiz', component: R_CLIENT_QUIZ, props: true, meta: {
+    path: '/:event/quizrun/:quizrun', name:'client-quiz', component: R_CLIENT_QUIZ, props: true, meta: {
         breadcrumb: [
             { name: 'Event', link: '/:event' },
             { name: 'Quiz' }

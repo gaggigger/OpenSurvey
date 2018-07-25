@@ -40,7 +40,6 @@ const R_CLIENT_HOME = Vue.component('client-home', {
             return;
         }
         this.getEvent();
-        SocketService.quizWatcher(this);
         socket.emit('event-room', this.event);
     },
     methods: {

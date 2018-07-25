@@ -9,7 +9,7 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
             type: String,
             required: true
         },
-        quiz: {
+        quizrun: {
             type: String,
             required: true
         }
@@ -24,11 +24,17 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
             this.$router.push({ name: 'home', params: {
                 event: this.event
             }});
-        } else {
-            SocketService.quizWatcher(this);
+            return true;
         }
+        this.get();
     },
     methods: {
+        get() {
+            QuizRunService.getQuizStep(this.event, this.quizrun)
+                .then(response => {
+                    console.log(response);
+                });
 
+        }
     }
 });
