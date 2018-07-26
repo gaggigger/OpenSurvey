@@ -193,6 +193,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
             if(evt && evt.keyCode !== 13) return;
             if(question.questionToadd) {
                 question.response.push({
+                    uid: Math.random().toString(36).substr(2),
                     name: question.questionToadd.trim()
                 });
                 question.questionToadd = '';

@@ -6,7 +6,7 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
                 :event="event"></app-dashboard-quiz-new>
             
             <ul class="list-1">
-                <li v-for="item in filterItem(items)" 
+                <li v-for="item in filterItem" 
                     class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
                     <span class="flex-1" @click="goto(event, item._id)">{{ item.name }}</span>
                     <span title="Run quiz" @click="run(event, item._id)">▶</span>
@@ -30,6 +30,14 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
             quizName: ''
         };
     },
+    computed: {
+        filterItem() {
+            return this.items.filter(item => {
+                if(this.quizName === '') return true;
+                return item.name.toLowerCase().indexOf(this.quizName.toLowerCase()) >= 0;
+            });
+        }
+    },
     methods: {
         goto(event, quizId) {
             this.$router.push({
@@ -47,12 +55,6 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
                 this.items = response;
             }).catch(function(err) {
                 // raf
-            });
-        },
-        filterItem(items) {
-            return items.filter(item => {
-                if(this.quizName === '') return true;
-                return item.name.toLowerCase().indexOf(this.quizName.toLowerCase()) >= 0;
             });
         },
         change(text) {

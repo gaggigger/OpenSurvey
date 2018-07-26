@@ -2,7 +2,7 @@ Vue.component('app-dashboard-event-list', {
     template: `
         <div>
             <ul class="list-1 flex flex_h-center flex_v-center">
-                <li v-for="item in filterItem(items)" 
+                <li v-for="item in filterItem" 
                     @click="goto(item._id)"
                     class="border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
                     #{{ item.name }}
@@ -24,6 +24,14 @@ Vue.component('app-dashboard-event-list', {
             this.get();
         }
     },
+    computed: {
+        filterItem() {
+            return this.items.filter(item => {
+                if(this.filter === '') return true;
+                return item.name.toLowerCase().indexOf(this.filter.toLowerCase()) >= 0;
+            });
+        }
+    },
     methods: {
         goto(id) {
             this.$router.push({
@@ -37,12 +45,6 @@ Vue.component('app-dashboard-event-list', {
             }).catch(function(err) {
                 // raf
             });
-        },
-        filterItem(items) {
-            return items.filter(item => {
-                if(this.filter === '') return true;
-                return item.name.toLowerCase().indexOf(this.filter.toLowerCase()) >= 0;
-            });
-        },
+        }
     }
 });
