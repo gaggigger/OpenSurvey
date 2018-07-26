@@ -135,6 +135,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz-item', {
     },
     created() {
         this.getAll();
+        SocketService.room(this.event);
     },
     data() {
         return {

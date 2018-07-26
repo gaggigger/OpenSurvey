@@ -37,7 +37,7 @@ new Vue({
         };
     },
     created() {
-        SocketService.quizWatcher(this);
+
     },
     mounted() {
         this.$nextTick(function () {

@@ -70,6 +70,7 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
     },
     created() {
         this.get();
+        SocketService.room(this.event);
     },
     methods: {
         get() {

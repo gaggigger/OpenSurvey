@@ -1,7 +1,10 @@
 const R_CLIENT_QUIZ = Vue.component('client-quiz', {
     template: `
         <section class="padding_top_3">
-            <div class="margin_1">
+            <div class="margin_1 relative">
+                <common-event-connected-client
+                    class="position-top-right font08 margin_1">
+                </common-event-connected-client>
                 <header>
                     <h2>{{ question.name }}</h2>
                 </header>
@@ -32,6 +35,7 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
         };
     },
     created() {
+        console.log(1);
         if(!Auth.getters.isLogged) {
             this.$router.push({ name: 'home', params: {
                 event: this.event
@@ -39,9 +43,11 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
             return true;
         }
         this.get();
+        SocketService.room(this.event);
         // Watch for question start
-        SocketService.on('event-quiz-question', (data) => {
-            console.log(data);
+        SocketService.on('event-quiz-question', (response) => {
+            console.log(response);
+            this.question = response.question;
         });
     },
     methods: {

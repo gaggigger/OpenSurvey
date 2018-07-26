@@ -36,7 +36,7 @@ const R_DASHBOARD_QA = Vue.component('app-dashboard-qa', {
     created() {
         this.getEvent();
         this.get();
-        socket.emit('event-room', this.event);
+        SocketService.room(this.event);
         SocketService.on('event-question-modified', this.updateQuestion, 'app-dashboard-event-question-modified');
     },
     data() {

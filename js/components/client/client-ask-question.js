@@ -48,7 +48,7 @@ const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
         };
     },
     created() {
-
+        SocketService.room(this.event);
     },
     methods: {
         cancel() {

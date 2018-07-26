@@ -23,6 +23,7 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
     created() {
         this.getEvent();
         this.get();
+        SocketService.room(this.event);
     },
     data() {
         return {
