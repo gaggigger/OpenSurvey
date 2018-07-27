@@ -15,6 +15,7 @@ Vue.component('common-quiz-watcher', {
         };
     },
     created() {
+        this.visible = false;
         if(typeof SocketService === 'undefined') return true;
         //Watch quiz start
         SocketService.on('event-quiz-run', (quizrun) => {
@@ -32,15 +33,36 @@ Vue.component('common-quiz-watcher', {
                     });
                 }, 3000);
             }
+            // Si sur la page quiz mais pas le bon quiz run
+            else if (
+                this.$router.currentRoute.params.event === quizrun.event
+                && this.$router.currentRoute.params.quizrun !== quizrun._id
+            ) {
+                this.visible = true;
+                window.setTimeout(() => {
+                    this.visible = false;
+                }, 3000);
+                this.$router.push({
+                    name: 'client-quiz',
+                    params: {
+                        event: quizrun.event,
+                        quizrun: quizrun._id.toString()
+                    }
+                });
+            }
         }, 'common-quiz-watcher');
         // Watch for question start
         SocketService.on('event-quiz-question', (data) => {
-            if(this.$router.currentRoute.name !== 'client-quiz') {
+            if(
+                this.$router.currentRoute.name !== 'client-quiz'
+                || (this.$router.currentRoute.params.event === data.event
+                && this.$router.currentRoute.params.quizrun !== data.quizrun)
+            ) {
                 this.$router.push({
                     name: 'client-quiz',
                     params: {
                         event: data.event,
-                        quizrun: data.quizrun
+                        quizrun: data.quizrun.toString()
                     }
                 });
             }

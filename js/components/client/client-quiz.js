@@ -5,17 +5,23 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
                 <common-event-connected-client
                     class="position-top-right font08 margin_1">
                 </common-event-connected-client>
-                <header>
-                    <h2>{{ question.name }}</h2>
-                </header>
-                <ul class="list-1 ">
-                    <li v-for="(item, i) in question.response"
-                        :key="i"
-                        @click="respond(item)"
-                        class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
-                        {{ item.name }}
-                    </li>
-                </ul>
+                <div v-if="question.name">
+                    <header>
+                        <h2>{{ question.name }}</h2>
+                    </header>
+                    <ul class="list-1 ">
+                        <li v-for="(item, i) in question.response"
+                            :key="i"
+                            @click="respond(item)"
+                            class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1"
+                            :class="{ 'background': currentResponse === item.uid }">
+                            {{ item.name }}
+                        </li>
+                    </ul>
+                </div>
+                <div v-if="!question.name">
+                    No quiz in progress.
+                </div>
             </div>
         </section>
     `,
@@ -31,11 +37,12 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
     },
     data() {
         return {
-            question: {}
+            question: {},
+            currentQuestion: null,
+            currentResponse: null
         };
     },
     created() {
-        console.log(1);
         if(!Auth.getters.isLogged) {
             this.$router.push({ name: 'home', params: {
                 event: this.event
@@ -46,19 +53,40 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
         SocketService.room(this.event);
         // Watch for question start
         SocketService.on('event-quiz-question', (response) => {
-            console.log(response);
-            this.question = response.question;
-        });
+            if(response.quizrun === this.quizrun) {
+                if(this.currentQuestion !== response.current_question) {
+                    this.currentQuestion = response.current_question;
+                    this.question = response.question;
+                }
+                this.$forceUpdate();
+            }
+        }, 'client-quiz-event-quiz-question-' + this.quizrun);
+
+        SocketService.on('event-quiz-question-end', (quizrun) => {
+            this.question = {
+                name: 'THX'
+            };
+            setTimeout(() => {
+                this.$router.push({ name: 'home', params: {
+                        event: this.event
+                    }});
+            }, 2000);
+        }, 'client-quiz-event-quiz-question-end');
+
     },
     methods: {
         get() {
             QuizRunService.getQuizStep(this.event, this.quizrun)
                 .then(response => {
+                    this.currentQuestion = response.current_question;
                     this.question = response.question;
                 });
         },
         respond(question) {
-            QuizRunService.respond(this.event, this.quizrun, question);
+            QuizRunService.respond(this.event, this.quizrun, question)
+                .then(response => {
+                    this.currentResponse = response.response;
+                });
         }
     }
 });

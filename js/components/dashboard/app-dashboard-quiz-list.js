@@ -9,7 +9,10 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
                 <li v-for="item in filterItem" 
                     class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
                     <span class="flex-1" @click="goto(event, item._id)">{{ item.name }}</span>
-                    <span title="Run quiz" @click="run(event, item._id)">▶</span>
+                    <span v-if="!item.quizrun" title="Run quiz" @click="run(event, item)">▶</span>
+                    <div v-if="item.quizrun">
+                        Started at {{ quizdate(item.quizrun.started_at) }}
+                    </div>
                 </li>
             </ul>
        </div>
@@ -24,6 +27,14 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         this.getEvent();
         this.get();
         SocketService.room(this.event);
+        SocketService.on('event-quiz-question-end', (quizrun) => {
+            this.items.map(quiz => {
+                if(quizrun.quiz === quiz._id) {
+                    delete quiz.quizrun;
+                    this.$forceUpdate();
+                }
+            });
+        }, 'app-dashboard-event-quiz-question-end');
     },
     data() {
         return {
@@ -40,6 +51,9 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         }
     },
     methods: {
+        quizdate(dt) {
+            return (new Date(dt)).toLocaleString();
+        },
         goto(event, quizId) {
             this.$router.push({
                 name: 'eventquizitem',
@@ -52,7 +66,7 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
             });
         },
         get() {
-            QuizService.getAllForEvent(this.event).then((response) => {
+            QuizService.getAllForEvent(this.event).then(response => {
                 this.items = response;
             }).catch(function(err) {
                 // raf
@@ -62,7 +76,10 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
             this.quizName = text;
         },
         run(event, quiz) {
-            QuizService.run(event, quiz);
+            QuizService.run(event, quiz._id).then(quizrun => {
+                quiz.quizrun = quizrun;
+                this.$forceUpdate();
+            });
         }
     }
 });
