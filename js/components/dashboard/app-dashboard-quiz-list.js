@@ -12,6 +12,7 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
                     <span v-if="!item.quizrun" title="Run quiz" @click="run(event, item)">▶</span>
                     <div v-if="item.quizrun">
                         Started at {{ quizdate(item.quizrun.started_at) }}
+                        <span v-if="item.step">- {{ item.step }}</span>
                     </div>
                 </li>
             </ul>
@@ -27,6 +28,18 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         this.getEvent();
         this.get();
         SocketService.room(this.event);
+
+        SocketService.on('event-quiz-question', (response) => {
+            this.items.map(quiz => {
+                if(response.quiz === quiz._id) {
+                    if(quiz.questions && quiz.questions.length) {
+                        quiz.step = (response.current_question + 1) + '/' + quiz.questions.length;
+                    }
+                    this.$forceUpdate();
+                }
+            });
+        }, 'client-quiz-event-quiz-question-' + this.quizrun);
+
         SocketService.on('event-quiz-question-end', (quizrun) => {
             this.items.map(quiz => {
                 if(quizrun.quiz === quiz._id) {
