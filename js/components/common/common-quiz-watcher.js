@@ -53,6 +53,8 @@ Vue.component('common-quiz-watcher', {
         }, 'common-quiz-watcher');
         // Watch for question start
         SocketService.on('event-quiz-question', (data) => {
+            if(! data.event) return false;
+            if(! data.quizrun) return false;
             if(
                 this.$router.currentRoute.name !== 'client-quiz'
                 || (this.$router.currentRoute.params.event === data.event

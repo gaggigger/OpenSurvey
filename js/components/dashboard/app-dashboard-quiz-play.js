@@ -6,13 +6,12 @@ Vue.component('app-dashboard-quiz-play', {
                 @click="run()" 
                 class="pointer a-like">Start ▶</span>
             <div v-if="item.quizrun">
-                <div>Started at {{ quizdate(item.quizrun.started_at) }}</div>
-                <div>Question {{ step() }}</div>
+                <span>Started at {{ quizdate(item.quizrun.started_at) }}, Question {{ step() }}</span>
                 <div>
                     <span
                         title="Start quiz" 
                         @click="stop()" 
-                        class="pointer">Stop ■</span>
+                        class="pointer a-like">Stop ■</span>
                 </div>
             </div>       
         </div>
@@ -33,7 +32,7 @@ Vue.component('app-dashboard-quiz-play', {
         // Update step
         SocketService.on('event-quiz-question', (response) => {
             if(response.quiz === this.item._id) {
-                if(this.item.questions && this.item.questions.length) {
+                if(this.item.questions && this.item.questions.length && this.item.quizrun) {
                     this.item.quizrun.current_question = response.current_question;
                 }
                 this.$forceUpdate();
@@ -45,6 +44,7 @@ Vue.component('app-dashboard-quiz-play', {
             if(quizrun.quiz === this.item._id) {
                 delete this.item.quizrun;
                 this.$forceUpdate();
+                this.$emit('end');
             }
         }, 'app-dashboard-event-quiz-question-end');
     },
@@ -69,6 +69,7 @@ Vue.component('app-dashboard-quiz-play', {
             QuizService.run(this.event, this.item._id).then(quizrun => {
                 this.item.quizrun = quizrun;
                 this.$forceUpdate();
+                this.$emit('start');
             });
         },
         stop() {

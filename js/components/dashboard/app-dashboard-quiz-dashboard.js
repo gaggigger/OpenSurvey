@@ -2,6 +2,9 @@ Vue.component('app-dashboard-quiz-dashboard', {
     template: `
         <div>
             <h2>Results</h2>
+            <div v-for="item in items">
+                {{ quizdate(item.started_at) }}
+            </div>
        </div>
     `,
     props: {
@@ -19,7 +22,7 @@ Vue.component('app-dashboard-quiz-dashboard', {
     },
     data() {
         return {
-
+            items: []
         };
     },
     methods: {
@@ -27,8 +30,11 @@ Vue.component('app-dashboard-quiz-dashboard', {
             EventService.get(this.event);
             QuizService.get(this.quiz);
             QuizRunService.getByEventAndQuid(this.event, this.quiz).then(quizRuns => {
-                console.log(quizRuns);
+                this.items = quizRuns.sort((a, b) => b.started_at - a.started_at);
             });
+        },
+        quizdate(dt) {
+            return (new Date(dt)).toLocaleString();
         }
     }
 });

@@ -19,9 +19,6 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
                         </li>
                     </ul>
                 </div>
-                <div v-if="!question.name">
-                    No quiz in progress.
-                </div>
             </div>
         </section>
     `,
