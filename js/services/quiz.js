@@ -36,5 +36,17 @@ const QuizService = {
                 console.error(err);
             });
         });
+    },
+    stop(event, quiz) {
+        return new Promise((resolv, reject) => {
+            (new Http()).send('/quiz/' + quiz + '/stop', 'POST', {
+                event: event
+            }).then(response => {
+                resolv(response);
+            }).catch(function (err) {
+                // TODO log
+                console.error(err);
+            });
+        });
     }
 };

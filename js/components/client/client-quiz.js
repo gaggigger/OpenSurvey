@@ -64,7 +64,7 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
 
         SocketService.on('event-quiz-question-end', (quizrun) => {
             this.question = {
-                name: 'THX'
+                name: 'End of the quiz, thank you'
             };
             setTimeout(() => {
                 this.$router.push({ name: 'home', params: {

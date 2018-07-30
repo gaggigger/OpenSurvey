@@ -1,4 +1,4 @@
-const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
+const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz-list', {
     template: `
         <div class="padding_top_3">
             <app-dashboard-quiz-new
@@ -9,11 +9,6 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
                 <li v-for="item in filterItem" 
                     class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
                     <span class="flex-1" @click="goto(event, item._id)">{{ item.name }}</span>
-                    <span v-if="!item.quizrun" title="Run quiz" @click="run(event, item)">▶</span>
-                    <div v-if="item.quizrun">
-                        Started at {{ quizdate(item.quizrun.started_at) }}
-                        <span v-if="item.step">- {{ item.step }}</span>
-                    </div>
                 </li>
             </ul>
        </div>
@@ -28,26 +23,6 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         this.getEvent();
         this.get();
         SocketService.room(this.event);
-
-        SocketService.on('event-quiz-question', (response) => {
-            this.items.map(quiz => {
-                if(response.quiz === quiz._id) {
-                    if(quiz.questions && quiz.questions.length) {
-                        quiz.step = (response.current_question + 1) + '/' + quiz.questions.length;
-                    }
-                    this.$forceUpdate();
-                }
-            });
-        }, 'client-quiz-event-quiz-question-' + this.quizrun);
-
-        SocketService.on('event-quiz-question-end', (quizrun) => {
-            this.items.map(quiz => {
-                if(quizrun.quiz === quiz._id) {
-                    delete quiz.quizrun;
-                    this.$forceUpdate();
-                }
-            });
-        }, 'app-dashboard-event-quiz-question-end');
     },
     data() {
         return {
@@ -64,9 +39,6 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         }
     },
     methods: {
-        quizdate(dt) {
-            return (new Date(dt)).toLocaleString();
-        },
         goto(event, quizId) {
             this.$router.push({
                 name: 'eventquizitem',
@@ -87,12 +59,6 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz', {
         },
         change(text) {
             this.quizName = text;
-        },
-        run(event, quiz) {
-            QuizService.run(event, quiz._id).then(quizrun => {
-                quiz.quizrun = quizrun;
-                this.$forceUpdate();
-            });
         }
     }
 });

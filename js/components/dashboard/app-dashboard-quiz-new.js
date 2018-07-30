@@ -33,6 +33,9 @@ Vue.component('app-dashboard-quiz-new', {
             quizname: ''
         };
     },
+    created() {
+
+    },
     methods: {
         add(evt) {
             if(evt && evt.keyCode !== 13) return;

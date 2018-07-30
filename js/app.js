@@ -31,7 +31,7 @@ if(typeof R_DASHBOARD_QUIZ_LIST !== 'undefined') routesList.push({
         breadcrumb: [
             { name: 'Dashboard', link: '/dashboard' },
             { name: ':Event', link: '/event/:event' },
-            { name: 'Quiz' }
+            { name: 'Quizs' }
         ]
     }
 });
@@ -40,8 +40,19 @@ if(typeof R_DASHBOARD_QUIZ !== 'undefined') routesList.push({
         breadcrumb: [
             { name: 'Dashboard', link: '/dashboard' },
             { name: ':Event', link: '/event/:event' },
-            { name: 'Quiz', link: '/event/:event/quiz' },
+            { name: 'Quizs', link: '/event/:event/quiz' },
             { name: ':Quiz' }
+        ]
+    }
+});
+if(typeof R_DASHBOARD_QUIZ_EDIT !== 'undefined') routesList.push({
+    path: '/event/:event/quiz/:quiz/edit', name: 'eventquizitemedit', component: R_DASHBOARD_QUIZ_EDIT, props: true, meta: {
+        breadcrumb: [
+            { name: 'Dashboard', link: '/dashboard' },
+            { name: ':Event', link: '/event/:event' },
+            { name: 'Quizs', link: '/event/:event/quiz' },
+            { name: ':Quiz', link: '/event/:event/quiz/:quiz' },
+            { name: 'Edit' }
         ]
     }
 });
