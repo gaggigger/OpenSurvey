@@ -56,6 +56,17 @@ if(typeof R_DASHBOARD_QUIZ_EDIT !== 'undefined') routesList.push({
         ]
     }
 });
+if(typeof R_DASHBOARD_QUIZ_VIEW_QUESTION !== 'undefined') routesList.push({
+    path: '/event/:event/quiz/:quiz/run', name: 'eventquizviewquestion', component: R_DASHBOARD_QUIZ_VIEW_QUESTION, props: true, meta: {
+        breadcrumb: [
+            { name: 'Dashboard', link: '/dashboard' },
+            { name: ':Event', link: '/event/:event' },
+            { name: 'Quizs', link: '/event/:event/quiz' },
+            { name: ':Quiz', link: '/event/:event/quiz/:quiz' },
+            { name: 'Run' }
+        ]
+    }
+});
 if(typeof R_DASHBOARD_QA !== 'undefined') routesList.push({
     path: '/event/:event/qa', name: 'eventqa', component: R_DASHBOARD_QA, props: true, meta: {
         breadcrumb: [

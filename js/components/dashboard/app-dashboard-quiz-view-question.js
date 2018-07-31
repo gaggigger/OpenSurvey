@@ -1,9 +1,19 @@
-Vue.component('app-dashboard-quiz-view-question', {
+const R_DASHBOARD_QUIZ_VIEW_QUESTION = Vue.component('app-dashboard-quiz-view-question', {
     template: `
-        <div>
-            <div v-if="question !== null">
+        <div class="padding_top_3">
+            <div>
+                <common-event-connected-client></common-event-connected-client>
+            </div>
+            <div class="padding_05_1">
+                <app-dashboard-quiz-play :event="event" 
+                        :quiz="quiz"
+                        @start="questionStart"
+                        @end="questionEnd"
+                        class="flex-1"></app-dashboard-quiz-play>
+            </div>
+            <div class="padding_0_1" v-if="question !== null">
                 <header>
-                    <h2>{{ question.name }}</h2>
+                    <h3>{{ question.name }}</h3>
                 </header>
                 <ul class="list-1 ">
                     <li v-for="(item, i) in question.response"
@@ -28,10 +38,12 @@ Vue.component('app-dashboard-quiz-view-question', {
     },
     data() {
         return {
-            question: null
+            question: null,
+            startTimeout: null
         };
     },
     created() {
+        this.getAll();
         SocketService.on('event-quiz-question', (response) => {
             if(response.quiz === this.quiz) {
                 this.question = response.question;
@@ -39,17 +51,31 @@ Vue.component('app-dashboard-quiz-view-question', {
             }
         }, 'app-dashboard-quiz-view-question-' + this.quiz);
 
-        SocketService.on('event-quiz-question-end', (quizrun) => {
-            if(quizrun.quiz === this.quiz) {
-                this.question = null;
-                this.$emit('end');
-            }
-        }, 'app-dashboard-quiz-view-question-end' + this.quiz);
+        SocketService.room(this.event);
     },
     computed: {
 
     },
     methods: {
-
+        getAll() {
+            EventService.get(this.event);
+            QuizService.get(this.quiz);
+        },
+        questionStart() {
+            window.clearTimeout(this.startTimeout);
+        },
+        questionEnd() {
+            this.question = null;
+            this.$emit('end');
+            this.startTimeout = window.setTimeout(() => {
+                this.$router.push({
+                    name: 'eventquizitem',
+                    params: {
+                        event: this.event,
+                        quiz: this.quiz
+                    }
+                });
+            }, 2000);
+        }
     }
 });

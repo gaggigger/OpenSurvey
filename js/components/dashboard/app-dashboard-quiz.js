@@ -11,13 +11,9 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
                         <span title="Edit quiz">Edit</span>
                 </router-link>
             </div>
-            <div class="padding_1" v-show="showQuestion">
-                <app-dashboard-quiz-view-question :event="event" :quiz="quiz" @end="questionEnd"></app-dashboard-quiz-view-question>
-            </div>
-            <div class="padding_1" v-if="showDashboard">
+            <div class="padding_1">
                 <app-dashboard-quiz-dashboard :event="event" :quiz="quiz"></app-dashboard-quiz-dashboard>
             </div>
-            <common-event-connected-client></common-event-connected-client>
        </div>
     `,
     props: {
@@ -36,8 +32,7 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
     },
     data() {
         return {
-            showQuestion: false,
-            showDashboard: true
+
         };
     },
     methods: {
@@ -46,12 +41,16 @@ const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
             QuizService.get(this.quiz);
         },
         startQuiz() {
-            this.showQuestion = true;
-            this.showDashboard = false;
+            this.$router.push({
+                name: 'eventquizviewquestion',
+                params: {
+                    event: this.event,
+                    quiz: this.quiz
+                }
+            });
         },
         questionEnd() {
-            this.showQuestion = false;
-            this.showDashboard = true;
+
         }
     }
 });

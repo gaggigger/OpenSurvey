@@ -2,7 +2,8 @@ Vue.component('app-dashboard-quiz-dashboard', {
     template: `
         <div>
             <h2>Results</h2>
-            <div v-for="item in items">
+            <div v-for="(item, i) in items"
+                :key="i">
                 {{ quizdate(item.started_at) }}
             </div>
        </div>

@@ -1,7 +1,7 @@
 const Config = {
     'api': {
         'url': 'https://labs.openschedule.org/OpenSurveyBack',
-        'socketPath': '/OpenSurveyBack'
+        'socketPath': '/OpenSurveyBack/socket.io'
     },
     'github': {
         'client_id': '572811babd84307d5b96'
