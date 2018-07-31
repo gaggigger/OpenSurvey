@@ -1,4 +1,14 @@
 const QuizRunService = {
+    getByEventQuizAndRun(eventUid, quizUid, quizrunUid) {
+        return new Promise((resolv, reject) => {
+            (new Http()).send(`/quizrun/${eventUid}/${quizUid}/${quizrunUid}`, 'GET').then(response => {
+                resolv(response);
+            }).catch(function(err) {
+                // TODO log
+                console.error(err);
+            });
+        });
+    },
     getByEventAndQuid(eventUid, quizUid) {
         return new Promise((resolv, reject) => {
             (new Http()).send(`/quizrun/${eventUid}/${quizUid}`, 'GET').then(response => {

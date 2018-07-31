@@ -2,6 +2,14 @@ Vue.component('app-dashboard-quiz-dashboard', {
     template: `
         <div>
             <h2>Results</h2>
+            <div v-if="lastrun" class="surface padding_1 margin_1_0">
+                <h3>Last run</h3>
+                <app-dashboard-quiz-run-result
+                    :event="event"
+                    :quiz="quiz"
+                    :quizrun="lastrun._id"
+                ></app-dashboard-quiz-run-result>
+            </div>
             <div v-for="(item, i) in items"
                 :key="i">
                 {{ quizdate(item.started_at) }}
@@ -23,7 +31,8 @@ Vue.component('app-dashboard-quiz-dashboard', {
     },
     data() {
         return {
-            items: []
+            items: [],
+            lastrun: null
         };
     },
     methods: {
@@ -32,6 +41,9 @@ Vue.component('app-dashboard-quiz-dashboard', {
             QuizService.get(this.quiz);
             QuizRunService.getByEventAndQuid(this.event, this.quiz).then(quizRuns => {
                 this.items = quizRuns.sort((a, b) => b.started_at - a.started_at);
+                if(this.items[0]) {
+                    this.lastrun = this.items[0];
+                }
             });
         },
         quizdate(dt) {
