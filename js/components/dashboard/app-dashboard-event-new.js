@@ -2,7 +2,9 @@ Vue.component('app-dashboard-event-new', {
     template: `
         <section class="padding_05_1 flex_h-center">
             <div class="bold font15 padding_0_1 v-align-center">#</div>
-            <input autocorrect="off" 
+            <md-field>
+                <label>Enter event code</label>
+                <md-input autocorrect="off" 
                     autocapitalize="off" 
                     name="event" 
                     type="text" 
@@ -12,14 +14,15 @@ Vue.component('app-dashboard-event-new', {
                     v-model.trim="eventname"
                     @input="change"
                     @keydown="add($event)"
-                    autofocus />
-            <span
+                    autofocus></md-input>
+            </md-field>
+            <md-button
                 role="button"
                 tabindex="0"
-                class="pointer primary join-button v-align-center h-align-center padding_0_1"
+                class="pointer md-raised md-primary"
                 @click="add()">
                 Create Event
-            </span>
+            </md-button>
         </section>
     `,
     data() {

@@ -1,9 +1,9 @@
 Vue.component('common-event-connected-client', {
     template: `
         <div class="padding_1">
-            <span>
+            <md-chip>
                 Connected {{ numberOfConnectedClient }}
-            </span>
+            </md-chip>
         </div>
     `,
     data() {

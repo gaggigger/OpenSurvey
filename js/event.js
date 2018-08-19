@@ -28,6 +28,12 @@ if(typeof R_CLIENT_QUIZ !== 'undefined') routesList.push({
 });
 const router = new VueRouter({ routes: routesList });
 
+try {
+    Vue.use(VueMaterial.default);
+} catch(e) {
+
+}
+
 new Vue({
     el: '#app',
     router: router,

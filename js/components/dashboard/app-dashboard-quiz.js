@@ -1,16 +1,19 @@
 const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
     template: `
         <div class="padding_top_3">
-            <div class="padding_1 surface flex">
+            <md-toolbar :md-elevation="1" class="padding_1 surface flex">
                 <app-dashboard-quiz-play :event="event" 
                     :quiz="quiz"
                     @start="startQuiz"
                     @end="questionEnd"
                     class="flex-1"></app-dashboard-quiz-play>
                 <router-link :to="{ name: 'eventquizitemedit', params:{ event: event, quiz: quiz }}">
-                        <span title="Edit quiz">Edit</span>
+                    <md-button class="md-primary" title="Edit quiz">
+                        Edit
+                        <md-icon>create</md-icon>
+                    </md-button>
                 </router-link>
-            </div>
+            </md-toolbar>
             <div class="padding_1">
                 <app-dashboard-quiz-dashboard :event="event" :quiz="quiz"></app-dashboard-quiz-dashboard>
             </div>

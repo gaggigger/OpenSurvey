@@ -1,10 +1,13 @@
 Vue.component('app-dashboard-quiz-play', {
     template: `
         <div>
-            <span v-if="!item.quizrun" 
+            <md-button v-if="!item.quizrun" 
                 title="Start quiz" 
                 @click="run()" 
-                class="pointer a-like">Start ▶</span>
+                class="md-primary pointer a-like">
+                Start 
+                <md-icon>play_arrow</md-icon>
+            </md-button>
             <div v-if="item.quizrun">
                 <span>Started at {{ quizdate(item.quizrun.started_at) }}, Question {{ step() }}</span>
                 <div>

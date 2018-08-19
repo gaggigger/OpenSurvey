@@ -5,12 +5,15 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz-list', {
                 @change="change" 
                 :event="event"></app-dashboard-quiz-new>
             
-            <ul class="list-1">
-                <li v-for="item in filterItem" 
-                    class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
-                    <span class="flex-1" @click="goto(event, item._id)">{{ item.name }}</span>
-                </li>
-            </ul>
+            <div class="h-align-center">
+                <md-card v-for="item in filterItem" 
+                    :key="item._id"
+                    class="margin_1 display-inline-block">
+                    <md-card-content>
+                        <div class="pointer" @click="goto(event, item._id)">{{ item.name }}</div>
+                    </md-card-content>
+                </md-card>
+            </div>
        </div>
     `,
     props: {

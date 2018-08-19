@@ -1,13 +1,17 @@
 Vue.component('app-dashboard-event-list', {
     template: `
-        <div>
-            <ul class="list-1 flex flex_h-center flex_v-center">
-                <li v-for="item in filterItem" 
+        <div class="h-align-center">
+            <md-card v-for="item in filterItem"
+                :key="item._id"
+                class="margin_1 display-inline-block">
+                <md-card-content>
+                    <div  
                     @click="goto(item._id)"
-                    class="border-width_1 border-radius_5px background-hover pointer margin_1 padding_1">
-                    #{{ item.name }}
-                </li>
-            </ul>
+                    class="pointer">
+                        #{{ item.name }}
+                    </div>
+                </md-card-content>
+            </md-card>
         </div>
     `,
     props: ['reload', 'filter'],

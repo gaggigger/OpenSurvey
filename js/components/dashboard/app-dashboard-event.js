@@ -6,53 +6,55 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
             </header>
             <div class="flex_h-center flex_wrap margin_1_0 dash-item-container">
                 
-                <div role="button" tabindex="0" class="margin_1 pointer" @click="goto('eventquiz')">
-                    <div class="flex_h-center">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-quiz"></div>
-                    </div>
-                    <div class="h-align-center"> 
+                <md-card role="button" tabindex="0" class="margin_1">
+                    <md-card-header class="flex_h-center pointer">
+                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-quiz"
+                         @click="goto('eventquiz')"></div>
+                    </md-card-header>
+                    <md-card-content class="h-align-center"> 
                         <h4>Quiz</h4>
                         <div class="font08">
                             Test, rank  your audience and nominate the winner
                         </div>
-                    </div>
-                </div>
+                    </md-card-content>
+                </md-card>
 
-                <div role="button" tabindex="0" class="margin_1 pointer"@click="goto('eventqa')">
-                    <div class="flex_h-center">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-qa"></div>
-                    </div>
-                    <div class="h-align-center"> 
+                <md-card role="button" tabindex="0" class="margin_1">
+                    <md-card-header class="flex_h-center pointer">
+                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-qa"
+                         @click="goto('eventqa')"></div>
+                    </md-card-header>
+                    <md-card-content class="h-align-center"> 
                         <h4>Q&A</h4>
                         <div class="font08">
                             Give your audience the opportunity to ask questions
                         </div>
-                    </div>
-                </div>
+                    </md-card-content>
+                </md-card>
 
-                <div role="button" tabindex="0" class="margin_1 pointer">
-                    <div class="flex_h-center">
+                <md-card role="button" tabindex="0" class="margin_1">
+                    <md-card-header class="flex_h-center pointer">
                         <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-polling"></div>
-                    </div>
-                    <div class="h-align-center"> 
+                    </md-card-header>
+                    <md-card-content class="h-align-center"> 
                         <h4>Polling</h4>
                         <div class="font08">
                             Poll your audience in real-time
                         </div>
-                    </div>
-                </div>
+                    </md-card-content>
+                </md-card>
                 
-                <div role="button" tabindex="0" class="margin_1 pointer">
-                    <div class="flex_h-center">
+                <md-card role="button" tabindex="0" class="margin_1">
+                    <md-card-header class="flex_h-center pointer">
                         <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-whiteboard"></div>
-                    </div>
-                    <div class="h-align-center"> 
+                    </md-card-header>
+                    <md-card-content class="h-align-center"> 
                         <h4>White board</h4>
                         <div class="font08">
                             Share your text, code in real-time
                         </div>
-                    </div>
-                </div>
+                    </md-card-content>
+                </md-card>
                                 
             </div>
         </section>

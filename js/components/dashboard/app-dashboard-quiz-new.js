@@ -1,7 +1,9 @@
 Vue.component('app-dashboard-quiz-new', {
     template: `
-        <section class="padding_05_1 flex_h-center">
-            <input autocorrect="off" 
+        <div class="padding_05_1 flex_h-center">
+            <md-field>
+                <label>Enter quiz name</label>
+                <md-input autocorrect="off" 
                     autocapitalize="off" 
                     name="quiz" 
                     type="text" 
@@ -12,15 +14,17 @@ Vue.component('app-dashboard-quiz-new', {
                     class="flex-1"
                     @input="change"
                     @keydown="add($event)"
-                    autofocus />
-            <span
+                    autofocus
+                ></md-input>
+            </md-field>
+            <md-button
                 role="button"
                 tabindex="0"
-                class="pointer primary join-button v-align-center h-align-center padding_0_1"
+                class="pointer md-raised md-primary"
                 @click="add()">
                 Create Quiz
-            </span>
-        </section>
+            </md-button>
+        </div>
     `,
     props: {
         event: {

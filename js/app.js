@@ -79,6 +79,12 @@ if(typeof R_DASHBOARD_QA !== 'undefined') routesList.push({
 
 const router = new VueRouter({ routes: routesList });
 
+try {
+    Vue.use(VueMaterial.default);
+} catch(e) {
+
+}
+
 new Vue({
     el: '#app',
     router: router,
@@ -96,5 +102,6 @@ new Vue({
         });
     }
 });
+
 
 // Vue.use(Vuex);
