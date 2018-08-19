@@ -1,17 +1,19 @@
 const R_CLIENT_HOME = Vue.component('client-home', {
     template: `
         <section>
-            <header class="surface padding_1 relative">
-                <h2 class="margin_0_1">
-                    #{{ item.name }},
-                    <span v-if="item.description">
-                        {{ item.description }}
-                    </span>
-                </h2>
-                <common-event-connected-client
-                    class="position-top-right font08 margin_1">
-                </common-event-connected-client>
-            </header>
+            <md-card>
+                <md-card-header>
+                    <md-card-header-text>
+                        <div class="md-title">
+                            <common-event-connected-client class="display-inline-block" />
+                            #{{ item.name }},
+                            <span v-if="item.description">
+                                {{ item.description }}
+                            </span>
+                        </div>
+                    </md-card-header-text>
+                </md-card-header>
+            </md-card>
             <client-items :event="event"></client-items>
         </section>
     `,

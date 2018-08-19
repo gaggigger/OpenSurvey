@@ -1,33 +1,33 @@
 Vue.component('client-questions', {
     template: `
-        <section class="padding_1">
-            <div v-for="(question, iq) in questions"
+        <div>
+            <md-list v-for="(question, iq) in questions"
                 :key="iq"
-                class="flex border-bottom-width_1"
                 :class="{ 'disabled-color': question.answered === true }">
-                <div class="padding_0_1 flex_v-center"
-                    :class="{ 'primary-font': questionliked(question) }">
+                
+                <md-subheader>
+                    <span class="font15">{{ question.question }}</span>
+                </md-subheader>
+                
+                <md-list-item>
                     <div>
-                        <b class="a-like pointer font15"
-                         @click="up(question)"
-                         v-if="question.answered !== true"
-                         >👍</b>
-                        <div>{{ numlike(question) }}</div>
+                        <div class="pointer display-inline-block"
+                            @click="up(question)"
+                            :class="{ 'primary-font': questionliked(question) }"
+                            v-if="question.answered !== true">
+                            <md-icon>thumb_up_alt</md-icon>
+                        </div>
+                        <md-chip class="md-primary" v-if="numlike(question)">{{ numlike(question) }}</md-chip>
                     </div>
-                </div>
-                <div class="flex-1">
-                    <p>
-                        {{ question.question }}
-                    </p>
-                    <footer class="font08">
-                        {{ question.owner }}, 
-                        <span class="font08">
-                            {{ questiondate(question.inserted_at) }}
+                    <div>
+                        <md-chip class="md-disabled">{{ question.owner }}</md-chip>
+                        <md-chip class="md-disabled">{{ questiondate(question.inserted_at) }}</md-chip>
                         </span>
-                    </footer>
-                </div>
-            </div>
-        </section>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+        </div>
     `,
     props: {
         event: {

@@ -1,39 +1,32 @@
 const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
     template: `
         <section class="padding_1">
-            <span
-                role="button"
+            <md-button class="md-primary pointer"
                 tabindex="0"
-                @click="cancel"
-                class="pointer padding_1 display-inline-block a-like background-hover">
+                @click="cancel">
                 <b>&lt;</b> Back
-            </span>
-            <div class="margin_1_0">
-                <textarea 
+            </md-button>
+            <md-field>
+                <label>Your question...</label>
+                <md-textarea
                     autocomplete="off"
                     autocapitalize="sentences"
                     autofocus
-                    placeholder="Your question..."
                     required="required"
                     spellcheck="true"
                     rows="5"
-                    v-model="question"
-                    class="sw100"></textarea>
-            </div>
-            <span
-                role="button"
-                tabindex="0"
+                    v-model="question"></md-textarea>
+            </md-field>
+            <md-button
                 @click="send(false)"
-                class="pointer primary margin_1 join-button padding_1">
+                class="md-primary pointer md-raised">
                 Send
-            </span>
-            <span
-                role="button"
-                tabindex="0"
+            </md-button>
+            <md-button
                 @click="send(true)"
-                class="pointer primary margin_1 join-button padding_1">
+                class="md-primary pointer md-raised">
                 Send anonymously
-            </span>
+            </md-button>
         </section>
     `,
     props: {
