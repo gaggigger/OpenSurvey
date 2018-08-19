@@ -46,20 +46,7 @@
         box-shadow: none;
     }
 }
-/** HEADER **/
-.app-header {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 3em;
-}
-.app-header > *:first-child {
-    flex-grow: 1;
-    padding-left: 1em;
-}
-.app-header > *:last-child {
-    padding-right: 1em;
-}
+
 /** JOIN **/
 .app-join {
     padding: 0.5em 1em;

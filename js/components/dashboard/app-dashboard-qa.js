@@ -1,28 +1,41 @@
 const R_DASHBOARD_QA = Vue.component('app-dashboard-qa', {
     template: `
-        <section class="padding_top_3">
+        <section>
             <div class="relative">
                 <common-event-connected-client
-                    class="position-top-right font08 margin_1">
+                    class="position-top-right font08 margin_1 z10">
                 </common-event-connected-client>
-                <div v-for="(question, iq) in questions"
-                    :key="iq"
-                    class="flex border-bottom-width_1 padding_1"
-                    :class="{ 'surface font18 margin-bottom_05': iq < 3 }">
-                    <div class="flex-1">
-                        <p>
-                            {{ numlike(question) }}👍 | {{ question.question }}
-                        </p>
-                        <footer class="font08">
-                            {{ question.owner }}, 
-                            <span class="font08">
-                                {{ questiondate(question.inserted_at) }}
+
+                <div v-for="(question, iq) in questions" :key="iq">
+                    <md-card class="margin-bottom_05" v-if="iq < 3">
+                        <md-card-header>
+                            <div class="md-title">
+                                <span class="font18">{{ question.question }}</span>
+                            </div>
+                        </md-card-header>
+                        <md-divider></md-divider>
+                        <md-card-actions>
+                            <div class="md-subhead">
+                                <md-chip class="md-primary" md-clickable>
+                                    <span @click="answered(question)" class="pointer font15" title="Mark as answered">
+                                        <md-icon>spellcheck</md-icon>
+                                    </span>
+                                </md-chip>
+                                <md-chip class="md-primary">{{ numlike(question) }}</md-chip>
+                                <md-chip class="md-primary">{{ question.owner }}</md-chip> 
+                                <md-chip>{{ questiondate(question.inserted_at) }}</md-chip>
+                            </div>
+                        </md-card-actions>
+                    </md-card>
+                    <md-list v-if="iq >= 3">
+                        <md-list-item>
+                            <span @click="answered(question)" class="pointer" title="Mark as answered">
+                                <md-icon>spellcheck</md-icon>
                             </span>
-                        </footer>
-                    </div>
-                    <div class="padding_0_1 flex_v-center">
-                        <b class="a-like pointer" title="Mark as answered" @click="answered(question)">✅</b>
-                    </div>
+                            <span class="md-list-item-text md-list-item-text">&nbsp; {{ question.question }}</span>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                    </md-list>                        
                 </div>
             </div>
        </section>

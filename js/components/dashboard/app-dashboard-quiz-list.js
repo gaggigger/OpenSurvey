@@ -1,6 +1,6 @@
 const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz-list', {
     template: `
-        <div class="padding_top_3">
+        <div>
             <app-dashboard-quiz-new
                 @change="change" 
                 :event="event"></app-dashboard-quiz-new>

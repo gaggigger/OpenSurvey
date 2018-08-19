@@ -1,6 +1,6 @@
 const R_CLIENT_ASK_QUESTION = Vue.component('client-ask-question', {
     template: `
-        <section class="padding_1 padding_top_3">
+        <section class="padding_1">
             <span
                 role="button"
                 tabindex="0"

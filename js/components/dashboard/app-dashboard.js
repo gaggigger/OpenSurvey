@@ -1,6 +1,6 @@
 const R_DASHBOARD = Vue.component('app-dashboard', {
     template: `
-        <section class="padding_top_3">
+        <section>
             <header class="flex_h-center">
                 <h3>DASHBOARD</h3>
             </header>

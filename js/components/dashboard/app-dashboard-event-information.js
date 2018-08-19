@@ -1,40 +1,44 @@
 Vue.component('app-dashboard-event-information', {
     template: `
-        <div>
-            <div>
-                <input 
+        <md-card>
+            <md-field>
+                <label>Event description</label>
+                <md-input 
                     type="text" 
-                    placeholder="Description"
                     v-model.trim="item.description" 
-                    @change="save"
+                    @input="save"
                     class="sw100 border-no" />
-            </div>
+            </md-field>
             <div>
-                <div class="font08 flex_h-center">
-                    <i>Event will be available between these dates</i>
+                <div class="flex_h-center">
+                    <md-chip class="md-accent">Event will be available between these dates</md-chip>
                 </div>
                 <div class="flex_wrap flex_h-center">
                     <span class="nowrap">
-                        <b>from</b>
-                        <input
-                            type="datetime-local" 
-                            v-model="item.datestart" 
-                            @change="save"
-                            name="datestart" />
+                        <md-field>
+                            <label>From</label>
+                            <md-input
+                                type="datetime-local" 
+                                v-model="item.datestart" 
+                                @change="save"
+                                name="datestart" />
+                        </md-field>
                     </span>
                     &nbsp;
                     <span class="nowrap">
-                        <b>to</b>
-                        <input 
-                            type="datetime-local" 
-                            v-model="item.dateend" 
-                            @change="save"
-                            name="dateend" />
+                        <md-field>
+                            <label>to</label>
+                            <md-input 
+                                type="datetime-local" 
+                                v-model="item.dateend" 
+                                @change="save"
+                                name="dateend" />
+                        </md-field>
                     </span>
                 </div>
                 <div>&nbsp;</div>
             </div>
-        </div>
+        </md-card>
     `,
     props: {
         event: {
@@ -77,7 +81,7 @@ Vue.component('app-dashboard-event-information', {
                 }).catch(function(err) {
                     // raf
                 });
-            }, 1000);
+            }, 300);
         }
     }
 });

@@ -1,6 +1,6 @@
 const R_CLIENT_HOME = Vue.component('client-home', {
     template: `
-        <section class="padding_top_3">
+        <section>
             <header class="surface padding_1 relative">
                 <h2 class="margin_0_1">
                     #{{ item.name }},

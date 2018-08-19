@@ -1,6 +1,6 @@
 const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
     template: `
-        <div class="padding_top_3 app-dashboard-quiz-item">
+        <div class="app-dashboard-quiz-item">
             <h3 class="flex_h-center flex_v-center">
                 <div class="font15">Quiz: </div> 
                 <input autocorrect="off" 

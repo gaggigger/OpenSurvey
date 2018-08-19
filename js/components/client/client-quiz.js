@@ -1,6 +1,6 @@
 const R_CLIENT_QUIZ = Vue.component('client-quiz', {
     template: `
-        <section class="padding_top_3">
+        <section>
             <div class="margin_1 relative">
                 <common-event-connected-client
                     class="position-top-right font08 margin_1">

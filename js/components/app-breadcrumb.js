@@ -1,26 +1,16 @@
 Vue.component('app-breadcrumb', {
     template: `
         <nav>
-            <ul class="list-1 flex">
-                <li>
-                    <a href="./">Home</a>
-                    <span v-if="items.length > 0">
-                        &nbsp;&gt;&nbsp;
-                    </span>
-                </li>
-                <li v-for="(menu, idx) in items"
-                    :key="idx">
-                    <router-link :to="goto(menu.link)"
-                        v-if="menu.link"
-                    >{{ getName(menu.name) }}</router-link>
-                    <span v-if="!menu.link">
-                        {{ getName(menu.name) }}
-                    </span>
-                    <span v-if="idx < items.length-1">
-                        &nbsp;&gt;&nbsp;
-                    </span>
-                </li>
-            </ul>
+            <md-chip class="md-active" md-clickable>
+                <a href="./">Home</a>
+            </md-chip>
+            <md-chip  v-for="(menu, idx) in items"
+                :key="idx" 
+                :class="{'md-active': menu.link, 'md-disabled': !menu.link}"
+                :md-clickable="!!menu.link">
+                <router-link :to="goto(menu.link)" v-if="menu.link">{{ getName(menu.name) }}</router-link>
+                <span v-if="!menu.link">{{ getName(menu.name) }}</span>
+            </md-chip>
        </nav>
     `,
     watch: {

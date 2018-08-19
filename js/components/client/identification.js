@@ -1,6 +1,6 @@
 const R_IDENTIFICATION = Vue.component('client-identitication', {
     template: `
-        <section class="surface padding_top_3">
+        <section>
            <h2 class="h-align-center">
                Please enter your name or nickname to access the event
            </h2>

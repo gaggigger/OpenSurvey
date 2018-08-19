@@ -1,9 +1,13 @@
 Vue.component('app-header', {
     template: `
-        <header class="app-header flex_v-center background-inversed">
-            <app-breadcrumb></app-breadcrumb>
-            <app-user-logged></app-user-logged>
-       </header>
+        <md-toolbar class="flex_v-center">
+            <div class="md-title">
+                <app-breadcrumb></app-breadcrumb>
+            </div>
+            <div class="md-toolbar-section-end">
+                <app-user-logged></app-user-logged>
+            </div>
+       </md-toolbar>
     `,
     computed: {
         user () {

@@ -1,9 +1,7 @@
 const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
     template: `
-        <section class="padding_top_3">
-            <header class="surface">
-                <app-dashboard-event-information :event="event"></app-dashboard-event-information>
-            </header>
+        <section>
+            <app-dashboard-event-information :event="event"></app-dashboard-event-information>
             <div class="flex_h-center flex_wrap margin_1_0 dash-item-container">
                 
                 <md-card role="button" tabindex="0" class="margin_1">
