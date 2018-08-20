@@ -1,27 +1,26 @@
 const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
     template: `
         <div class="app-dashboard-quiz-item">
-            <h3 class="flex_h-center flex_v-center">
-                <div class="font15">Quiz: </div> 
-                <input autocorrect="off" 
-                    autocapitalize="off" 
-                    type="text" 
-                    aria-label="Title" 
-                    placeholder="Title" 
-                    autocomplete="off"
-                    v-model.trim="item.name"
-                    @keydown="saveQuestion($event)"
-                    class="font15 flex-1 bold border-no" />
+            <div class="flex_h-center flex_v-center padding_1">
+                <md-field>
+                    <label>Quiz name</label>
+                    <md-input autocorrect="off" 
+                        autocapitalize="off" 
+                        type="text" 
+                        aria-label="Quiz name" 
+                        autocomplete="off"
+                        v-model.trim="item.name"
+                        @keydown="saveQuestion($event)" />
+                </md-field> 
                 <md-button
                     role="button"
                     tabindex="0"
                     class="pointer md-primary"
                     title="Save question"
                     @click="saveQuestion()">
-                    Save question
                     <md-icon>save</md-icon>
                 </md-button>    
-            </h3>
+            </div>
             <div>
                 <md-card v-for="(question, iq) in item.questions"
                     :key="iq"
@@ -59,66 +58,83 @@ const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
                             </span>
                         </div>
                         <div class="flex_h-center counter-1">
-                            <input autocorrect="off" 
-                                autocapitalize="off" 
-                                type="text" 
-                                aria-label="Question..." 
-                                placeholder="Question..." 
-                                autocomplete="off"
-                                v-model.trim="question.name"
-                                class="flex-1 bold border-no font15" />
+                            <md-field>
+                                <md-input autocorrect="off" 
+                                    autocapitalize="off" 
+                                    type="text" 
+                                    aria-label="Question..." 
+                                    placeholder="Question..." 
+                                    autocomplete="off"
+                                    v-model.trim="question.name"
+                                    class="flex-1 bold border-no font15" />
+                            </md-field>
+                            <md-field class="w100px">
+                                <label>Duration</label>
+                                <md-select v-model="question.duration">
+                                    <md-option value="10">10 sec.</md-option>
+                                    <md-option value="15">15 sec.</md-option>
+                                    <md-option value="20">20 sec.</md-option>
+                                    <md-option value="25">25 sec.</md-option>
+                                    <md-option value="25">30 sec.</md-option>
+                                </md-select>
+                            </md-field>
                         </div>
-                        <ul class="padding_05_1 list-1" v-show="question.collapse === false">
-                            <li v-for="(response, idx) in question.response" 
-                                :key="idx"
-                                class="flex_h-center flex_v-center padding_0_1 response-item"
-                                v-bind:class="{ success: response.correct_answer === true }">
-                                <span class="pointer error-color" 
-                                    title="Delete this response"
-                                    @click="deleteResponse(question.response, idx)">
-                                    <md-icon>close</md-icon>    
-                                </span>
-                                <span class="pointer" 
-                                    title="Check this response as the correct answer"
-                                    @click="checkAsCorrectResponse(response, question.response, idx);">
-                                    <md-icon>check</md-icon>      
-                                </span>
-                                <input autocorrect="off" 
-                                    autocapitalize="off" 
-                                    type="text" 
-                                    aria-label="Response..." 
-                                    placeholder="Response..." 
-                                    autocomplete="off"
-                                    v-model.trim="response.name"
-                                    class="flex-1" />
-                            </li>
-                            <li class="flex_h-center flex_v-center padding_0_1">
-                                <input autocorrect="off" 
-                                    autocapitalize="off" 
-                                    type="text" 
-                                    aria-label="Add new response..." 
-                                    placeholder="Add new response..." 
-                                    autocomplete="off"
-                                    v-model.trim="question.questionToadd"
-                                    @keydown="addQuestion($event, question)"
-                                    class="flex-1" />
-                                <md-button
-                                    role="button"
-                                    tabindex="0"
-                                    class="pointer md-primary"
-                                    title="Add response"
-                                    @click="addQuestion(null, question)">
-                                    <md-icon>add</md-icon>
-                                </md-button>
-                            </li>
-                        </ul>
+                        <div v-show="question.collapse === false">
+                            <ul class="padding_05_1 list-1">
+                                <li v-for="(response, idx) in question.response" 
+                                    :key="idx"
+                                    class="flex_h-center flex_v-center padding_0_1 response-item"
+                                    v-bind:class="{ success: response.correct_answer === true }">
+                                    <span class="pointer error-color" 
+                                        title="Delete this response"
+                                        @click="deleteResponse(question.response, idx)">
+                                        <md-icon>close</md-icon>    
+                                    </span>
+                                    <span class="pointer" 
+                                        title="Check this response as the correct answer"
+                                        @click="checkAsCorrectResponse(response, question.response, idx);">
+                                        <md-icon>check</md-icon>      
+                                    </span>
+                                    <md-field>
+                                        <md-input autocorrect="off" 
+                                            autocapitalize="off" 
+                                            type="text" 
+                                            aria-label="Response..." 
+                                            placeholder="Response..." 
+                                            autocomplete="off"
+                                            v-model.trim="response.name" />
+                                    </md-field>
+                                </li>
+                                <li class="flex_h-center flex_v-center padding_0_1">
+                                    <md-field>
+                                        <md-input autocorrect="off" 
+                                            autocapitalize="off" 
+                                            type="text" 
+                                            aria-label="Add new response..." 
+                                            placeholder="Add new response..." 
+                                            autocomplete="off"
+                                            v-model.trim="question.questionToadd"
+                                            @keydown="addQuestion($event, question)" />
+                                    </md-field>
+                                    <md-button
+                                        role="button"
+                                        tabindex="0"
+                                        class="pointer md-primary"
+                                        title="Add response"
+                                        @click="addQuestion(null, question)">
+                                        <md-icon>add</md-icon>
+                                    </md-button>
+                                </li>
+                            </ul>
+                        </div>
                     </md-card-content>
                 </md-card>
                 
                 <md-card class="margin_05_1 relative">
                     <md-card-content>
                         <div class="padding_05_1 flex_h-center">
-                            <input autocorrect="off" 
+                            <md-field>
+                                <md-input autocorrect="off"
                                     autocapitalize="off" 
                                     name="quiz" 
                                     type="text" 
@@ -129,6 +145,7 @@ const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
                                     class="flex-1"
                                     @keydown="add($event)"
                                     autofocus />
+                            </md-field>
                             <md-button
                                 role="button"
                                 tabindex="0"
@@ -186,6 +203,7 @@ const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
             if(evt && evt.keyCode !== 13) return;
             this.item.questions.push({
                 name: this.newQuestionName,
+                duration: 15,
                 collapse: false,
                 response: []
             });

@@ -2,9 +2,6 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
     template: `
         <section>
             <div class="margin_1 relative">
-                <common-event-connected-client
-                    class="position-top-right font08 margin_1">
-                </common-event-connected-client>
                 <div v-if="question.name">
                     <header>
                         <h2>{{ question.name }}</h2>

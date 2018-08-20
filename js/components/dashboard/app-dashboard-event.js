@@ -6,11 +6,11 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
                 
                 <md-card role="button" tabindex="0" class="margin_1">
                     <md-card-header class="flex_h-center pointer">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-quiz"
+                        <div class="min-square-120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-quiz"
                          @click="goto('eventquiz')"></div>
                     </md-card-header>
                     <md-card-content class="h-align-center"> 
-                        <h4>Quiz</h4>
+                        <h4 @click="goto('eventquiz')">Quiz</h4>
                         <div class="font08">
                             Test, rank  your audience and nominate the winner
                         </div>
@@ -19,11 +19,11 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
 
                 <md-card role="button" tabindex="0" class="margin_1">
                     <md-card-header class="flex_h-center pointer">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-qa"
+                        <div class="min-square-120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-qa"
                          @click="goto('eventqa')"></div>
                     </md-card-header>
                     <md-card-content class="h-align-center"> 
-                        <h4>Q&A</h4>
+                        <h4 @click="goto('eventqa')">Q&A</h4>
                         <div class="font08">
                             Give your audience the opportunity to ask questions
                         </div>
@@ -32,7 +32,7 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
 
                 <md-card role="button" tabindex="0" class="margin_1">
                     <md-card-header class="flex_h-center pointer">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-polling"></div>
+                        <div class="min-square-120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-polling"></div>
                     </md-card-header>
                     <md-card-content class="h-align-center"> 
                         <h4>Polling</h4>
@@ -44,7 +44,7 @@ const R_DASHBOARD_EVENT = Vue.component('app-dashboard-event', {
                 
                 <md-card role="button" tabindex="0" class="margin_1">
                     <md-card-header class="flex_h-center pointer">
-                        <div class="square_120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-whiteboard"></div>
+                        <div class="min-square-120 border-width_4 border-radius_50 background-hover bg-center bg-norepeat dash-whiteboard"></div>
                     </md-card-header>
                     <md-card-content class="h-align-center"> 
                         <h4>White board</h4>

@@ -124,8 +124,14 @@ a {
 .sw100-2 {
     width: calc(100% - 2em);
 }
+.w100px {
+    width: 100px;
+}
 @media screen and (max-width: 640px) {
     .sw100-resp {
+        width: 100%;
+    }
+    .sw50 {
         width: 100%;
     }
 }
@@ -264,9 +270,9 @@ a {
     border-radius: 5px;
 }
 /** Width/Height **/
-.square_120 {
-    width: 120px;
-    height: 120px;
+.min-square-120 {
+    min-width: 120px;
+    min-height: 120px;
 }
 /** pseudo **/
 .pseudo-dotted::before {

@@ -1,9 +1,6 @@
 const R_DASHBOARD_QUIZ_VIEW_QUESTION = Vue.component('app-dashboard-quiz-view-question', {
     template: `
         <div>
-            <div>
-                <common-event-connected-client></common-event-connected-client>
-            </div>
             <div class="padding_05_1">
                 <app-dashboard-quiz-play :event="event" 
                         :quiz="quiz"

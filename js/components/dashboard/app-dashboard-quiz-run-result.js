@@ -29,7 +29,6 @@ Vue.component('app-dashboard-quiz-run-result', {
     methods: {
         get() {
             QuizRunService.getByEventQuizAndRun(this.event, this.quiz, this.quizrun).then(response => {
-                console.log(response);
                 const result = response.responses.reduce((acc, item) => {
                     const key = item.user.login + '::' + item.user.provider;
                     if(!acc[key]) acc[key] = {
@@ -41,7 +40,6 @@ Vue.component('app-dashboard-quiz-run-result', {
                     acc[key].duration += item.response_duration;
                     return acc;
                 }, {});
-                console.log(result);
             });
         }
     }

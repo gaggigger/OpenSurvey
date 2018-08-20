@@ -1,25 +1,25 @@
 Vue.component('app-join', {
     template: `
-        <section class="app-join padding_05_1 flex_h-center">
-            <div class="join-prefix bold font15 padding_0_1 v-align-center">#</div>
-            <input autocorrect="off" 
+        <div class="padding_05_1 flex_h-center">
+            <md-field>
+                <label>Event code</label>
+                <md-input autocorrect="off" 
                     autocapitalize="off" 
                     name="search" 
                     type="text" 
                     v-model="event"
                     aria-label="Enter event code" 
-                    placeholder="Enter event code" 
                     autocomplete="off" 
                     @keydown="join($event)"
-                    autofocus />
-            <span
-                role="button"
-                tabindex="0" 
+                    autofocus
+                />
+            </md-field>
+            <md-button
                 @click="join()"
-                class="pointer primary join-button v-align-center h-align-center">
-                Join
-            </span>
-        </section>
+                class="pointer md-raised md-primary">
+                JOIN
+            </md-button>
+        </div>
     `,
     data() {
         return {

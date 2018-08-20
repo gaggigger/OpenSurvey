@@ -5,6 +5,7 @@ Vue.component('app-header', {
                 <app-breadcrumb></app-breadcrumb>
             </div>
             <div class="md-toolbar-section-end">
+                <common-event-connected-client></common-event-connected-client>
                 <app-user-logged></app-user-logged>
             </div>
        </md-toolbar>

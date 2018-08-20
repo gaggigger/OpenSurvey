@@ -1,17 +1,19 @@
 Vue.component('app-dashboard-event-information', {
     template: `
         <md-card>
-            <md-field>
-                <label>Event description</label>
-                <md-input 
-                    type="text" 
-                    v-model.trim="item.description" 
-                    @input="save"
-                    class="sw100 border-no" />
-            </md-field>
-            <div>
-                <div class="flex_h-center">
-                    <md-chip class="md-accent">Event will be available between these dates</md-chip>
+            <md-card-header>
+                <md-field>
+                    <label>Event description</label>
+                    <md-input 
+                        type="text" 
+                        v-model.trim="item.description" 
+                        @input="save"
+                        class="sw100 border-no" />
+                </md-field>
+            </md-card-header>
+            <md-card-content>
+                <div class="h-align-center md-accent">
+                    Event will be available between these dates
                 </div>
                 <div class="flex_wrap flex_h-center">
                     <span class="nowrap">
@@ -37,7 +39,7 @@ Vue.component('app-dashboard-event-information', {
                     </span>
                 </div>
                 <div>&nbsp;</div>
-            </div>
+            </md-card-content>
         </md-card>
     `,
     props: {

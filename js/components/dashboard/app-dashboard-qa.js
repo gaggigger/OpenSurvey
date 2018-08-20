@@ -2,10 +2,6 @@ const R_DASHBOARD_QA = Vue.component('app-dashboard-qa', {
     template: `
         <section>
             <div class="relative">
-                <common-event-connected-client
-                    class="position-top-right font08 margin_1 z10">
-                </common-event-connected-client>
-
                 <div v-for="(question, iq) in questions" :key="iq">
                     <md-card class="margin-bottom_05" v-if="iq < 3">
                         <md-card-header>

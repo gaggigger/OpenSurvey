@@ -1,7 +1,7 @@
 Vue.component('common-event-connected-client', {
     template: `
-        <md-chip>
-            Connected {{ numberOfConnectedClient }}
+        <md-chip title="Connected people" v-if="numberOfConnectedClient">
+            <md-icon>people</md-icon> {{ numberOfConnectedClient }}
         </md-chip>
     `,
     data() {

@@ -61,7 +61,15 @@
     min-height: 100%;
     background-image: url(../bg-images/app-customer-tracker.svg);
 }
-/** LOGIN **/
+.app-home .join {
+    min-width: 50%;
+}
+@media screen and (max-width: 600px) {
+    .app-home .join {
+        width: 80%;
+    }
+}
+    /** LOGIN **/
 .app-login {
     min-height: 100%;
     background-image: url(../bg-images/app-feedback.svg);
@@ -82,4 +90,13 @@
 .dash-whiteboard {
     background-image: url(../bg-images/app-group-calendar.svg);
 }
-/** Dashboard quiz **/
+@media screen and (max-width: 640px) {
+    .dash-item-container > * {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 180px) {
+    .min-square-120 {
+        display: none;
+    }
+}

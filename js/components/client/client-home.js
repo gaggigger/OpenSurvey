@@ -5,7 +5,6 @@ const R_CLIENT_HOME = Vue.component('client-home', {
                 <md-card-header>
                     <md-card-header-text>
                         <div class="md-title">
-                            <common-event-connected-client class="display-inline-block" />
                             #{{ item.name }},
                             <span v-if="item.description">
                                 {{ item.description }}
