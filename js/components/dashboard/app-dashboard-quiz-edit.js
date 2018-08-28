@@ -68,7 +68,9 @@ const R_DASHBOARD_QUIZ_EDIT = Vue.component('app-dashboard-quiz-edit', {
                                     v-model.trim="question.name"
                                     class="flex-1 bold border-no font15" />
                             </md-field>
-                            <md-field class="w100px">
+                        </div>
+                        <div>
+                            <md-field style="width:100px;">
                                 <label>Duration</label>
                                 <md-select v-model="question.duration">
                                     <md-option value="10">10 sec.</md-option>

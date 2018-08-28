@@ -6,6 +6,7 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
                     <header>
                         <h2>{{ question.name }}</h2>
                     </header>
+                    <md-progress-bar md-mode="determinate" :md-value="questionTime"></md-progress-bar>
                     <ul class="list-1 ">
                         <li v-for="(item, i) in question.response"
                             :key="i"
@@ -33,7 +34,9 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
         return {
             question: {},
             currentQuestion: null,
-            currentResponse: null
+            currentResponse: null,
+            questionInterval: null,
+            questionTime: 0
         };
     },
     created() {
@@ -51,6 +54,15 @@ const R_CLIENT_QUIZ = Vue.component('client-quiz', {
                 if(this.currentQuestion !== response.current_question) {
                     this.currentQuestion = response.current_question;
                     this.question = response.question;
+
+                    this.questionTime = 0;
+                    window.clearInterval(this.questionInterval);
+
+                    let numSec = 0;
+                    this.questionInterval = window.setInterval(() => {
+                        ++numSec;
+                        this.questionTime = numSec * 100 / parseInt(this.question.duration);
+                    }, 1000);
                 }
                 this.$forceUpdate();
             }
