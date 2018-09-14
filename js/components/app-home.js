@@ -1,6 +1,6 @@
 const R_HOME = Vue.component('app-home', {
     template: `
-        <section class="app-home bg-norepeat bg-center flex_h-center flex_v-center flex-column">
+        <section class="app-home bg-norepeat bg-center flex_h-center flex_v-center flex-column page">
             <h1>OpenSurvey</h1>
             <p class="md-primary h-align-center font15 padding_1 margin_1">
                 Audience interaction,

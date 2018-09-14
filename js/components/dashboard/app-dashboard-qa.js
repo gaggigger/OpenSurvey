@@ -1,40 +1,42 @@
 const R_DASHBOARD_QA = Vue.component('app-dashboard-qa', {
     template: `
-        <section>
-            <div class="relative">
-                <div v-for="(question, iq) in questions" :key="iq">
-                    <md-card class="margin-bottom_05" v-if="iq < 3">
-                        <md-card-header>
-                            <div class="md-title">
-                                <span class="font18">{{ question.question }}</span>
-                            </div>
-                        </md-card-header>
-                        <md-divider></md-divider>
-                        <md-card-actions>
-                            <div class="md-subhead">
-                                <md-chip class="md-primary" md-clickable>
-                                    <span @click="answered(question)" class="pointer font15" title="Mark as answered">
-                                        <md-icon>spellcheck</md-icon>
-                                    </span>
-                                </md-chip>
-                                <md-chip class="md-primary">{{ numlike(question) }}</md-chip>
-                                <md-chip class="md-primary">{{ question.owner }}</md-chip> 
-                                <md-chip>{{ questiondate(question.inserted_at) }}</md-chip>
-                            </div>
-                        </md-card-actions>
-                    </md-card>
-                    <md-list v-if="iq >= 3">
-                        <md-list-item>
-                            <span @click="answered(question)" class="pointer" title="Mark as answered">
-                                <md-icon>spellcheck</md-icon>
-                            </span>
-                            <span class="md-list-item-text md-list-item-text">&nbsp; {{ question.question }}</span>
-                        </md-list-item>
-                        <md-divider></md-divider>
-                    </md-list>                        
+        <div class="page">
+            <section>
+                <div class="relative">
+                    <div v-for="(question, iq) in questions" :key="iq">
+                        <md-card class="margin-bottom_05" v-if="iq < 3">
+                            <md-card-header>
+                                <div class="md-title">
+                                    <span class="font18">{{ question.question }}</span>
+                                </div>
+                            </md-card-header>
+                            <md-divider></md-divider>
+                            <md-card-actions>
+                                <div class="md-subhead">
+                                    <md-chip class="md-primary" md-clickable>
+                                        <span @click="answered(question)" class="pointer font15" title="Mark as answered">
+                                            <md-icon>spellcheck</md-icon>
+                                        </span>
+                                    </md-chip>
+                                    <md-chip class="md-primary">{{ numlike(question) }}</md-chip>
+                                    <md-chip class="md-primary">{{ question.owner }}</md-chip> 
+                                    <md-chip>{{ questiondate(question.inserted_at) }}</md-chip>
+                                </div>
+                            </md-card-actions>
+                        </md-card>
+                        <md-list v-if="iq >= 3">
+                            <md-list-item>
+                                <span @click="answered(question)" class="pointer" title="Mark as answered">
+                                    <md-icon>spellcheck</md-icon>
+                                </span>
+                                <span class="md-list-item-text md-list-item-text">&nbsp; {{ question.question }}</span>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                        </md-list>                        
+                    </div>
                 </div>
-            </div>
-       </section>
+           </section>
+        </div>
     `,
     props: {
         event: {

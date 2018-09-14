@@ -1,16 +1,16 @@
 Vue.component('app-breadcrumb', {
     template: `
-        <nav>
-            <md-chip class="md-active" md-clickable>
+        <nav class="wrap">
+            <span class="md-active" md-clickable>
                 <a href="./">Home</a>
-            </md-chip>
-            <md-chip  v-for="(menu, idx) in items"
+            </span>
+            <span  v-for="(menu, idx) in items"
                 :key="idx" 
                 :class="{'md-active': menu.link, 'md-disabled': !menu.link}"
                 :md-clickable="!!menu.link">
                 <router-link :to="goto(menu.link)" v-if="menu.link">{{ getName(menu.name) }}</router-link>
                 <span v-if="!menu.link">{{ getName(menu.name) }}</span>
-            </md-chip>
+            </span>
        </nav>
     `,
     watch: {

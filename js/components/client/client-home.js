@@ -1,20 +1,22 @@
 const R_CLIENT_HOME = Vue.component('client-home', {
     template: `
-        <section>
-            <md-card>
-                <md-card-header>
-                    <md-card-header-text>
-                        <div class="md-title">
-                            #{{ item.name }},
-                            <span v-if="item.description">
-                                {{ item.description }}
-                            </span>
-                        </div>
-                    </md-card-header-text>
-                </md-card-header>
-            </md-card>
-            <client-items :event="event"></client-items>
-        </section>
+        <div class="page">
+            <section>
+                <md-card>
+                    <md-card-header>
+                        <md-card-header-text>
+                            <div class="md-title">
+                                #{{ item.name }},
+                                <span v-if="item.description">
+                                    {{ item.description }}
+                                </span>
+                            </div>
+                        </md-card-header-text>
+                    </md-card-header>
+                </md-card>
+                <client-items :event="event"></client-items>
+            </section>
+        </div>
     `,
     props: {
         event: {

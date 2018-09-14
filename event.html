@@ -21,7 +21,7 @@
     <div id="app">
         <div id="mainloading" v-if="isLoading"></div>
         <app-header></app-header>
-        <transition>
+        <transition enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
             <router-view />
         </transition>
         <common-quiz-watcher></common-quiz-watcher>
@@ -85,6 +85,8 @@
     <link href="css/generic.css" rel="stylesheet" type="text/css">
     <link href="css/app.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="css/libs/hover-min.css">
+    <link rel="stylesheet" href="css/libs/animate.min.css">
     <link rel="stylesheet" href="css/libs/vue-material.min.css">
     <link rel="stylesheet" href="css/libs/material-theme-default-dark.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

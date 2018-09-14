@@ -1,6 +1,6 @@
 const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz-list', {
     template: `
-        <div>
+        <div class="page">
             <app-dashboard-quiz-new
                 @change="change" 
                 :event="event"></app-dashboard-quiz-new>
@@ -8,7 +8,7 @@ const R_DASHBOARD_QUIZ_LIST = Vue.component('app-dashboard-quiz-list', {
             <div class="h-align-center">
                 <md-card v-for="item in filterItem" 
                     :key="item._id"
-                    class="margin_1 display-inline-block">
+                    class="margin_1 display-inline-block hvr-grow">
                     <md-card-content>
                         <div class="pointer" @click="goto(event, item._id)">{{ item.name }}</div>
                     </md-card-content>

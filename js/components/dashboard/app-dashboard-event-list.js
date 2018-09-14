@@ -3,7 +3,7 @@ Vue.component('app-dashboard-event-list', {
         <div class="h-align-center">
             <md-card v-for="item in filterItem"
                 :key="item._id"
-                class="margin_1 display-inline-block">
+                class="margin_1 display-inline-block hvr-grow">
                 <md-card-content>
                     <div  
                     @click="goto(item._id)"

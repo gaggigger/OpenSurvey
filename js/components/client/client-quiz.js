@@ -1,24 +1,26 @@
 const R_CLIENT_QUIZ = Vue.component('client-quiz', {
     template: `
-        <section>
-            <div class="margin_1 relative">
-                <div v-if="question.name">
-                    <header>
-                        <h2>{{ question.name }}</h2>
-                    </header>
-                    <md-progress-bar md-mode="determinate" :md-value="questionTime"></md-progress-bar>
-                    <ul class="list-1 ">
-                        <li v-for="(item, i) in question.response"
-                            :key="i"
-                            @click="respond(item)"
-                            class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1"
-                            :class="{ 'background': currentResponse === item.uid }">
-                            {{ item.name }}
-                        </li>
-                    </ul>
+        <div class="page">
+            <section>
+                <div class="margin_1 relative">
+                    <div v-if="question.name">
+                        <header>
+                            <h2>{{ question.name }}</h2>
+                        </header>
+                        <md-progress-bar md-mode="determinate" :md-value="questionTime"></md-progress-bar>
+                        <ul class="list-1 ">
+                            <li v-for="(item, i) in question.response"
+                                :key="i"
+                                @click="respond(item)"
+                                class="flex border-width_1 border-radius_5px background-hover pointer margin_1 padding_1"
+                                :class="{ 'background': currentResponse === item.uid }">
+                                {{ item.name }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     `,
     props: {
         event: {

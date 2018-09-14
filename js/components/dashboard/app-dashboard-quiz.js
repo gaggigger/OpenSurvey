@@ -1,6 +1,6 @@
 const R_DASHBOARD_QUIZ = Vue.component('app-dashboard-quiz', {
     template: `
-        <div>
+        <div class="page">
             <md-toolbar :md-elevation="1">
                 <app-dashboard-quiz-play :event="event" 
                     :quiz="quiz"

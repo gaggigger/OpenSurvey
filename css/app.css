@@ -100,3 +100,7 @@
         display: none;
     }
 }
+.page {
+    position: fixed;
+    width: inherit;
+}
